@@ -58,7 +58,7 @@ namespace TreatTracker.Services
             }
         }
 
-        public IEnumerable<Factory_CandyListItem> GetAllCandyByFactory()
+        public IEnumerable<Factory_CandyListItem> GetAllCandyByFactory(int id)
         {
             using(var ctx = new ApplicationDbContext())
             {
@@ -81,7 +81,7 @@ namespace TreatTracker.Services
             }
         }
 
-        public IEnumerable<Factory_DrinkListItem> GetAllCDrinksByFactory()
+        public IEnumerable<Factory_DrinkListItem> GetAllCDrinksByFactory(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
