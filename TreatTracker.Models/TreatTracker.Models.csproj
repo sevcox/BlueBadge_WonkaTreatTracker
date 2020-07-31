@@ -54,7 +54,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FactoryModels\Factory_CandyListItem.cs" />
+    <Compile Include="FactoryModels\Factory_DrinkListItem.cs" />
+    <Compile Include="FactoryModels\FactoryDetail.cs" />
+    <Compile Include="FactoryModels\FactoryListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StoreModels\StoreDetail.cs" />
+    <Compile Include="StoreModels\StoreListItem.cs" />
+    <Compile Include="StoreModels\Store_CandyListItem.cs" />
+    <Compile Include="StoreModels\Store_DrinkListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
