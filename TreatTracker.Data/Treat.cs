@@ -8,7 +8,7 @@ using System.Web.Http.Results;
 
 namespace TreatTracker.Data
 {
-    public abstract class Treat : DateTime
+    public abstract class Treat : AutoDateTime
     {
         [Required]
         public string TreatName { get; set; }
