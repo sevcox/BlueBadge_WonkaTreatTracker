@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Character.cs" />
     <Compile Include="GoldenTicket.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="Candy.cs" />
