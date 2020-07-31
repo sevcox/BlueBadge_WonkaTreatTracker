@@ -34,21 +34,15 @@ namespace TreatTracker.Data
             return new ApplicationDbContext();
         }
         //Add DbSetsHere
-        public override int SaveChanges()
-        {
-            AddTimestamps();
-            return base.SaveChanges();
-        }
-
         public override async Task<int> SaveChangesAsync()
         {
-            AddTimestamps();
+            AddTimeStamps();
             return await base.SaveChangesAsync();
         }
 
-        private void AddTimestamps()
+        private void AddTimeStamps()
         {
-            var entities = ChangeTracker.Entries().Where(x => x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
+            var entities = ChangeTracker.Entries().Where(x => x.Entity is DateTime && (x.State == EntityState.Added || x.State == EntityState.Modified));
 
             var currentUsername = !string.IsNullOrEmpty(HttpContext.Current?.User?.Identity?.Name)
                 ? HttpContext.Current.User.Identity.Name
@@ -58,12 +52,12 @@ namespace TreatTracker.Data
             {
                 if (entity.State == EntityState.Added)
                 {
-                    ((BaseEntity)entity.Entity).DateCreated = DateTime.UtcNow;
-                    ((BaseEntity)entity.Entity).UserCreated = currentUsername;
+                    ((DateTime)entity.Entity).DateCreated = DateTimeOffset.UtcNow;
+                    ((DateTime)entity.Entity).UserCreated = currentUsername;
                 }
 
-                ((BaseEntity)entity.Entity).DateModified = DateTime.UtcNow;
-                ((BaseEntity)entity.Entity).UserModified = currentUsername;
+                ((DateTime)entity.Entity).DateModified = DateTimeOffset.UtcNow;
+                ((DateTime)entity.Entity).UserModified = currentUsername;
             }
         }
     }

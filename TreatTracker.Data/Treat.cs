@@ -8,7 +8,7 @@ using System.Web.Http.Results;
 
 namespace TreatTracker.Data
 {
-    public abstract class Treat : BaseEntity
+    public abstract class Treat : DateTime
     {
         [Required]
         public string TreatName { get; set; }
