@@ -42,7 +42,7 @@ namespace TreatTracker.Data
 
         private void AddTimeStamps()
         {
-            var entities = ChangeTracker.Entries().Where(x => x.Entity is DateTime && (x.State == EntityState.Added || x.State == EntityState.Modified));
+            var entities = ChangeTracker.Entries().Where(x => x.Entity is AutoDateTime && (x.State == EntityState.Added || x.State == EntityState.Modified));
 
             var currentUsername = !string.IsNullOrEmpty(HttpContext.Current?.User?.Identity?.Name)
                 ? HttpContext.Current.User.Identity.Name
@@ -52,12 +52,12 @@ namespace TreatTracker.Data
             {
                 if (entity.State == EntityState.Added)
                 {
-                    ((DateTime)entity.Entity).DateCreated = DateTimeOffset.UtcNow;
-                    ((DateTime)entity.Entity).UserCreated = currentUsername;
+                    ((AutoDateTime)entity.Entity).DateCreated = DateTimeOffset.UtcNow;
+                    ((AutoDateTime)entity.Entity).UserCreated = currentUsername;
                 }
 
-                ((DateTime)entity.Entity).DateModified = DateTimeOffset.UtcNow;
-                ((DateTime)entity.Entity).UserModified = currentUsername;
+                ((AutoDateTime)entity.Entity).DateModified = DateTimeOffset.UtcNow;
+                ((AutoDateTime)entity.Entity).UserModified = currentUsername;
             }
         }
     }

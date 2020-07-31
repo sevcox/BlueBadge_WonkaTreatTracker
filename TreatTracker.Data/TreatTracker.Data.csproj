@@ -90,7 +90,7 @@
     <Compile Include="Factory.cs" />
     <Compile Include="Candy.cs" />
     <Compile Include="Drink.cs" />
-    <Compile Include="DateTime.cs" />
+    <Compile Include="AutoDateTime.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

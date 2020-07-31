@@ -76,5 +76,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TreatTracker.Data\TreatTracker.Data.csproj">
+      <Project>{99906FDC-FF2F-4A62-B60C-3522A57A5867}</Project>
+      <Name>TreatTracker.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

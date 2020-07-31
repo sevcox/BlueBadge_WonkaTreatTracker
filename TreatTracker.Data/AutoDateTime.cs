@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TreatTracker.Data
 {
-    public abstract class DateTime
+    public abstract class AutoDateTime
     {
         [Required]
         public DateTimeOffset? DateCreated { get; set; }
