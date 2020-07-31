@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TreatTracker.Models
 {
-    class CharacterDetail
+    public class CharacterDetail
     {
     }
 }

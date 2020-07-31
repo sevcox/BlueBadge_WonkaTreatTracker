@@ -16,6 +16,7 @@ namespace TreatTracker.Data
         public string Name { get; set; }
         [Required]
         public string Weakness { get; set; }
+        public int RoomId { get; set; }
         [ForeignKey(nameof(RoomId))]
         public virtual Room Room { get; set; }
         public DateTime DateOfBirth { get; set; }
