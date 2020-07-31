@@ -54,7 +54,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharacterDetail.cs" />
+    <Compile Include="CharacterListItem.cs" />
+    <Compile Include="GoldenTicketCreate.cs" />
+    <Compile Include="GoldenTicketDetail.cs" />
+    <Compile Include="GoldenTicketListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomDetail.cs" />
+    <Compile Include="RoomListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
