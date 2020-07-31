@@ -17,6 +17,7 @@ namespace TreatTracker.Data
         [Required]
         public string SecretIngredient { get; set; }
         [Required]
+        [DataType(DataType.Currency)]
         public decimal? Price { get; set; }
         [Required]
         public int Quantity { get; set; }

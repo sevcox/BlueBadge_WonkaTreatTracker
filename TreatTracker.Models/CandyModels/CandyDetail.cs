@@ -16,7 +16,7 @@ namespace TreatTracker.Models.CandyModels
         public string Description { get; set; }
         public string SecretIngredient { get; set; }
         [DataType(DataType.Currency)]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
         public int Quantity { get; set; }
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTimeOffset? DateCreated { get; set; }

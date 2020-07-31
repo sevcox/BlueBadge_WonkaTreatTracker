@@ -28,6 +28,6 @@ namespace TreatTracker.Models.CandyModels
         public int Quantity { get; set; }
         [Range(1, 100, ErrorMessage = "Price must be between $1 and $100.")]
         [DataType(DataType.Currency)]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
     }
 }
