@@ -12,7 +12,9 @@ namespace TreatTracker.Models.CandyModels
         public int CandyId { get; set; }
         public string TreatName { get; set; }
         public int Quantity { get; set; }
+        [DataType(DataType.Currency)]
         public decimal Price { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTimeOffset? DateCreated { get; set; }
         [Display(Name = "Creator")]
         public string UserCreated { get; set; }

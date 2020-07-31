@@ -15,11 +15,14 @@ namespace TreatTracker.Models.CandyModels
         public TypeOfCandy CandyType { get; set; }
         public string Description { get; set; }
         public string SecretIngredient { get; set; }
+        [DataType(DataType.Currency)]
         public decimal Price { get; set; }
         public int Quantity { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTimeOffset? DateCreated { get; set; }
         [Display(Name = "Creator")]
         public string UserCreated { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTimeOffset? DateModified { get; set; }
         [Display(Name = "Editor")]
         public string UserModified { get; set; }
