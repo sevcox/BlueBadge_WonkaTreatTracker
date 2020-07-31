@@ -85,12 +85,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Character.cs" />
     <Compile Include="GoldenTicket.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="Candy.cs" />
     <Compile Include="Drink.cs" />
-    <Compile Include="DateTime.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
