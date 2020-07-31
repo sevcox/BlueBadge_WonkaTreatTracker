@@ -1,4 +1,8 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -28,6 +32,33 @@ namespace TreatTracker.Data
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+        //Add DbSetsHere
+        public override async Task<int> SaveChangesAsync()
+        {
+            AddTimeStamps();
+            return await base.SaveChangesAsync();
+        }
+
+        private void AddTimeStamps()
+        {
+            var entities = ChangeTracker.Entries().Where(x => x.Entity is DateTime && (x.State == EntityState.Added || x.State == EntityState.Modified));
+
+            var currentUsername = !string.IsNullOrEmpty(HttpContext.Current?.User?.Identity?.Name)
+                ? HttpContext.Current.User.Identity.Name
+                : "Anonymous";
+
+            foreach (var entity in entities)
+            {
+                if (entity.State == EntityState.Added)
+                {
+                    ((DateTime)entity.Entity).DateCreated = DateTimeOffset.UtcNow;
+                    ((DateTime)entity.Entity).UserCreated = currentUsername;
+                }
+
+                ((DateTime)entity.Entity).DateModified = DateTimeOffset.UtcNow;
+                ((DateTime)entity.Entity).UserModified = currentUsername;
+            }
         }
     }
 }

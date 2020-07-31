@@ -58,10 +58,23 @@
     <Compile Include="GoldenTicketService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomService.cs" />
+    <Compile Include="FactoryService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StoreService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TreatTracker.Data\TreatTracker.Data.csproj">
+      <Project>{99906fdc-ff2f-4a62-b60c-3522a57a5867}</Project>
+      <Name>TreatTracker.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TreatTracker.Models\TreatTracker.Models.csproj">
+      <Project>{25fe584e-bca6-4524-9413-dbe872aa84ab}</Project>
+      <Name>TreatTracker.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
