@@ -82,7 +82,7 @@ namespace TreatTracker.Services
             }
         }
 
-        public IEnumerable<Store_DrinkListItem> GetAllDrinkByFactory(int id)
+        public IEnumerable<Store_DrinkListItem> GetAllDrinksByStore(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {

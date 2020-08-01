@@ -16,7 +16,7 @@ namespace TreatTracker.Services
             _userId = userId;
         }
 
-        public IEnumerable<FactoryListItem> GetStores()
+        public IEnumerable<FactoryListItem> GetFactories()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -37,7 +37,7 @@ namespace TreatTracker.Services
             }
         }
 
-        public FactoryDetail GetStoreById(int id)
+        public FactoryDetail GetFactoryById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -81,7 +81,7 @@ namespace TreatTracker.Services
             }
         }
 
-        public IEnumerable<Factory_DrinkListItem> GetAllCDrinksByFactory(int id)
+        public IEnumerable<Factory_DrinkListItem> GetAllDrinksByFactory(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
