@@ -54,19 +54,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharacterDetail.cs" />
-    <Compile Include="CharacterListItem.cs" />
-    <Compile Include="GoldenTicketCreate.cs" />
-    <Compile Include="GoldenTicketDetail.cs" />
-    <Compile Include="GoldenTicketListItem.cs" />
+    <Compile Include="CharacterModels\CharacterDetail.cs" />
+    <Compile Include="CharacterModels\CharacterListItem.cs" />
+    <Compile Include="GoldenTicketModels\GoldenTicketCreate.cs" />
+    <Compile Include="GoldenTicketModels\GoldenTicketDetail.cs" />
+    <Compile Include="GoldenTicketModels\GoldenTicketListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoomDetail.cs" />
-    <Compile Include="RoomListItem.cs" />
     <Compile Include="FactoryModels\Factory_CandyListItem.cs" />
     <Compile Include="FactoryModels\Factory_DrinkListItem.cs" />
     <Compile Include="FactoryModels\FactoryDetail.cs" />
     <Compile Include="FactoryModels\FactoryListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomModels\RoomDetails.cs" />
+    <Compile Include="RoomModels\RoomListItem.cs" />
     <Compile Include="StoreModels\StoreDetail.cs" />
     <Compile Include="StoreModels\StoreListItem.cs" />
     <Compile Include="StoreModels\Store_CandyListItem.cs" />

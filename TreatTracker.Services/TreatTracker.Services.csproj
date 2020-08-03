@@ -54,9 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharacterService.cs" />
+    <Compile Include="GoldenTicketService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FactoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomService.cs" />
     <Compile Include="StoreService.cs" />
   </ItemGroup>
   <ItemGroup>
