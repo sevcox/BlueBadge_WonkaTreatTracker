@@ -9,7 +9,7 @@ namespace TreatTracker.Models
 {
     public class FactoryListItem
     {
-        public int StoreId { get; set; }
+        public int FactoryId { get; set; }
         [Display(Name = "Name")]
         public string LocationName { get; set; }
     }

@@ -5,19 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TreatTracker.Data
+namespace TreatTracker.Models.DrinkModels
 {
-    public abstract class AutoDateTime
+    public class DrinkListItem
     {
-        [Required]
+        public int DrinkId { get; set; }
+        public string TreatName { get; set; }
+        public string Flavor { get; set; }
+        public int Quantity { get; set; }
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTimeOffset? CreatedUtc { get; set; }
-        [Required]
         [Display(Name = "Creator")]
         public string UserCreated { get; set; }
-        [DisplayFormat(DataFormatString = "{0:d}")]
-        public DateTimeOffset? ModifiedUtc { get; set; }
-        [Display(Name = "Editor")]
-        public string UserModified { get; set; }
     }
 }
