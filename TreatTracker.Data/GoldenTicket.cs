@@ -12,6 +12,7 @@ namespace TreatTracker.Data
     {
         [Key]
         public int TicketId { get; set; }
+        public string CandyName { get; set; }
         public int CandyId { get; set; }
         [ForeignKey(nameof(CandyId))]
         public virtual Candy Candy{ get; set; }
