@@ -27,6 +27,6 @@ namespace TreatTracker.Data
         [Required]
         public virtual ICollection<Drink> Drinks { get; set; }
         [Required]
-        public virtual ICollection<Character> Characters{ get; set; }
+        public virtual ICollection<Character> Characters { get; set; }
     }
 }

@@ -118,6 +118,5 @@ namespace TreatTracker.Data
         {
             HasKey(iur => iur.UserId);
         }
-
     }
 }
