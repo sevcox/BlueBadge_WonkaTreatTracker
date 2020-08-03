@@ -27,7 +27,7 @@ namespace TreatTracker.Services
                         e =>
                     new FactoryListItem
                     {
-                        StoreId = e.StoreId,
+                        FactoryId = e.FactoryId,
                         LocationName = e.LocationName
                     }
 

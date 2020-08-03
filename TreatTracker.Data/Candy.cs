@@ -21,12 +21,12 @@ namespace TreatTracker.Data
         [Required]
         public TypeOfCandy CandyType { get; set; }
         public virtual ICollection<Store> Stores { get; set; }
-        public virtual ICollection<Factory> Factories { get; set; }
+        public int FactoryId { get; set; }
+        public virtual Factory factory { get; set; }
 
         public Candy()
         {
             Stores = new HashSet<Store>();
-            Factories = new HashSet<Factory>();
         }
     }
 }

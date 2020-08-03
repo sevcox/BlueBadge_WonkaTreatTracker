@@ -20,7 +20,7 @@ namespace TreatTracker.Services
 
         public IEnumerable<StoreListItem> GetStores()
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
@@ -41,22 +41,23 @@ namespace TreatTracker.Services
 
         public StoreDetail GetStoreById(int id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Stores
                     .Single(e => e.StoreId == id);
-                    return
-                    new StoreDetail 
-                    {
-                        StoreId = entity.StoreId,
-                        LocationName = entity.LocationName,
-                        Address = entity.Address,
-                        PhoneNumber = entity.PhoneNumber
-                    };
+                return
+                new StoreDetail
+                {
+                    StoreId = entity.StoreId,
+                    LocationName = entity.LocationName,
+                    Address = entity.Address,
+                    PhoneNumber = entity.PhoneNumber
+                };
             }
         }
-
     }
 }
+
+    
