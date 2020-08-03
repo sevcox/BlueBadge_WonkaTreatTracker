@@ -59,6 +59,16 @@
     <Compile Include="GoldenTicketModels\GoldenTicketCreate.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketDetail.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketListItem.cs" />
+    <Compile Include="CandyModels\CandyCreate.cs" />
+    <Compile Include="CandyModels\CandyDetail.cs" />
+    <Compile Include="CandyModels\CandyEdit.cs" />
+    <Compile Include="CandyModels\CandyListItem.cs" />
+    <Compile Include="CharacterDetail.cs" />
+    <Compile Include="CharacterListItem.cs" />
+    <Compile Include="DrinkModels\DrinkCreate.cs" />
+    <Compile Include="DrinkModels\DrinkDetail.cs" />
+    <Compile Include="DrinkModels\DrinkEdit.cs" />
+    <Compile Include="DrinkModels\DrinkListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FactoryModels\Factory_CandyListItem.cs" />
     <Compile Include="FactoryModels\Factory_DrinkListItem.cs" />
@@ -82,5 +92,6 @@
       <Name>TreatTracker.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

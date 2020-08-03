@@ -16,7 +16,7 @@ namespace TreatTracker.Services
             _userId = userId;
         }
 
-        public IEnumerable<FactoryListItem> GetStores()
+        public IEnumerable<FactoryListItem> GetFactories()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -27,7 +27,7 @@ namespace TreatTracker.Services
                         e =>
                     new FactoryListItem
                     {
-                        StoreId = e.StoreId,
+                        FactoryId = e.FactoryId,
                         LocationName = e.LocationName
                     }
 
@@ -37,14 +37,14 @@ namespace TreatTracker.Services
             }
         }
 
-        public FactoryDetail GetStoreById(int id)
+        public FactoryDetail GetFactoryById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Factories
-                    .Single(e => e.StoreId == id);
+                    .Single(e => e.FactoryId == id);
                 return
                 new FactoryDetail
                 {
@@ -58,50 +58,51 @@ namespace TreatTracker.Services
             }
         }
 
-        public IEnumerable<Factory_CandyListItem> GetAllCandyByFactory(int id)
-        {
-            using(var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                    .Factories
-                    .Select(
-                        e =>
-                        new Factory_CandyListItem
-                        {
-                            FactoryId = e.FactoryId,
-                            LocationName = e.LocationName,
-                            CandyId = e.CandyId,
-                            TreatName = e.TreatName,
-                            Quantity = e.Quantity
-                        }
+        //public IEnumerable<Factory_CandyListItem> GetAllCandyByFactory(int id)
+        //{
+        //    using(var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //            .Factories
+        //            .Select(
+        //                e =>
+        //                new Factory_CandyListItem
+        //                {
+        //                    FactoryId = e.FactoryId,
+        //                    LocationName = e.LocationName,
+        //                    CandyId = e.CandyId,
+        //                    TreatName = e.TreatName,
+        //                    Quantity = e.Quantity
+        //                }
 
-                        );
-                return query.ToArray();
-            }
-        }
+        //                );
+        //        return query.ToArray();
+        //    }
+        //}
 
-        public IEnumerable<Factory_DrinkListItem> GetAllCDrinksByFactory(int id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                    .Factories
-                    .Select(
-                        e =>
-                        new Factory_DrinkListItem
-                        {
-                            FactoryId = e.FactoryId,
-                            LocationName = e.LocationName,
-                            DrinkId = e.DrinkId,
-                            TreatName = e.TreatName,
-                            Quantity = e.Quantity
-                        }
+        //public IEnumerable<Factory_DrinkListItem> GetAllCDrinksByFactory(int id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //            .Factories
+        //            .Select(
+        //                e =>
+        //                new Factory_DrinkListItem
+        //                {
+        //                    FactoryId = e.FactoryId,
+        //                    LocationName = e.LocationName,
+        //                    DrinkId = e.DrinkId,
+        //                    TreatName = e.TreatName,
+        //                    Quantity = e.Quantity
+        //                }
 
-                        );
-                return query.ToArray();
-            }
-        }
+        //                );
+        //        return query.ToArray();
+        //    }
+        //}
+
     }
 }
