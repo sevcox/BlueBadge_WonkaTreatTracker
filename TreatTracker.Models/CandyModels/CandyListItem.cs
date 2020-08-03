@@ -15,7 +15,7 @@ namespace TreatTracker.Models.CandyModels
         public TypeOfCandy CandyType { get; set; }
         public int Quantity { get; set; }
         [DisplayFormat(DataFormatString = "{0:d}")]
-        public DateTimeOffset? DateCreated { get; set; }
+        public DateTimeOffset? CreatedUtc { get; set; }
         [Display(Name = "Creator")]
         public string UserCreated { get; set; }
     }

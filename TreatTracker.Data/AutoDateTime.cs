@@ -11,12 +11,12 @@ namespace TreatTracker.Data
     {
         [Required]
         [DisplayFormat(DataFormatString = "{0:d}")]
-        public DateTimeOffset? DateCreated { get; set; }
+        public DateTimeOffset? CreatedUtc { get; set; }
         [Required]
         [Display(Name = "Creator")]
         public string UserCreated { get; set; }
         [DisplayFormat(DataFormatString = "{0:d}")]
-        public DateTimeOffset? DateModified { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
         [Display(Name = "Editor")]
         public string UserModified { get; set; }
     }
