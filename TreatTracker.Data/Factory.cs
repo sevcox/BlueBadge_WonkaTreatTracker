@@ -23,10 +23,10 @@ namespace TreatTracker.Data
         [Required]
         public string Manager { get; set; }
         [Required]
-        public virtual ICollection<Candy> Candies { get; set; }
+        public virtual ICollection<Candy> CandyList { get; set; }
         [Required]
-        public virtual ICollection<Drink> Drinks { get; set; }
+        public virtual ICollection<Drink> DrinkList { get; set; }
         [Required]
-        public virtual ICollection<Character> Characters{ get; set; }
+        public virtual ICollection<Character> CharacterList { get; set; }
     }
 }

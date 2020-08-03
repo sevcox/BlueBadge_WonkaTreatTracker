@@ -55,53 +55,6 @@ namespace TreatTracker.Services
                         Address = entity.Address,
                         PhoneNumber = entity.PhoneNumber
                     };
-
-            }
-        }
-
-        public IEnumerable<Store_CandyListItem> GetAllCandyByStore(int id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                    .Stores
-                    .Select(
-                        e =>
-                        new Store_CandyListItem
-                        {
-                            StoreId = e.StoreId,
-                            LocationName = e.LocationName,
-                            CandyId = e.CandyId,
-                            TreatName = e.TreatName,
-                            Quantity = e.Quantity
-                        }
-
-                        );
-                return query.ToArray();
-            }
-        }
-
-        public IEnumerable<Store_DrinkListItem> GetAllDrinksByStore(int id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                    .Stores
-                    .Select(
-                        e =>
-                        new Store_DrinkListItem
-                        {
-                            StoreId = e.StoreId,
-                            LocationName = e.LocationName,
-                            DrinkId = e.DrinkId,
-                            TreatName = e.TreatName,
-                            Quantity = e.Quantity
-                        }
-
-                        );
-                return query.ToArray();
             }
         }
 
