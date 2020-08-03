@@ -19,19 +19,21 @@ namespace TreatTracker.Data
         public int RoomId { get; set; }
         [ForeignKey(nameof(RoomId))]
         public virtual Room Room { get; set; }
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:d}")]
+
         public DateTime DateOfBirth { get; set; }
         public int Age
         {
             get
             {
-                if (DateOfBirth == new DateTime())
-                {
-                    return 9001;
-                }
+                
                 TimeSpan ageSpan = DateTime.Now - DateOfBirth;
                 double totalAgeInYear = ageSpan.TotalDays / 365.25;
-                return Convert.ToInt32(Math.Floor(totalAgeInYear));
+                var age =  Convert.ToInt32(Math.Floor(totalAgeInYear));
+                return age;
             }
+            
         }
 
     }
