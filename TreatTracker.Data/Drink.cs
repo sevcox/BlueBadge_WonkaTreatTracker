@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +15,12 @@ namespace TreatTracker.Data
         [Required]
         public string Flavor { get; set; }
         public virtual ICollection<Store> Stores { get; set; }
-        public virtual ICollection<Factory> Factories { get; set; }
-
+        public int? FactoryId { get; set; }
+        [ForeignKey(nameof(FactoryId))]
+        public virtual Factory Factory { get; set; }
         public Drink()
         {
             Stores = new HashSet<Store>();
-            Factories = new HashSet<Factory>();
         }
     }
 }
