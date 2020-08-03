@@ -63,8 +63,6 @@
     <Compile Include="CandyModels\CandyDetail.cs" />
     <Compile Include="CandyModels\CandyEdit.cs" />
     <Compile Include="CandyModels\CandyListItem.cs" />
-    <Compile Include="CharacterDetail.cs" />
-    <Compile Include="CharacterListItem.cs" />
     <Compile Include="DrinkModels\DrinkCreate.cs" />
     <Compile Include="DrinkModels\DrinkDetail.cs" />
     <Compile Include="DrinkModels\DrinkEdit.cs" />

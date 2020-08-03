@@ -56,7 +56,7 @@ namespace TreatTracker.Services
         }
         public CharacterDetail GetCharacterByFactory(int factoryId)
         {
-            using (var ctx = new ApplicationDbContext)
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
