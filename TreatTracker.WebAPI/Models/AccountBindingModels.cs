@@ -50,7 +50,7 @@ namespace TreatTracker.WebAPI.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [Range(1, 50, ErrorMessage="Must choose a factory number between 1 and 50.")]
+        [Range(1,50, ErrorMessage="Must choose a factory number between 1 and 50.")]
         public int FactoryId { get; set; }
     }
 
