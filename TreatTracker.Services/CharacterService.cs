@@ -54,25 +54,7 @@ namespace TreatTracker.Services
                     };
             }
         }
-        public CharacterDetail GetCharacterByFactory(int factoryId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                    .Characters
-                    .Single(e => e.FactoryId == factoryId);
-                return
-                    new CharacterDetail
-                    {
-                        CharacterId = entity.CharacterId,
-                        Age = entity.Age,
-                        Weakness = entity.Weakness,
-                        Name = entity.Name,
-                        RoomId = entity.RoomId
-                    };
-            }
-        }
+        
         public CharacterDetail GetCharacterByRoomId(int roomId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -91,6 +73,35 @@ namespace TreatTracker.Services
                         Weakness = entity.Weakness
 
                     };
+            }
+        }
+        public ICollection <CharacterListItem> GetCharactersByFactory(int factoryId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Factories
+                    .Where(e=> e.FactoryId ==factoryId )
+                    
+                    .Select(
+                        e =>
+                        new CharacterListItem
+                        {
+                            Name = e.Name,
+                            Weakness = e.Weakness,
+                            RoomId = e.RoomId
+                        }
+                        );
+                return query.ToArray();
+                    
+                
+                    
+                
+
+                
+                   
+
             }
         }
         public CharacterDetail GetCharacterByName(string name)
