@@ -75,35 +75,8 @@ namespace TreatTracker.Services
                     };
             }
         }
-        public ICollection <CharacterListItem> GetCharactersByFactory(int factoryId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                    .Factories
-                    .Where(e=> e.FactoryId ==factoryId )
-                    
-                    .Select(
-                        e =>
-                        new CharacterListItem
-                        {
-                            Name = e.Name,
-                            Weakness = e.Weakness,
-                            RoomId = e.RoomId
-                        }
-                        );
-                return query.ToArray();
-                    
-                
-                    
-                
-
-                
-                   
-
-            }
-        }
+        
+        
         public CharacterDetail GetCharacterByName(string name)
         {
             using (var ctx = new ApplicationDbContext())
