@@ -55,7 +55,27 @@ namespace TreatTracker.Services
             }
         }
         
-       
+        public CharacterDetail GetCharacterByRoomId(int roomId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                ctx
+                    .Characters
+                    .Single(e => e.RoomId == roomId);
+                return
+                    new CharacterDetail
+                    {
+                        CharacterId = entity.CharacterId,
+                        Age = entity.Age,
+                        Name = entity.Name,
+                        RoomId = entity.RoomId,
+                        Weakness = entity.Weakness
+
+                    };
+            }
+        }
+
         public CharacterDetail GetCharacterByName(string name)
         {
             using (var ctx = new ApplicationDbContext())

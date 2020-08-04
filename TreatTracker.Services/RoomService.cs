@@ -9,7 +9,7 @@ using TreatTracker.Models.RoomModels;
 
 namespace TreatTracker.Services
 {
-   public  class RoomService
+    public class RoomService
     {
         private readonly Guid _userId;
         public RoomService(Guid userId)
@@ -37,25 +37,26 @@ namespace TreatTracker.Services
         }
         public RoomDetails GetRoomById(int id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Rooms
                     .Single(e => e.RoomId == id);
-                    return
-                    new RoomDetails
-                    {
-                        FactoryId = entity.FactoryId,
-                        RoomId = entity.RoomId,
-                        Theme = entity.Theme,
-                        Description= entity.Description
+                return
+                new RoomDetails
+                {
+                    FactoryId = entity.FactoryId,
+                    RoomId = entity.RoomId,
+                    Theme = entity.Theme,
+                    Description = entity.Description
 
 
-                    };
+                };
             }
-           
+
         }
+
         public RoomDetails GetRoomsByCharacterId(int CharacterId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -65,7 +66,6 @@ namespace TreatTracker.Services
                     .Characters
                     .Single(e => e.CharacterId == CharacterId)
                     .Room;
-
                 return
                 new RoomDetails
                 {
@@ -77,6 +77,5 @@ namespace TreatTracker.Services
 
             }
         }
-
     }
 }
