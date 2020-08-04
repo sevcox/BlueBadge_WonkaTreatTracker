@@ -135,39 +135,7 @@ namespace TreatTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
-        public ICollection<Candy> GetCandiesByStore(int storeId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var allCandies =
-                    ctx
-                    .Stores
-                    .Single(s => s.StoreId == storeId);
-                //foreach (var candy in allCandies)
-                //{
-                //    foreach(var thing in candy)
-                //    {
-
-                //    }
-                //    new CandyListItem
-                //    {
-                //        CandyId = candy.CandyId,
-                //        TreatName = e.TreatName,
-                //        CandyType = e.CandyType,
-                //        Quantity = e.Quantity,
-                //        CreatedUtc = e.CreatedUtc,
-                //        UserCreated = e._userId
-                //    }
-                //}
-                return allCandies.Candies;
-                //var query =
-                //    ctx
-                //        .Stores
-                //        .Where(e => e.StoreId == storeId)
-                //        .Select(e => e.Candies);
-                //List<Candy> candies = new List<Candy>();
-            }
-        }
+  
+       
     }
 }

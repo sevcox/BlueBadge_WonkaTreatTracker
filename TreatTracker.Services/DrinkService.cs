@@ -31,8 +31,6 @@ namespace TreatTracker.Services
                     UserCreated = _userId
                 };
 
-            DrinkList.Add(entity);
-
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Drinks.Add(entity);

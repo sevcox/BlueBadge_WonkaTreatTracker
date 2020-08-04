@@ -11,14 +11,14 @@ namespace TreatTracker.Data
     {
         public Store()
         {
-            this.CandyList = new HashSet<Candy>();
-            this.DrinkList = new HashSet<Drink>();
+            this.Candies = new HashSet<Candy>();
+            this.Drinks = new HashSet<Drink>();
         }
         [Key]
         public int StoreId { get; set; }
         [Required]
-        public virtual ICollection<Candy> CandyList { get; set; }
+        public virtual ICollection<Candy> Candies { get; set; }
         [Required]
-        public virtual ICollection<Drink> DrinkList { get; set; }
+        public virtual ICollection<Drink> Drinks { get; set; }
     }
 }

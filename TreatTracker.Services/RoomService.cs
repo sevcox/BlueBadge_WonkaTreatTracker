@@ -62,8 +62,9 @@ namespace TreatTracker.Services
             {
                 var entity =
                     ctx
-                    .Rooms
-                    .Single(e => e.CharacterId == CharacterId);
+                    .Characters
+                    .Single(e => e.CharacterId == CharacterId)
+                    .Room;
 
                 return
                 new RoomDetails
@@ -73,8 +74,7 @@ namespace TreatTracker.Services
                     Theme = entity.Theme,
                     RoomId = entity.RoomId
                 };
-                        
-                
+
             }
         }
 

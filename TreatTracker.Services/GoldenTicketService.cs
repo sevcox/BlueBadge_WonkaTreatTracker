@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TreatTracker.Data;
+using TreatTracker.Models.CandyModels;
 using TreatTracker.Models.GoldenTicketModels;
 
 namespace TreatTracker.Services
@@ -44,7 +45,6 @@ namespace TreatTracker.Services
                         {
                             CandyId = e.CandyId,
                             CandyName = e.CandyName,
-                            Quantity = e.Quantity
                         }
 
                         );
@@ -53,5 +53,6 @@ namespace TreatTracker.Services
             }
         }
 
+       
     }
 }

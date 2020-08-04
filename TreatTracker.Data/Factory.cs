@@ -15,7 +15,7 @@ namespace TreatTracker.Data
         {
             this.Candies = new HashSet<Candy>();
             this.Drinks = new HashSet<Drink>();
-            this.Characters = new HashSet<Character>();
+            this.Characters = new List<Character>();
         }
 
         [Key]
@@ -26,7 +26,6 @@ namespace TreatTracker.Data
         public virtual ICollection<Candy> Candies { get; set; }
         [Required]
         public virtual ICollection<Drink> Drinks { get; set; }
-        [Required]
-        public virtual ICollection<Character> Characters { get; set; }
+        public ICollection<Character> Characters { get; set; }
     }
 }
