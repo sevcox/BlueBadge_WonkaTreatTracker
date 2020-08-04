@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TreatTracker.Data;
 using TreatTracker.Models.CandyModels;
 using TreatTracker.Services;
 
@@ -19,13 +20,15 @@ namespace TreatTracker.WebAPI.Controllers
             var candyService = new CandyService(userId);
             return candyService;
         }
+        [HttpGet]
         public IHttpActionResult Get()
         {
             CandyService candyService = CreateCandyService();
             var candies = candyService.GetCandies();
             return Ok(candies);
         }
-        public IHttpActionResult Post(CandyCreate candy)
+        [HttpPost]
+        public IHttpActionResult PostANewCandy(CandyCreate candy)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -37,12 +40,28 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
-        public IHttpActionResult Get(int id)
+        [HttpGet]
+        public IHttpActionResult GetCandyById(int candyId)
         {
             CandyService candyService = CreateCandyService();
-            var candy = candyService.GetCandyById(id);
+            var candy = candyService.GetCandyById(candyId);
             return Ok(candy);
         }
+        [HttpGet]
+        public IHttpActionResult GetCandiesByFactoryId(int factoryId)
+        {
+            CandyService candyService = CreateCandyService();
+            var candy = candyService.GetCandiesByFactoryId(factoryId);
+            return Ok(candy);
+        }
+        [HttpGet]
+        public IHttpActionResult GetCandiesByStoreId(int storeId)
+        {
+            CandyService candyService = CreateCandyService();
+            var candy = candyService.GetCandiesByStoreId(storeId);
+            return Ok(candy);
+        }
+        [HttpPut]
         public IHttpActionResult Put(CandyEdit candy)
         {
             if (!ModelState.IsValid)
@@ -55,11 +74,25 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
-        public IHttpActionResult Delete(int id)
+        [HttpPost]
+        public IHttpActionResult PutACandyWithAStore(int candyId, int storeId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateCandyService();
+
+            if (!service.ConnectCandyWithStore(candyId,storeId))
+                return InternalServerError();
+
+            return Ok();
+        }
+        [HttpDelete]
+        public IHttpActionResult DeleteACandy(int candyId)
         {
             var service = CreateCandyService();
 
-            if (!service.DeleteCandy(id))
+            if (!service.DeleteCandy(candyId))
                 return InternalServerError();
 
             return Ok();

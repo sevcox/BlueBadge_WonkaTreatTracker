@@ -28,6 +28,7 @@ namespace TreatTracker.Services
                 Description = model.Description,
                 SecretIngredient = model.SecretIngredient,
                 Quantity = model.Quantity,
+                FactoryId = model.FactoryId,
                 Price = model.Price,
                 CreatedUtc = DateTimeOffset.Now,
                 UserCreated = _userId.ToString()
@@ -39,7 +40,7 @@ namespace TreatTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public void ConnectCandyWithStore(int candyId, int storeId)
+        public bool ConnectCandyWithStore(int candyId, int storeId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -53,7 +54,7 @@ namespace TreatTracker.Services
 
                 candy.Stores.Add(store);
 
-                ctx.SaveChanges();
+                return ctx.SaveChanges() == 1;
 
             }
         }
@@ -72,8 +73,7 @@ namespace TreatTracker.Services
                                     TreatName = e.TreatName,
                                     CandyType = e.CandyType,
                                     Quantity = e.Quantity,
-                                    CreatedUtc = e.CreatedUtc,
-                                    UserCreated = e.UserCreated
+                                    FactoryId = e.FactoryId,
                                 }
                         );
 
@@ -98,6 +98,7 @@ namespace TreatTracker.Services
                         SecretIngredient = entity.SecretIngredient,
                         Price = entity.Price,
                         Quantity = entity.Quantity,
+                        FactoryId = entity.FactoryId,
                         CreatedUtc = entity.CreatedUtc,
                         UserCreated = entity.UserCreated,
                         ModifiedUtc = entity.ModifiedUtc,
@@ -137,31 +138,41 @@ namespace TreatTracker.Services
             }
         }
 
-        public ICollection<Candy> GetCandiesByStore(int storeId)
+        public IEnumerable<CandyListItem> GetCandiesByFactoryId(int factoryId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                     ctx
+                     .Factories
+                     .Single(e => e.FactoryId == factoryId)
+                     .Candies
+                     .Select
+                     (e =>
+                     new CandyListItem
+                     {
+                         CandyId = e.CandyId,
+                         TreatName = e.TreatName,
+                         CandyType = e.CandyType,
+                         Quantity = e.Quantity,
+                         FactoryId = e.FactoryId,
+                     }
+                     );
+                return query.ToArray();
+            }
+        }
+
+            public ICollection<Candy> GetCandiesByStoreId(int storeId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var allCandies =
                     ctx
                     .Stores
-                    .Single(s => s.StoreId == storeId);
-                //foreach (var candy in allCandies)
-                //{
-                //    foreach(var thing in candy)
-                //    {
+                    .Single(s => s.StoreId == storeId)
+                    .Candies;
 
-                //    }
-                //    new CandyListItem
-                //    {
-                //        CandyId = candy.CandyId,
-                //        TreatName = e.TreatName,
-                //        CandyType = e.CandyType,
-                //        Quantity = e.Quantity,
-                //        CreatedUtc = e.CreatedUtc,
-                //        UserCreated = e._userId
-                //    }
-                //}
-                return allCandies.Candies;
+                return allCandies;
                 //var query =
                 //    ctx
                 //        .Stores

@@ -26,6 +26,7 @@ namespace TreatTracker.Services
                     Description = model.Description,
                     SecretIngredient = model.SecretIngredient,
                     Quantity = model.Quantity,
+                    FactoryId = model.FactoryId,
                     Price = model.Price,
                     CreatedUtc = DateTimeOffset.Now,
                     UserCreated = _userId.ToString()
@@ -35,6 +36,24 @@ namespace TreatTracker.Services
             {
                 ctx.Drinks.Add(entity);
                 return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool ConnectDrinkWithStore(int drinkId, int storeId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                Drink drink = new Drink { DrinkId = drinkId };
+                ctx.Drinks.Add(drink);
+                ctx.Drinks.Attach(drink);
+
+                Store store = new Store { StoreId = storeId };
+                ctx.Stores.Add(store);
+                ctx.Stores.Attach(store);
+
+                drink.Stores.Add(store);
+
+                return ctx.SaveChanges() == 1;
+
             }
         }
         public IEnumerable<DrinkListItem> GetDrinks()
@@ -52,8 +71,7 @@ namespace TreatTracker.Services
                                     TreatName = e.TreatName,
                                     Flavor = e.Flavor,
                                     Quantity = e.Quantity,
-                                    CreatedUtc = e.CreatedUtc,
-                                    UserCreated = e.UserCreated
+                                    FactoryId = e.FactoryId,
                                 }
                         );
 
@@ -114,6 +132,42 @@ namespace TreatTracker.Services
                 ctx.Drinks.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
+            }
+        }
+        public IEnumerable<DrinkListItem> GetDrinksByFactoryId(int factoryId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                     ctx
+                     .Factories
+                     .Single(e => e.FactoryId == factoryId)
+                     .Drinks
+                     .Select
+                     (e =>
+                     new DrinkListItem
+                     {
+                         DrinkId = e.DrinkId,
+                         TreatName = e.TreatName,
+                         Flavor = e.Flavor,
+                         Quantity = e.Quantity,
+                         FactoryId = e.FactoryId,
+                     }
+                     );
+                return query.ToArray();
+            }
+        }
+        public ICollection<Drink> GetDrinksByStoreId(int storeId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var allDrinks =
+                    ctx
+                    .Stores
+                    .Single(s => s.StoreId == storeId)
+                    .Drinks;
+
+                return allDrinks;
             }
         }
     }
