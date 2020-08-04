@@ -10,12 +10,20 @@ using Microsoft.AspNet.Identity.Owin;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.ModelConfiguration;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace TreatTracker.Data
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public int FactoryId { get; set; }
+        [ForeignKey(nameof(FactoryId))]
+        public virtual Factory Factory { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

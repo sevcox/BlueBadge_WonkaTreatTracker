@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,18 +20,18 @@ namespace TreatTracker.Services
         }
         public bool CreateCandy(CandyCreate model)
         {
-                var entity =
-                new Candy()
-                {
-                    TreatName = model.TreatName,
-                    CandyType = model.CandyType,
-                    Description = model.Description,
-                    SecretIngredient = model.SecretIngredient,
-                    Quantity = model.Quantity,
-                    Price = model.Price,
-                    CreatedUtc = DateTimeOffset.Now,
-                    UserCreated = _userId
-                };
+            var entity =
+            new Candy()
+            {
+                TreatName = model.TreatName,
+                CandyType = model.CandyType,
+                Description = model.Description,
+                SecretIngredient = model.SecretIngredient,
+                Quantity = model.Quantity,
+                Price = model.Price,
+                CreatedUtc = DateTimeOffset.Now,
+                UserCreated = _userId.ToString()
+            };
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -53,7 +54,7 @@ namespace TreatTracker.Services
                 candy.Stores.Add(store);
 
                 ctx.SaveChanges();
-                    
+
             }
         }
         public IEnumerable<CandyListItem> GetCandies()
@@ -72,7 +73,7 @@ namespace TreatTracker.Services
                                     CandyType = e.CandyType,
                                     Quantity = e.Quantity,
                                     CreatedUtc = e.CreatedUtc,
-                                    UserCreated = e._userId
+                                    UserCreated = e.UserCreated
                                 }
                         );
 
@@ -116,7 +117,7 @@ namespace TreatTracker.Services
                 entity.Quantity = model.Quantity;
                 entity.Price = model.Price;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
-                entity.UserModified = _userId;
+                entity.UserModified = _userId.ToString();
 
                 return ctx.SaveChanges() == 1;
             }
