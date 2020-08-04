@@ -13,6 +13,7 @@ namespace TreatTracker.Data
     {
         public Factory()
         {
+            ApplicationUsers = new List<ApplicationUser>();
             this.Candies = new HashSet<Candy>();
             this.Drinks = new HashSet<Drink>();
             this.Characters = new HashSet<Character>();
@@ -28,5 +29,6 @@ namespace TreatTracker.Data
         public virtual ICollection<Drink> Drinks { get; set; }
         [Required]
         public virtual ICollection<Character> Characters { get; set; }
+        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
