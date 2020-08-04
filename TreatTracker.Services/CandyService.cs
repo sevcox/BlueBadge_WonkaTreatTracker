@@ -162,7 +162,7 @@ namespace TreatTracker.Services
             }
         }
 
-            public ICollection<Candy> GetCandiesByStoreId(int storeId)
+        public ICollection<Candy> GetCandiesByStoreId(int storeId)
         {
             using (var ctx = new ApplicationDbContext())
             {
