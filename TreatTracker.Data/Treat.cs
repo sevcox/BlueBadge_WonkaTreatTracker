@@ -8,7 +8,7 @@ using System.Web.Http.Results;
 
 namespace TreatTracker.Data
 {
-    public abstract class Treat : AutoDateTime
+    public abstract class Treat : IAutoDateTime
     {
         [Required]
         public string TreatName { get; set; }
@@ -21,5 +21,15 @@ namespace TreatTracker.Data
         public decimal? Price { get; set; }
         [Required]
         public int Quantity { get; set; }
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:d}")]
+        public DateTimeOffset? CreatedUtc { get; set; }
+        [Required]
+        [Display(Name = "Creator")]
+        public string UserCreated { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}")]
+        public DateTimeOffset? ModifiedUtc { get; set; }
+        [Display(Name = "Editor")]
+        public string UserModified { get; set; }
     }
 }

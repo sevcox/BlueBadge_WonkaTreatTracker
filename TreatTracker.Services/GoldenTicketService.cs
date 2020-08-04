@@ -45,7 +45,6 @@ namespace TreatTracker.Services
                         {
                             CandyId = e.CandyId,
                             CandyName = e.CandyName,
-                            
                         }
 
                         );
@@ -83,5 +82,6 @@ namespace TreatTracker.Services
 
 
 
+       
     }
 }

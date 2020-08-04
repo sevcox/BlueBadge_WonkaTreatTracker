@@ -75,8 +75,7 @@ namespace TreatTracker.Services
                     };
             }
         }
-        
-        
+
         public CharacterDetail GetCharacterByName(string name)
         {
             using (var ctx = new ApplicationDbContext())

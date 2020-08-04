@@ -17,6 +17,7 @@ namespace TreatTracker.Models.DrinkModels
         [DataType(DataType.Currency)]
         public decimal? Price { get; set; }
         public int Quantity { get; set; }
+        public int FactoryId { get; set; }
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTimeOffset? CreatedUtc { get; set; }
         [Display(Name = "Creator")]

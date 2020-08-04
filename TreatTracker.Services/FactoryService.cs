@@ -54,7 +54,6 @@ namespace TreatTracker.Services
                     PhoneNumber = entity.PhoneNumber,
                     Manager = entity.Manager
                 };
-
             }
         }
 
