@@ -19,8 +19,6 @@ namespace TreatTracker.Data
     public class ApplicationUser : IdentityUser
     {
         [Required]
-        public string Name { get; set; }
-        [Required]
         public int FactoryId { get; set; }
         [ForeignKey(nameof(FactoryId))]
         public virtual Factory Factory { get; set; }
@@ -33,7 +31,7 @@ namespace TreatTracker.Data
         }
     }
 
-    public class TreatTrackerDBInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+    public class TreatTrackerDBInitializer<T> : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {
@@ -88,7 +86,7 @@ namespace TreatTracker.Data
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Database.SetInitializer(new TreatTrackerDBInitializer());
+            Database.SetInitializer<ApplicationDbContext>(new TreatTrackerDBInitializer<ApplicationDbContext>());
         }
         public static ApplicationDbContext Create()
         {
