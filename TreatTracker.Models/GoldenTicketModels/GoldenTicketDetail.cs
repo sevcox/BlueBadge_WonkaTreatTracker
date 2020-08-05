@@ -9,10 +9,12 @@ namespace TreatTracker.Models.GoldenTicketModels
 {
     public class GoldenTicketDetail
     {
-        public int GoldenTicketId { get; set; }
+        public int TicketId { get; set; }
         public int CandyId { get; set; }
-        public string TreatName { get; set; }
-        [Display (Name = "date Created")]
-        public DateTime CreatedUtc { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}")]
+        public DateTimeOffset? CreatedUtc { get; set; }
+        [Display(Name = "Creator")]
+        public string UserCreated { get; set; }
+
     }
 }

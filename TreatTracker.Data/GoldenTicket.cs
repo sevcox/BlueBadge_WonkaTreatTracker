@@ -11,11 +11,16 @@ namespace TreatTracker.Data
     public class GoldenTicket
     {
         [Key]
-        public int TicketId { get; set; }
-        public string CandyName { get; set; }
-        public int CandyId { get; set; }
-        [ForeignKey(nameof(CandyId))]
+        [ForeignKey("Candy")]
+        public int CandyTicketId { get; set; }
         public virtual Candy Candy{ get; set; }
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:d}")]
+        public DateTimeOffset? CreatedUtc { get; set; }
+        [Required]
+        [Display(Name = "Creator")]
+        public string UserCreated { get; set; }
+
 
     }
 }

@@ -10,7 +10,5 @@ namespace TreatTracker.Models.GoldenTicketModels
    public  class GoldenTicketCreate
     {
         public int CandyId { get; set; }
-        [Display(Name = "Name")]
-        public string CandyName { get; set; }
     }
 }
