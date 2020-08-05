@@ -9,9 +9,7 @@ namespace TreatTracker.Models.GoldenTicketModels
 {
     public class GoldenTicketListItem
     {
+        public int TicketId { get; set; }
         public int CandyId { get; set; }
-        [Display(Name ="Name")]
-        public string CandyName { get; set; }
-        public int Quantity { get; set; }
     }
 }

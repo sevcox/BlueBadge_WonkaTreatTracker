@@ -31,7 +31,7 @@ namespace TreatTracker.Data
         }
     }
 
-    public class TreatTrackerDBInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+    public class TreatTrackerDBInitializer<T> : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {
@@ -86,7 +86,8 @@ namespace TreatTracker.Data
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Database.SetInitializer(new TreatTrackerDBInitializer());
+            Database.SetInitializer<ApplicationDbContext>
+                (new TreatTrackerDBInitializer<ApplicationDbContext>());
         }
         public static ApplicationDbContext Create()
         {
@@ -94,8 +95,8 @@ namespace TreatTracker.Data
         }
         public DbSet<Candy> Candies { get; set; }
         public DbSet<Drink> Drinks { get; set; }
-        public DbSet<GoldenTicket> Tickets { get; set; }
         public DbSet<Store> Stores { get; set; }
+        public DbSet<GoldenTicket> Tickets { get; set; }
         public DbSet<Factory> Factories { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Character> Characters { get; set; }

@@ -7,13 +7,13 @@ namespace TreatTracker.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class BrandNew : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(BrandNew));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008042053481_InitialCreate"; }
+            get { return "202008051914032_BrandNew"; }
         }
         
         string IMigrationMetadata.Source

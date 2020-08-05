@@ -95,6 +95,7 @@ namespace TreatTracker.Services
                         Description = entity.Description,
                         SecretIngredient = entity.SecretIngredient,
                         Price = entity.Price,
+                        FactoryId = entity.FactoryId, //*
                         Quantity = entity.Quantity,
                         CreatedUtc = entity.CreatedUtc,
                         UserCreated = entity.UserCreated,

@@ -93,13 +93,9 @@
     <Compile Include="IAutoDateTime.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="Migrations\202008042053481_InitialCreate.cs" />
-    <Compile Include="Migrations\202008042053481_InitialCreate.Designer.cs">
-      <DependentUpon>202008042053481_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008042137136_FirstMigration.cs" />
-    <Compile Include="Migrations\202008042137136_FirstMigration.Designer.cs">
-      <DependentUpon>202008042137136_FirstMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202008051914032_BrandNew.cs" />
+    <Compile Include="Migrations\202008051914032_BrandNew.Designer.cs">
+      <DependentUpon>202008051914032_BrandNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,11 +108,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008042053481_InitialCreate.resx">
-      <DependentUpon>202008042053481_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008042137136_FirstMigration.resx">
-      <DependentUpon>202008042137136_FirstMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008051914032_BrandNew.resx">
+      <DependentUpon>202008051914032_BrandNew.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

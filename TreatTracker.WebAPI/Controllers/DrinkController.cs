@@ -73,7 +73,7 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
-        [HttpPost]
+        [HttpPut]
         public IHttpActionResult PutADrinkWithAStore(int drinkId, int storeId)
         {
             if (!ModelState.IsValid)

@@ -10,7 +10,6 @@ namespace TreatTracker.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "TreatTracker.Data.ApplicationDbContext";
         }
 
         protected override void Seed(TreatTracker.Data.ApplicationDbContext context)

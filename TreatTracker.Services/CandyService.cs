@@ -174,11 +174,12 @@ namespace TreatTracker.Services
                     .Candies// get the ICollection of Candies of that store.
                     .Select(e => new CandyListItem
                     {
+      
                         CandyId = e.CandyId,
                         TreatName = e.TreatName,
                         CandyType = e.CandyType,
                         Quantity = e.Quantity,
-                        FactoryId = e.FactoryId,
+                        FactoryId = e.FactoryId
                     }
 
                     );

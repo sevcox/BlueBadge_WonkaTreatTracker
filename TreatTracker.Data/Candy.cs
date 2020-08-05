@@ -26,6 +26,7 @@ namespace TreatTracker.Data
         [ForeignKey(nameof(FactoryId))]
         public virtual Factory Factory{ get; set; }
 
+        public virtual GoldenTicket GoldenTicket { get; set; }
         public Candy()
         {
             Stores = new HashSet<Store>();
