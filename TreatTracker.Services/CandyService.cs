@@ -163,17 +163,26 @@ namespace TreatTracker.Services
         }
 
 
-        public ICollection<Candy> GetCandiesByStoreId(int storeId)
+        public IEnumerable<CandyListItem> GetCandiesByStoreId(int storeId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var allCandies =
                     ctx
-                    .Stores
-                    .Single(s => s.StoreId == storeId)
-                    .Candies;
+                    .Stores //targets the store table
+                    .Single(s => s.StoreId == storeId) //targets a specific store ById
+                    .Candies// get the ICollection of Candies of that store.
+                    .Select(e => new CandyListItem
+                    {
+                        CandyId = e.CandyId,
+                        TreatName = e.TreatName,
+                        CandyType = e.CandyType,
+                        Quantity = e.Quantity,
+                        FactoryId = e.FactoryId,
+                    }
 
-                return allCandies;
+                    );
+                return allCandies.ToArray();// returns all candies from the ICollection of Candies from the specific store
                 //var query =
                 //    ctx
                 //        .Stores
