@@ -19,8 +19,6 @@ namespace TreatTracker.Data
     public class ApplicationUser : IdentityUser
     {
         [Required]
-        public string Name { get; set; }
-        [Required]
         public int FactoryId { get; set; }
         [ForeignKey(nameof(FactoryId))]
         public virtual Factory Factory { get; set; }
