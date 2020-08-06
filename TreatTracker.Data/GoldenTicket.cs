@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 namespace TreatTracker.Data
 { public enum TypeOfPrize
     {
-        Cash =1,
+        Cash = 1,
         FactoryVisit,
         LifeTime_Supply_Of_Chocolate
     }
-    public class GoldenTicket :IAutoDateTime
+    public class GoldenTicket : IAutoDateTime
     {
         [Key]
         public int TicketId { get; set; }

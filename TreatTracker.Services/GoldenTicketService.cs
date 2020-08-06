@@ -11,10 +11,10 @@ namespace TreatTracker.Services
 {
     public class GoldenTicketService
     {
-        private readonly Guid _userId;
-        public GoldenTicketService(Guid userId)
+        private readonly string _userName;
+        public GoldenTicketService(string userName)
         {
-            _userId = userId;
+            _userName = userName;
         }
         public bool CreateGoldenTicket(GoldenTicketCreate model)
         {
@@ -22,8 +22,9 @@ namespace TreatTracker.Services
                 new GoldenTicket()
                 {
                     CandyId = model.CandyId,
+                    PrizeType = model.PrizeType,
                     CreatedUtc = DateTimeOffset.UtcNow,
-                    UserCreated = _userId.ToString()
+                    UserCreated = _userName
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -109,7 +110,7 @@ namespace TreatTracker.Services
                 entity.CandyId = model.CandyId;
                 entity.PrizeType = model.PrizeType;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
-                entity.UserModified = _userId.ToString();
+                entity.UserModified = _userName;
 
                 return ctx.SaveChanges() == 1;
             }

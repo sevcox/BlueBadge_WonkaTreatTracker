@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 using TreatTracker.Data;
 using TreatTracker.Models;
 using TreatTracker.Models.CandyModels;
+using TreatTracker.Models.StoreModels;
 
 namespace TreatTracker.Services
 {
     public class CandyService
     {
-        private readonly Guid _userId;
+        private readonly string _userName;
 
-        public CandyService(Guid userId)
+        public CandyService(string userName)
         {
-            _userId = userId;
+            _userName = userName;
         }
         public bool CreateCandy(CandyCreate model)
         {
@@ -28,10 +29,10 @@ namespace TreatTracker.Services
                 Description = model.Description,
                 SecretIngredient = model.SecretIngredient,
                 Quantity = model.Quantity,
-                FactoryId = model.FactoryId,
                 Price = model.Price,
+                FactoryId = model.FactoryId,
                 CreatedUtc = DateTimeOffset.Now,
-                UserCreated = _userId.ToString()
+                UserCreated = _userName
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -40,7 +41,7 @@ namespace TreatTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool ConnectCandyWithStore(int candyId, int storeId)
+        public bool ConnectCandyWithStore(int candyId, OnlyStoreId model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -48,7 +49,7 @@ namespace TreatTracker.Services
                 ctx.Candies.Add(candy);
                 ctx.Candies.Attach(candy);
 
-                Store store = new Store { StoreId = storeId };
+                Store store = new Store { StoreId = model.StoreId};
                 ctx.Stores.Add(store);
                 ctx.Stores.Attach(store);
 
@@ -118,7 +119,7 @@ namespace TreatTracker.Services
                 entity.Quantity = model.Quantity;
                 entity.Price = model.Price;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
-                entity.UserModified = _userId.ToString();
+                entity.UserModified = _userName;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -138,7 +139,7 @@ namespace TreatTracker.Services
             }
         }
 
-        public IEnumerable<CandyListItem> GetCandiesByFactoryId(int factoryId)
+        public IEnumerable<Factory_CandyListItem> GetCandiesByFactoryId(int factoryId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -149,13 +150,14 @@ namespace TreatTracker.Services
                      .Candies
                      .Select
                      (e =>
-                     new CandyListItem
+                     new Factory_CandyListItem
                      {
                          CandyId = e.CandyId,
-                         TreatName = e.TreatName,
                          CandyType = e.CandyType,
-                         Quantity = e.Quantity,
                          FactoryId = e.FactoryId,
+                         LocationName = e.Factory.LocationName,
+                         TreatName = e.TreatName,
+                         Quantity = e.Quantity
                      }
                      );
                 return query.ToArray();
@@ -183,17 +185,6 @@ namespace TreatTracker.Services
                         }
                     );
                 return allCandies.ToArray();
-                //foreach (var candy in allCandies)
-                //{
-
-                //}
-                //return allCandies;
-                //var query =
-                //    ctx
-                //        .Stores
-                //        .Where(e => e.StoreId == storeId)
-                //        .Select(e => e.Candies);
-                //List<Candy> candies = new List<Candy>();
             }
         }
     }

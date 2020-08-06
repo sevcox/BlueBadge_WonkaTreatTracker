@@ -17,8 +17,8 @@ namespace TreatTracker.WebAPI.Controllers
 
         private GoldenTicketService CreateGoldenTicketService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var goldenTicketService = new GoldenTicketService(userId);
+            var userName = User.Identity.GetUserName();
+            var goldenTicketService = new GoldenTicketService(userName);
             return goldenTicketService;
         }
         [HttpPost]

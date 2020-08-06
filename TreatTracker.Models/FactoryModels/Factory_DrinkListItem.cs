@@ -17,5 +17,6 @@ namespace TreatTracker.Models
         [Display(Name = "Name")]
         public string TreatName { get; set; }
         public int Quantity { get; set; }
+        public string Flavor { get; set; }
     }
 }
