@@ -17,8 +17,8 @@ namespace TreatTracker.WebAPI.Controllers
     {
         private CandyService CreateCandyService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var candyService = new CandyService(userId);
+            var userName = User.Identity.GetUserName();
+            var candyService = new CandyService(userName);
             return candyService;
         }
         [HttpGet]
@@ -84,6 +84,7 @@ namespace TreatTracker.WebAPI.Controllers
             var service = CreateCandyService();
 
             if (!service.ConnectCandyWithStore(candyId, store))
+
                 return InternalServerError();
 
             return Ok();

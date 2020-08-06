@@ -13,11 +13,11 @@ namespace TreatTracker.Services
 {
     public class CandyService
     {
-        private readonly Guid _userId;
+        private readonly string _userName;
 
-        public CandyService(Guid userId)
+        public CandyService(string userName)
         {
-            _userId = userId;
+            _userName = userName;
         }
         public bool CreateCandy(CandyCreate model)
         {
@@ -29,10 +29,11 @@ namespace TreatTracker.Services
                 Description = model.Description,
                 SecretIngredient = model.SecretIngredient,
                 Quantity = model.Quantity,
-                FactoryId = model.FactoryId,
                 Price = model.Price,
+                FactoryId = model.FactoryId,
                 CreatedUtc = DateTimeOffset.Now,
-                UserCreated = _userId.ToString(),
+                UserCreated = _userName
+
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -51,7 +52,7 @@ namespace TreatTracker.Services
                 ctx.Candies.Attach(candy);
 
                 Store store = new Store { StoreId = model.StoreId };
-                ctx.Stores.Add(store);
+
                 ctx.Stores.Attach(store);
 
                 candy.Stores.Add(store);
@@ -120,7 +121,7 @@ namespace TreatTracker.Services
                 entity.Quantity = model.Quantity;
                 entity.Price = model.Price;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
-                entity.UserModified = _userId.ToString();
+                entity.UserModified = _userName;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -154,11 +155,11 @@ namespace TreatTracker.Services
                      new Factory_CandyListItem
                      {
                          CandyId = e.CandyId,
-                         TreatName = e.TreatName,
                          CandyType = e.CandyType,
-                         Quantity = e.Quantity,
                          FactoryId = e.FactoryId,
                          LocationName = e.Factory.LocationName,
+                         TreatName = e.TreatName,
+                         Quantity = e.Quantity
                      }
                      );
                 return query.ToArray();
@@ -187,17 +188,6 @@ namespace TreatTracker.Services
                         }
                     );
                 return allCandies.ToArray();
-                //foreach (var candy in allCandies)
-                //{
-
-                //}
-                //return allCandies;
-                //var query =
-                //    ctx
-                //        .Stores
-                //        .Where(e => e.StoreId == storeId)
-                //        .Select(e => e.Candies);
-                //List<Candy> candies = new List<Candy>();
             }
         }
     }

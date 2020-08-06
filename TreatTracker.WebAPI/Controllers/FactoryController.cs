@@ -14,8 +14,7 @@ namespace TreatTracker.WebAPI.Controllers
         [Authorize]
         private FactoryService CreateFactoryService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var factoryService = new FactoryService(userId);
+            var factoryService = new FactoryService();
             return factoryService;
         }
 

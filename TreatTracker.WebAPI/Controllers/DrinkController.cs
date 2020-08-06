@@ -16,8 +16,8 @@ namespace TreatTracker.WebAPI.Controllers
     {
         private DrinkService CreateDrinkService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var drinkService = new DrinkService(userId);
+            var userName = User.Identity.GetUserName();
+            var drinkService = new DrinkService(userName);
             return drinkService;
         }
         [HttpGet]
@@ -75,7 +75,9 @@ namespace TreatTracker.WebAPI.Controllers
             return Ok();
         }
         [HttpPut]
+
         public IHttpActionResult PutADrinkWithAStore(int drinkId, [FromBody] OnlyStoreId model)
+
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

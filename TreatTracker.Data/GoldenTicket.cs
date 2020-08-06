@@ -14,18 +14,17 @@ namespace TreatTracker.Data
         FactoryVisit,
         LifeTime_Supply_Of_Chocolate   
     }
-
     public class GoldenTicket : IAutoDateTime
     {
         [Key]
-        public int TicketId { get; set; } 
+        public int TicketId { get; set; }
         [Required]
         [Index(IsUnique =true)]
         public int CandyId { get; set; }
         [ForeignKey(nameof(CandyId))]
-        public virtual Candy Candy { get; set; }
-       
+
         public TypeOfPrize PrizeType { get; set; }
+        public virtual Candy Candy{ get; set; }
         [Required]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTimeOffset? CreatedUtc { get; set; }

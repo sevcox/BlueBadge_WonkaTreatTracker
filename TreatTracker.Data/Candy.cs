@@ -22,10 +22,11 @@ namespace TreatTracker.Data
         [Required]
         public TypeOfCandy CandyType { get; set; }
         public virtual ICollection<Store> Stores { get; set; }
-        public int FactoryId { get; set; }
         [Required]
         [ForeignKey(nameof(FactoryId))]
+        public int FactoryId { get; set; }
         public virtual Factory Factory { get; set; }
+
 
         public Candy()
         {

@@ -10,10 +10,9 @@ namespace TreatTracker.Services
 {
     public class FactoryService
     {
-        private readonly Guid _userId;
-        public FactoryService(Guid userId)
+
+        public FactoryService()
         {
-            _userId = userId;
         }
 
         public IEnumerable<FactoryListItem> GetFactories()
@@ -56,7 +55,5 @@ namespace TreatTracker.Services
                 };
             }
         }
-
-
     }
 }

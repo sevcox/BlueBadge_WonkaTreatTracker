@@ -15,8 +15,7 @@ namespace TreatTracker.WebAPI.Controllers
         [Authorize]
         private StoreService CreateStoreService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var storeService = new StoreService(userId);
+            var storeService = new StoreService();
             return storeService;
         }
 
@@ -36,9 +35,8 @@ namespace TreatTracker.WebAPI.Controllers
             return Ok(store);
 
         }
-
         [HttpGet]
-        public IHttpActionResult GetStoreByCandyId(int candyId)
+        public IHttpActionResult GetStoresByCandyId(int candyId)
         {
             StoreService storeService = CreateStoreService();
             var stores = storeService.GetStoresByCandyId(candyId);
@@ -47,7 +45,7 @@ namespace TreatTracker.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetStoreByDrinkId(int drinkId)
+        public IHttpActionResult GetStoresByDrinkId(int drinkId)
         {
             StoreService storeService = CreateStoreService();
             var stores = storeService.GetStoresByDrinkId(drinkId);
@@ -55,3 +53,4 @@ namespace TreatTracker.WebAPI.Controllers
         }
     }
 }
+

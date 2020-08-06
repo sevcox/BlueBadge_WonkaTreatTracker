@@ -13,8 +13,11 @@ namespace TreatTracker.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-
+<<<<<<< HEAD:TreatTracker.Data/Migrations/202008061933473_Initial.Designer.cs
             get { return "202008061933473_Initial"; }
+=======
+            get { return "202008061747526_Initial"; }
+>>>>>>> c5c8e94085032920d69f9678a93ff5b90467fc65:TreatTracker.Data/Migrations/202008061747526_Initial.Designer.cs
         }
         
         string IMigrationMetadata.Source

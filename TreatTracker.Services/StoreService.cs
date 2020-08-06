@@ -12,10 +12,8 @@ namespace TreatTracker.Services
 {
     public class StoreService
     {
-        private readonly Guid _userId;
-        public StoreService(Guid userId)
+        public StoreService()
         {
-            _userId = userId;
         }
 
         public IEnumerable<StoreListItem> GetStores()
@@ -70,18 +68,15 @@ namespace TreatTracker.Services
                     .Stores
                     .Select
                     (e =>
-                   new StoreListItem
-                   {
-                       StoreId = e.StoreId,
-                       LocationName = e.LocationName,
-                   }
-
+                    new StoreListItem
+                    {
+                        StoreId = e.StoreId,
+                        LocationName = e.LocationName
+                    }
                         );
                 return allStores.ToArray();
-                    
             }
         }
-
         public IEnumerable<StoreListItem> GetStoresByDrinkId(int id)
         {
             using (var ctx = new ApplicationDbContext())

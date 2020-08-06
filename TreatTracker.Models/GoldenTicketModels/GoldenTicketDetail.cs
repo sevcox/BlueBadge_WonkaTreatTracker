@@ -14,9 +14,9 @@ namespace TreatTracker.Models.GoldenTicketModels
         public int CandyId { get; set; }
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTimeOffset? CreatedUtc { get; set; }
-        public string CandyName { get; set; }
         [Display(Name = "Creator")]
         public string UserCreated { get; set; }
+        public string CandyName { get; set; }
         public TypeOfPrize PrizeType { get; set; }
 
     }

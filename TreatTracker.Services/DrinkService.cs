@@ -12,11 +12,11 @@ namespace TreatTracker.Services
 {
     public class DrinkService
     {
-        private readonly Guid _userId;
+        private readonly string _userName;
 
-        public DrinkService(Guid userId)
+        public DrinkService(string userName)
         {
-            _userId = userId;
+            _userName = userName;
         }
         public bool CreateDrink(DrinkCreate model)
         {
@@ -27,11 +27,11 @@ namespace TreatTracker.Services
                     Flavor = model.Flavor,
                     Description = model.Description,
                     SecretIngredient = model.SecretIngredient,
-                    Quantity = model.Quantity,
                     FactoryId = model.FactoryId,
+                    Quantity = model.Quantity,
                     Price = model.Price,
                     CreatedUtc = DateTimeOffset.Now,
-                    UserCreated = _userId.ToString()
+                    UserCreated = _userName
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -40,7 +40,6 @@ namespace TreatTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
         public bool ConnectDrinkWithStore(int drinkId, OnlyStoreId model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -118,7 +117,7 @@ namespace TreatTracker.Services
                 entity.Quantity = model.Quantity;
                 entity.Price = model.Price;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
-                entity.UserModified = _userId.ToString();
+                entity.UserModified = _userName;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -168,20 +167,19 @@ namespace TreatTracker.Services
                 var allDrinks =
                     ctx
                     .Stores
-                    .Single(s => s.StoreId == storeId)
+                    .Single(e => e.StoreId == storeId)
                     .Drinks
                     .Select
-                  (e =>
-                      new DrinkListItem
-                      {
-
-                          DrinkId = e.DrinkId,
-                          TreatName = e.TreatName,
-                          Flavor = e.Flavor,
-                          Quantity = e.Quantity,
-                          FactoryId = e.FactoryId,
-                      }
-                  );
+                    (e =>
+                        new DrinkListItem
+                        {
+                            DrinkId = e.DrinkId,
+                            TreatName = e.TreatName,
+                            Flavor = e.Flavor,
+                            Quantity = e.Quantity,
+                            FactoryId = e.FactoryId
+                        }
+                    );
                 return allDrinks.ToArray();
             }
         }

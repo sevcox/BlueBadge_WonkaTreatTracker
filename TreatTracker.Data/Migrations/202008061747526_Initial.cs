@@ -134,14 +134,19 @@ namespace TreatTracker.Data.Migrations
                         CandyId = c.Int(nullable: false),
                         PrizeType = c.Int(nullable: false),
                         CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
+<<<<<<< HEAD:TreatTracker.Data/Migrations/202008061933473_Initial.cs
+                        UserCreated = c.String(),
+=======
                         UserCreated = c.String(nullable: false),
+>>>>>>> c5c8e94085032920d69f9678a93ff5b90467fc65:TreatTracker.Data/Migrations/202008061747526_Initial.cs
                         ModifiedUtc = c.DateTimeOffset(precision: 7),
                         UserModified = c.String(),
                     })
                 .PrimaryKey(t => t.TicketId)
                 .ForeignKey("dbo.Candy", t => t.CandyId, cascadeDelete: true)
                 .Index(t => t.CandyId, unique: true);
- 
+<<<<<<< HEAD:TreatTracker.Data/Migrations/202008061933473_Initial.cs
+            
             CreateTable(
                 "dbo.ApplicationUser",
                 c => new
@@ -190,7 +195,8 @@ namespace TreatTracker.Data.Migrations
                 .PrimaryKey(t => t.UserId)
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
                 .Index(t => t.ApplicationUser_Id);
-
+=======
+>>>>>>> c5c8e94085032920d69f9678a93ff5b90467fc65:TreatTracker.Data/Migrations/202008061747526_Initial.cs
             
             CreateTable(
                 "dbo.StoreCandy",

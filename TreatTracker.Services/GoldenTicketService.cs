@@ -11,20 +11,20 @@ namespace TreatTracker.Services
 {
     public class GoldenTicketService
     {
-        private readonly Guid _userId;
-        public GoldenTicketService(Guid userId)
+        private readonly string _userName;
+        public GoldenTicketService(string userName)
         {
-            _userId = userId;
+            _userName = userName;
         }
         public bool CreateGoldenTicket(GoldenTicketCreate model)
         {
             var entity =
                 new GoldenTicket()
                 {
-                  CandyId = model.CandyId,
-                  PrizeType = model.PrizeType,
-                  CreatedUtc = DateTimeOffset.UtcNow,
-                  UserCreated = _userId.ToString()
+                    CandyId = model.CandyId,
+                    PrizeType = model.PrizeType,
+                    CreatedUtc = DateTimeOffset.UtcNow,
+                    UserCreated = _userName
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -102,33 +102,30 @@ namespace TreatTracker.Services
                     };
             }
         }
-
         public bool UpdateGoldenTicket(GoldenTicketEdit model)
-        {
-            using(var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                ctx
-               .Tickets
-               .Single(e => e.CandyId == model.CandyId);
-                entity.TicketId = model.TicketId;
-                entity.CandyId = model.CandyId;
-                entity.PrizeType = model.PrizeType;
-                entity.ModifiedUtc = DateTimeOffset.UtcNow;
-                entity.UserModified = _userId.ToString();
-
-                return ctx.SaveChanges() == 1;
-            }
-        }
-
-        public bool DeleteGoldenTicket(int goldenTicketId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Tickets
-                        .Single(e => e.TicketId == goldenTicketId);
+                        .Single(e => e.TicketId == model.TicketId);
+                entity.CandyId = model.CandyId;
+                entity.PrizeType = model.PrizeType;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.UserModified = _userName;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteGoldenTicket(int ticketId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Tickets
+                        .Single(e => e.TicketId == ticketId);
 
                 ctx.Tickets.Remove(entity);
 
@@ -136,4 +133,6 @@ namespace TreatTracker.Services
             }
         }
     }
+
 }
+
