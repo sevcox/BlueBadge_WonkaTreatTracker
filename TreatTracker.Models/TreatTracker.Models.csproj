@@ -70,6 +70,7 @@
     <Compile Include="CharacterModels\CharacterListItem.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketCreate.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketDetail.cs" />
+    <Compile Include="GoldenTicketModels\GoldenTicketEdit.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketListItem.cs" />
     <Compile Include="CandyModels\CandyCreate.cs" />
     <Compile Include="CandyModels\CandyDetail.cs" />

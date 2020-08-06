@@ -48,6 +48,9 @@ namespace TreatTracker.WebAPI.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        [Range(1,50, ErrorMessage ="Must choose a factory number between 1 and 50.")]
+        public int FactoryId { get; set; }
     }
 
     public class RegisterExternalBindingModel

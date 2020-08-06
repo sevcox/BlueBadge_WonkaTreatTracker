@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using TreatTracker.Data;
@@ -12,19 +13,19 @@ namespace TreatTracker.Services
     public class GoldenTicketService
     {
         private readonly Guid _userId;
-        public GoldenTicketService (Guid userId)
+        public GoldenTicketService(Guid userId)
         {
             _userId = userId;
         }
         public bool CreateGoldenTicket(GoldenTicketCreate model)
         {
             var entity =
-                new GoldenTicket()
-                {
-                   CandyName= model.CandyName,
-                   CandyId = model.CandyId
+            new GoldenTicket()
+            {
 
-                };
+                CandyId = model.CandyId
+
+            };
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Tickets.Add(entity);
@@ -43,8 +44,10 @@ namespace TreatTracker.Services
                         e =>
                         new GoldenTicketListItem
                         {
-                            CandyId = e.CandyId,
-                            CandyName = e.CandyName,
+                            CandyId = e.Candy.CandyId,
+                            Ticketid = e.TicketId,
+                            CandyName = e.Candy.TreatName
+
                         }
 
                         );
@@ -52,36 +55,40 @@ namespace TreatTracker.Services
 
             }
         }
-        public CandyDetail GetCandyByGoldenTicketId(int goldenTicketId)
+      
+
+        public CandyDetail GetCandyById(int goldenTicketId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
-                    ctx
-                    .Tickets
-                    .Single(e => e.TicketId == goldenTicketId)
-                    .Candy;
+                     ctx
+                     .Tickets
+                     .Single(e => e.TicketId == goldenTicketId)
+                     .Candy;
                 return
-                    new CandyDetail
-                    {
-                        CandyId = entity.CandyId,
-                        TreatName = entity.TreatName,
-                        CandyType = entity.CandyType,
-                        Description = entity.Description,
-                        SecretIngredient = entity.SecretIngredient,
-                        Price = entity.Price,
-                        Quantity = entity.Quantity,
-                        CreatedUtc = entity.CreatedUtc,
-                        UserCreated = entity.UserCreated,
-                        ModifiedUtc = entity.ModifiedUtc,
-                        UserModified = entity.UserModified
-                    };
+                   new CandyDetail
+                   {
+                       CandyId = entity.CandyId,
+                       TreatName = entity.TreatName,
+                       CandyType = entity.CandyType,
+                       Description = entity.Description,
+                       SecretIngredient = entity.SecretIngredient,
+                       Price = entity.Price,
+                       Quantity = entity.Quantity,
+                       CreatedUtc = entity.CreatedUtc,
+                       UserCreated = entity.UserCreated,
+                       ModifiedUtc = entity.ModifiedUtc,
+                       UserModified = entity.UserModified
+                   };
             }
+
         }
-
-
-
-
-       
     }
 }
+
+
+
+
+
+

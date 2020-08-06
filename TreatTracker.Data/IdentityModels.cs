@@ -1,25 +1,21 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
+using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Data.Entity.ModelConfiguration;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace TreatTracker.Data
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        [Required]
-        public string Name { get; set; }
+
         [Required]
         public int FactoryId { get; set; }
         [ForeignKey(nameof(FactoryId))]
@@ -33,7 +29,7 @@ namespace TreatTracker.Data
         }
     }
 
-    public class TreatTrackerDBInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+    public class TreatTrackerDBInitializer<T> : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {
@@ -88,7 +84,7 @@ namespace TreatTracker.Data
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Database.SetInitializer(new TreatTrackerDBInitializer());
+            Database.SetInitializer<ApplicationDbContext>(new TreatTrackerDBInitializer<ApplicationDbContext>());
         }
         public static ApplicationDbContext Create()
         {
@@ -96,7 +92,7 @@ namespace TreatTracker.Data
         }
         public DbSet<Candy> Candies { get; set; }
         public DbSet<Drink> Drinks { get; set; }
-        public DbSet<GoldenTicket> Tickets { get; set; }
+        public DbSet<GoldenTicket>Tickets { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<Factory> Factories { get; set; }
         public DbSet<Room> Rooms { get; set; }

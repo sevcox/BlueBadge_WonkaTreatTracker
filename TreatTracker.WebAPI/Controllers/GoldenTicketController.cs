@@ -37,12 +37,13 @@ namespace TreatTracker.WebAPI.Controllers
             var ticket = goldenTicketService.GetGoldenTickets();
             return Ok(ticket);
         }
-        [HttpGet]
-        public IHttpActionResult GetCandyByGoldenTicketId(int TicketId)
-        {
-            GoldenTicketService goldenTicketService = CreateGoldenTicketService();
-            var ticket = goldenTicketService.GetCandyByGoldenTicketId(TicketId);
-            return Ok(ticket);
-        }
     }
 }
+
+        
+     //   public IHttpActionResult GetCandyByGoldenTicketId(int TicketId)
+      //  {
+       //     GoldenTicketService goldenTicketService = CreateGoldenTicketService();
+         //   var ticket = goldenTicketService.GetCandyByGoldenTicketId(TicketId);
+          //  return Ok(ticket);
+
