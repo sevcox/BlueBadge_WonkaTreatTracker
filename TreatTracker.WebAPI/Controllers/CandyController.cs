@@ -74,7 +74,7 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
-        [HttpPost]
+        [HttpPut]
         public IHttpActionResult PutACandyWithAStore(int candyId, int storeId)
         {
             if (!ModelState.IsValid)

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace TreatTracker.Data
 {
+<<<<<<< HEAD
     public enum TypeOfPrize
     {
         Cash =1,
@@ -24,13 +25,39 @@ namespace TreatTracker.Data
         [ForeignKey(nameof(CandyId))]
         public virtual Candy Candy {get;set;}
         public TypeOfCandy PrizeType { get; set; }
+=======
+    public enum TypeOfPrize 
+    {
+        Cash =1,
+        FactoryVisit,
+        LifeTime_Supply_Of_Chocolate   
+    }
+
+    public class GoldenTicket : IAutoDateTime
+    {
+        [Key]
+        public int TicketId { get; set; } 
+        [Required]
+        [Index(IsUnique =true)]
+        public int CandyId { get; set; }
+        [ForeignKey(nameof(CandyId))]
+        public virtual Candy Candy { get; set; }
+       
+        public TypeOfPrize PrizeType { get; set; }
+>>>>>>> 7d662ccdc7591c61bbf42bb2e37e180856459f2b
         [Required]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTimeOffset? CreatedUtc { get; set; }
         [Display(Name = "Creator")]
+<<<<<<< HEAD
        public  string UserCreated { get; set; }
         [DisplayFormat(DataFormatString = "{0:d}")]
        public  DateTimeOffset? ModifiedUtc { get; set; }
+=======
+        public string UserCreated { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}")]
+        public DateTimeOffset? ModifiedUtc { get; set; }
+>>>>>>> 7d662ccdc7591c61bbf42bb2e37e180856459f2b
         [Display(Name = "Editor")]
         public string UserModified { get; set; }
     }

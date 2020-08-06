@@ -13,7 +13,7 @@ namespace TreatTracker.WebAPI.Controllers
     [Authorize]
     public class GoldenTicketController : ApiController
     {
-        
+
         private GoldenTicketService CreateGoldenTicketService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
@@ -37,6 +37,40 @@ namespace TreatTracker.WebAPI.Controllers
             var ticket = goldenTicketService.GetGoldenTickets();
             return Ok(ticket);
         }
+<<<<<<< HEAD
+=======
+        [HttpGet]
+        public IHttpActionResult GetCandyByGoldenTicketId(int TicketId)
+        {
+            GoldenTicketService goldenTicketService = CreateGoldenTicketService();
+            var ticket = goldenTicketService.GetCandyByGoldenTicketId(TicketId);
+            return Ok(ticket);
+        }
+        [HttpPut]
+        public IHttpActionResult Put(GoldenTicketEdit goldenTicket)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateGoldenTicketService();
+
+            if (!service.UpdateGoldenTicket(goldenTicket))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteAGoldenTicket(int goldenTicketId)
+        {
+            var service = CreateGoldenTicketService();
+
+            if (!service.DeleteGoldenTicket(goldenTicketId))
+                return InternalServerError();
+
+            return Ok();
+        }
+>>>>>>> 7d662ccdc7591c61bbf42bb2e37e180856459f2b
     }
 }
 

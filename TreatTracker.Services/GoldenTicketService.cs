@@ -20,12 +20,21 @@ namespace TreatTracker.Services
         public bool CreateGoldenTicket(GoldenTicketCreate model)
         {
             var entity =
+
             new GoldenTicket()
             {
 
                 CandyId = model.CandyId
 
             };
+
+            new GoldenTicket()
+            {
+                CandyId = model.CandyId,
+                CreatedUtc = DateTimeOffset.UtcNow,
+                UserCreated = _userId.ToString()
+            };
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Tickets.Add(entity);
@@ -33,31 +42,32 @@ namespace TreatTracker.Services
 
             }
         }
-        public IEnumerable<GoldenTicketListItem> GetGoldenTickets()
+        
+
+            
+        }
+        public GoldenTicketDetail GetGoldenTicketById(int ticketId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query =
+                var entity =
                     ctx
-                    .Tickets
-                    .Select(
-                        e =>
-                        new GoldenTicketListItem
-                        {
-                            CandyId = e.Candy.CandyId,
-                            Ticketid = e.TicketId,
-                            CandyName = e.Candy.TreatName
-
-                        }
-
-                        );
-                return query.ToArray();
-
+                        .Tickets
+                        .Single(e => e.TicketId == ticketId);
+                return
+                    new GoldenTicketDetail
+                    {
+                        TicketId = entity.TicketId,
+                        CandyId = entity.CandyId,
+                        CandyName = entity.Candy.TreatName,
+                        PrizeType = entity.PrizeType,
+                        CreatedUtc = entity.CreatedUtc,
+                        UserCreated = entity.UserCreated
+                    };
             }
         }
-      
 
-        public CandyDetail GetCandyById(int goldenTicketId)
+        public CandyDetail GetCandyByGoldenTicketId(int goldenTicketId
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -82,7 +92,38 @@ namespace TreatTracker.Services
                        UserModified = entity.UserModified
                    };
             }
+        }
+        public bool UpdateGoldenTicket(GoldenTicketEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                                  ctx
+                                      .Tickets
+                                      .Single(e => e.CandyId == model.CandyId);
+                entity.TicketId = model.TicketId;
+                entity.CandyId = model.CandyId;
+                entity.PrizeType = model.PrizeType;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.UserModified = _userId.ToString();
 
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteGoldenTicket(int candyId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Tickets
+                        .Single(e => e.CandyId == candyId);
+
+                ctx.Tickets.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
         }
     }
 }
@@ -92,3 +133,12 @@ namespace TreatTracker.Services
 
 
 
+
+
+
+
+
+
+
+
+        

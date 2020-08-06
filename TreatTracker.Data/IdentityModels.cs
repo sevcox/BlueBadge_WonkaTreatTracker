@@ -15,7 +15,10 @@ namespace TreatTracker.Data
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d662ccdc7591c61bbf42bb2e37e180856459f2b
         [Required]
         public int FactoryId { get; set; }
         [ForeignKey(nameof(FactoryId))]

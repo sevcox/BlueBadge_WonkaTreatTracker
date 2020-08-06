@@ -22,7 +22,6 @@ namespace TreatTracker.Data
         public virtual Room Room { get; set; }
         [Required]
         [DisplayFormat(DataFormatString = "{0:d}")]
-
         public DateTime DateOfBirth { get; set; }
         public int Age
         {

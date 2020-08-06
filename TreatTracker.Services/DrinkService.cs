@@ -151,7 +151,7 @@ namespace TreatTracker.Services
                          TreatName = e.TreatName,
                          Flavor = e.Flavor,
                          Quantity = e.Quantity,
-                         FactoryId = e.FactoryId,
+                         FactoryId = e.FactoryId
                      }
                      );
                 return query.ToArray();

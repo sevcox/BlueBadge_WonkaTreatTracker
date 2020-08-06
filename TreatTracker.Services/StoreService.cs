@@ -59,6 +59,52 @@ namespace TreatTracker.Services
             }
         }
 
+        public IEnumerable<StoreListItem> GetStoresByCandyId(int id)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var allStores =
+                    ctx
+                    .Candies
+                    .Single(e => e.CandyId == id)
+                    .Stores
+                    .Select
+                    (e =>
+                   new StoreListItem
+                   {
+                       StoreId = e.StoreId,
+                       LocationName = e.LocationName,
+                   }
+
+                        );
+                return allStores.ToArray();
+                    
+            }
+        }
+
+        public IEnumerable<StoreListItem> GetStoresByDrinkId(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var allStores =
+                    ctx
+                    .Drinks // step into the Drink DbSey
+                    .Single(e => e.DrinkId == id) //
+                    .Stores // step into ICollection of stores
+                    .Select
+                    (e =>
+                   new StoreListItem
+                   {
+                       StoreId = e.StoreId,
+                       LocationName = e.LocationName,
+                   }
+
+                        );
+                return allStores.ToArray();
+
+            }
+        }
+
         //public IEnumerable<Store_CandyListItem> GetAllCandyByStore(int id)
         //{
         //    using (var ctx = new ApplicationDbContext())
