@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TreatTracker.Data;
 using TreatTracker.Models.GoldenTicketModels;
 using TreatTracker.Services;
 
@@ -13,11 +14,11 @@ namespace TreatTracker.WebAPI.Controllers
     [Authorize]
     public class GoldenTicketController : ApiController
     {
-        
+
         private GoldenTicketService CreateGoldenTicketService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var goldenTicketService = new GoldenTicketService(userId);
+            var userName = User.Identity.GetUserName();
+            var goldenTicketService = new GoldenTicketService(userName);
             return goldenTicketService;
         }
         [HttpPost]
@@ -43,6 +44,29 @@ namespace TreatTracker.WebAPI.Controllers
             GoldenTicketService goldenTicketService = CreateGoldenTicketService();
             var ticket = goldenTicketService.GetCandyByGoldenTicketId(TicketId);
             return Ok(ticket);
+        }
+        [HttpPut]
+        public IHttpActionResult Put(GoldenTicketEdit ticket)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateGoldenTicketService();
+
+            if (!service.UpdateGoldenTicket(ticket))
+                return InternalServerError();
+
+            return Ok();
+        }
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateGoldenTicketService();
+
+            if (!service.DeleteGoldenTicket(id))
+                return InternalServerError();
+
+            return Ok();
         }
     }
 }

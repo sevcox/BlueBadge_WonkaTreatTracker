@@ -29,6 +29,7 @@ namespace TreatTracker.Data
         public virtual ICollection<Drink> Drinks { get; set; }
         [Required]
         public ICollection<Character> Characters { get; set; }
+        [Required]
         public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

@@ -70,6 +70,7 @@
     <Compile Include="CharacterModels\CharacterListItem.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketCreate.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketDetail.cs" />
+    <Compile Include="GoldenTicketModels\GoldenTicketEdit.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketListItem.cs" />
     <Compile Include="CandyModels\CandyCreate.cs" />
     <Compile Include="CandyModels\CandyDetail.cs" />
@@ -89,8 +90,7 @@
     <Compile Include="RoomModels\RoomListItem.cs" />
     <Compile Include="StoreModels\StoreDetail.cs" />
     <Compile Include="StoreModels\StoreListItem.cs" />
-    <Compile Include="StoreModels\Store_CandyListItem.cs" />
-    <Compile Include="StoreModels\Store_DrinkListItem.cs" />
+    <Compile Include="StoreModels\OnlyStoreId.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

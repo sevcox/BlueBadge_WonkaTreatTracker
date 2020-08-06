@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TreatTracker.Models.DrinkModels;
+using TreatTracker.Models.StoreModels;
 using TreatTracker.Services;
 
 namespace TreatTracker.WebAPI.Controllers
@@ -15,8 +16,8 @@ namespace TreatTracker.WebAPI.Controllers
     {
         private DrinkService CreateDrinkService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var drinkService = new DrinkService(userId);
+            var userName = User.Identity.GetUserName();
+            var drinkService = new DrinkService(userName);
             return drinkService;
         }
         [HttpGet]
@@ -73,15 +74,15 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
-        [HttpPost]
-        public IHttpActionResult PutADrinkWithAStore(int drinkId, int storeId)
+        [HttpPut]
+        public IHttpActionResult PutADrinkWithAStore(int drinkId, [FromBody] OnlyStoreId model )
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateDrinkService();
 
-            if (!service.ConnectDrinkWithStore(drinkId, storeId))
+            if (!service.ConnectDrinkWithStore(drinkId, model))
                 return InternalServerError();
 
             return Ok();

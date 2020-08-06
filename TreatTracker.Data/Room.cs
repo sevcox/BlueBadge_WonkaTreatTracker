@@ -16,6 +16,7 @@ namespace TreatTracker.Data
         public string Theme { get; set; }
         [Required]
         public string Description { get; set; }
+        [Required]
         public int FactoryId { get; set; }
         [ForeignKey(nameof(FactoryId))]
         public virtual Factory Factory { get; set; } 

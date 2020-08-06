@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +7,10 @@ using TreatTracker.Data;
 
 namespace TreatTracker.Models.GoldenTicketModels
 {
-   public  class GoldenTicketCreate
+    public class GoldenTicketEdit
     {
-        [Required]
+        public int TicketId { get; set; }
         public int CandyId { get; set; }
-        [Required]
-        [Range(1, 3, ErrorMessage = "Please choose a number between 1 and 3.")]
         public TypeOfPrize PrizeType { get; set; }
     }
 }
