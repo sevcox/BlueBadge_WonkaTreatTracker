@@ -16,6 +16,7 @@ namespace TreatTracker.Models
         public int DrinkId { get; set; }
         [Display(Name = "Name")]
         public string TreatName { get; set; }
+        public string Flavor { get; set; }
         public int Quantity { get; set; }
     }
 }

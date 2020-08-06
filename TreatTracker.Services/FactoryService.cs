@@ -57,51 +57,6 @@ namespace TreatTracker.Services
             }
         }
 
-        //public IEnumerable<Factory_CandyListItem> GetAllCandyByFactory(int id)
-        //{
-        //    using(var ctx = new ApplicationDbContext())
-        //    {
-        //        var query =
-        //            ctx
-        //            .Factories
-        //            .Select(
-        //                e =>
-        //                new Factory_CandyListItem
-        //                {
-        //                    FactoryId = e.FactoryId,
-        //                    LocationName = e.LocationName,
-        //                    CandyId = e.CandyId,
-        //                    TreatName = e.TreatName,
-        //                    Quantity = e.Quantity
-        //                }
-
-        //                );
-        //        return query.ToArray();
-        //    }
-        //}
-
-        //public IEnumerable<Factory_DrinkListItem> GetAllCDrinksByFactory(int id)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var query =
-        //            ctx
-        //            .Factories
-        //            .Select(
-        //                e =>
-        //                new Factory_DrinkListItem
-        //                {
-        //                    FactoryId = e.FactoryId,
-        //                    LocationName = e.LocationName,
-        //                    DrinkId = e.DrinkId,
-        //                    TreatName = e.TreatName,
-        //                    Quantity = e.Quantity
-        //                }
-
-        //                );
-        //        return query.ToArray();
-        //    }
-        //}
 
     }
 }

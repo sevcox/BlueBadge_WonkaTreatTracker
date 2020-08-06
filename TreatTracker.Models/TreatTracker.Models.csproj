@@ -90,8 +90,6 @@
     <Compile Include="RoomModels\RoomListItem.cs" />
     <Compile Include="StoreModels\StoreDetail.cs" />
     <Compile Include="StoreModels\StoreListItem.cs" />
-    <Compile Include="StoreModels\Store_CandyListItem.cs" />
-    <Compile Include="StoreModels\Store_DrinkListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

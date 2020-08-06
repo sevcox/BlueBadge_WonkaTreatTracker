@@ -138,7 +138,7 @@ namespace TreatTracker.Services
             }
         }
 
-        public IEnumerable<CandyListItem> GetCandiesByFactoryId(int factoryId)
+        public IEnumerable<Factory_CandyListItem> GetCandiesByFactoryId(int factoryId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -149,13 +149,14 @@ namespace TreatTracker.Services
                      .Candies
                      .Select
                      (e =>
-                     new CandyListItem
+                     new Factory_CandyListItem
                      {
                          CandyId = e.CandyId,
                          TreatName = e.TreatName,
                          CandyType = e.CandyType,
                          Quantity = e.Quantity,
                          FactoryId = e.FactoryId,
+                         LocationName = e.Factory.LocationName,
                      }
                      );
                 return query.ToArray();
@@ -175,6 +176,7 @@ namespace TreatTracker.Services
                     (e =>
                         new CandyListItem
                         {
+                            
                             CandyId = e.CandyId,
                             TreatName = e.TreatName,
                             CandyType = e.CandyType,

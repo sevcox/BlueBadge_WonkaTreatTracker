@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TreatTracker.Data;
+using TreatTracker.Models;
 using TreatTracker.Models.DrinkModels;
 
 namespace TreatTracker.Services
@@ -134,7 +135,7 @@ namespace TreatTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<DrinkListItem> GetDrinksByFactoryId(int factoryId)
+        public IEnumerable<Factory_DrinkListItem> GetDrinksByFactoryId(int factoryId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -145,19 +146,20 @@ namespace TreatTracker.Services
                      .Drinks
                      .Select
                      (e =>
-                     new DrinkListItem
+                     new Factory_DrinkListItem
                      {
                          DrinkId = e.DrinkId,
                          TreatName = e.TreatName,
                          Flavor = e.Flavor,
                          Quantity = e.Quantity,
-                         FactoryId = e.FactoryId
+                         FactoryId = e.FactoryId,
+                         LocationName = e.Factory.LocationName
                      }
                      );
                 return query.ToArray();
             }
         }
-        public ICollection<Drink> GetDrinksByStoreId(int storeId)
+        public IEnumerable<DrinkListItem> GetDrinksByStoreId(int storeId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -165,9 +167,20 @@ namespace TreatTracker.Services
                     ctx
                     .Stores
                     .Single(s => s.StoreId == storeId)
-                    .Drinks;
+                    .Drinks
+                    .Select
+                  (e =>
+                      new DrinkListItem
+                      {
 
-                return allDrinks;
+                          DrinkId = e.DrinkId,
+                          TreatName = e.TreatName,
+                          Flavor = e.Flavor,
+                          Quantity = e.Quantity,
+                          FactoryId = e.FactoryId,
+                      }
+                  );
+                return allDrinks.ToArray();
             }
         }
     }
