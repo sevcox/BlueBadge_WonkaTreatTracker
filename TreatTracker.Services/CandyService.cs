@@ -31,7 +31,7 @@ namespace TreatTracker.Services
                 FactoryId = model.FactoryId,
                 Price = model.Price,
                 CreatedUtc = DateTimeOffset.Now,
-                UserCreated = _userId.ToString()
+                UserCreated = _userId.ToString(),
             };
 
             using (var ctx = new ApplicationDbContext())

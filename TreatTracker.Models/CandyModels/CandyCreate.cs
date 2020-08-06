@@ -31,5 +31,7 @@ namespace TreatTracker.Models.CandyModels
         [Range(1, 100, ErrorMessage = "Price must be between $1 and $100.")]
         [DataType(DataType.Currency)]
         public decimal? Price { get; set; }
+
+
     }
 }

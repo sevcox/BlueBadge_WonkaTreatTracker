@@ -24,8 +24,7 @@ namespace TreatTracker.Data
         public virtual ICollection<Store> Stores { get; set; }
         public int FactoryId { get; set; }
         [ForeignKey(nameof(FactoryId))]
-        public virtual Factory Factory{ get; set; }
-        public virtual GoldenTicket GoldenTicket { get; set; }
+        public virtual Factory Factory { get; set; }
 
         public Candy()
         {
