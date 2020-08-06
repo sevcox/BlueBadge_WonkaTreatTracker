@@ -16,9 +16,7 @@ namespace TreatTracker.Data
         }
         [Key]
         public int StoreId { get; set; }
-        [Required]
         public virtual ICollection<Candy> Candies { get; set; }
-        [Required]
         public virtual ICollection<Drink> Drinks { get; set; }
     }
 }

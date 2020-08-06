@@ -16,12 +16,12 @@ namespace TreatTracker.Data
         public string Name { get; set; }
         [Required]
         public string Weakness { get; set; }
+        [Required]
         public int RoomId { get; set; }
         [ForeignKey(nameof(RoomId))]
         public virtual Room Room { get; set; }
         [Required]
         [DisplayFormat(DataFormatString = "{0:d}")]
-
         public DateTime DateOfBirth { get; set; }
         public int Age
         {

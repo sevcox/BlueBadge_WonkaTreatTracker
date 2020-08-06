@@ -44,5 +44,29 @@ namespace TreatTracker.WebAPI.Controllers
             var ticket = goldenTicketService.GetCandyByGoldenTicketId(TicketId);
             return Ok(ticket);
         }
+        [HttpPut]
+        public IHttpActionResult Put(GoldenTicketEdit goldenTicket)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateGoldenTicketService();
+
+            if (!service.UpdateGoldenTicket(goldenTicket))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteAGoldenTicket(int goldenTicketId)
+        {
+            var service = CreateGoldenTicketService();
+
+            if (!service.DeleteGoldenTicket(goldenTicketId))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }
