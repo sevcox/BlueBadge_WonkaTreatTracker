@@ -3,7 +3,7 @@ namespace TreatTracker.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -180,12 +180,16 @@ namespace TreatTracker.Data.Migrations
                 c => new
                     {
                         TicketId = c.Int(nullable: false, identity: true),
-                        CandyName = c.String(),
                         CandyId = c.Int(nullable: false),
+                        PrizeType = c.Int(nullable: false),
+                        CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
+                        UserCreated = c.String(nullable: false),
+                        ModifiedUtc = c.DateTimeOffset(precision: 7),
+                        UserModified = c.String(),
                     })
                 .PrimaryKey(t => t.TicketId)
                 .ForeignKey("dbo.Candy", t => t.CandyId, cascadeDelete: true)
-                .Index(t => t.CandyId);
+                .Index(t => t.CandyId, unique: true);
             
             CreateTable(
                 "dbo.StoreCandy",
