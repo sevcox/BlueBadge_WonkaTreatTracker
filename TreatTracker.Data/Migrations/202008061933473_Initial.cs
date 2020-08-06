@@ -3,7 +3,7 @@ namespace TreatTracker.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -39,70 +39,6 @@ namespace TreatTracker.Data.Migrations
                         PhoneNumber = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.FactoryId);
-            
-            CreateTable(
-                "dbo.ApplicationUser",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        FactoryId = c.Int(nullable: false),
-                        Email = c.String(),
-                        EmailConfirmed = c.Boolean(nullable: false),
-                        PasswordHash = c.String(),
-                        SecurityStamp = c.String(),
-                        PhoneNumber = c.String(),
-                        PhoneNumberConfirmed = c.Boolean(nullable: false),
-                        TwoFactorEnabled = c.Boolean(nullable: false),
-                        LockoutEndDateUtc = c.DateTime(),
-                        LockoutEnabled = c.Boolean(nullable: false),
-                        AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Factory", t => t.FactoryId, cascadeDelete: true)
-                .Index(t => t.FactoryId);
-            
-            CreateTable(
-                "dbo.IdentityUserClaim",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(),
-                        ClaimType = c.String(),
-                        ClaimValue = c.String(),
-                        ApplicationUser_Id = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
-                .Index(t => t.ApplicationUser_Id);
-            
-            CreateTable(
-                "dbo.IdentityUserLogin",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        LoginProvider = c.String(),
-                        ProviderKey = c.String(),
-                        ApplicationUser_Id = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.UserId)
-                .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
-                .Index(t => t.ApplicationUser_Id);
-            
-            CreateTable(
-                "dbo.IdentityUserRole",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(),
-                        ApplicationUser_Id = c.String(maxLength: 128),
-                        IdentityRole_Id = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.UserId)
-                .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
-                .ForeignKey("dbo.IdentityRole", t => t.IdentityRole_Id)
-                .Index(t => t.ApplicationUser_Id)
-                .Index(t => t.IdentityRole_Id);
             
             CreateTable(
                 "dbo.Character",
@@ -176,16 +112,84 @@ namespace TreatTracker.Data.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.IdentityUserRole",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(),
+                        IdentityRole_Id = c.String(maxLength: 128),
+                        ApplicationUser_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.UserId)
+                .ForeignKey("dbo.IdentityRole", t => t.IdentityRole_Id)
+                .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
+                .Index(t => t.IdentityRole_Id)
+                .Index(t => t.ApplicationUser_Id);
+            
+            CreateTable(
                 "dbo.GoldenTicket",
                 c => new
                     {
                         TicketId = c.Int(nullable: false, identity: true),
-                        CandyName = c.String(),
                         CandyId = c.Int(nullable: false),
+                        PrizeType = c.Int(nullable: false),
+                        CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
+                        UserCreated = c.String(),
+                        ModifiedUtc = c.DateTimeOffset(precision: 7),
+                        UserModified = c.String(),
                     })
                 .PrimaryKey(t => t.TicketId)
                 .ForeignKey("dbo.Candy", t => t.CandyId, cascadeDelete: true)
-                .Index(t => t.CandyId);
+                .Index(t => t.CandyId, unique: true);
+            
+            CreateTable(
+                "dbo.ApplicationUser",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        FactoryId = c.Int(nullable: false),
+                        Email = c.String(),
+                        EmailConfirmed = c.Boolean(nullable: false),
+                        PasswordHash = c.String(),
+                        SecurityStamp = c.String(),
+                        PhoneNumber = c.String(),
+                        PhoneNumberConfirmed = c.Boolean(nullable: false),
+                        TwoFactorEnabled = c.Boolean(nullable: false),
+                        LockoutEndDateUtc = c.DateTime(),
+                        LockoutEnabled = c.Boolean(nullable: false),
+                        AccessFailedCount = c.Int(nullable: false),
+                        UserName = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Factory", t => t.FactoryId, cascadeDelete: true)
+                .Index(t => t.FactoryId);
+            
+            CreateTable(
+                "dbo.IdentityUserClaim",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.String(),
+                        ClaimType = c.String(),
+                        ClaimValue = c.String(),
+                        ApplicationUser_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
+                .Index(t => t.ApplicationUser_Id);
+            
+            CreateTable(
+                "dbo.IdentityUserLogin",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        LoginProvider = c.String(),
+                        ProviderKey = c.String(),
+                        ApplicationUser_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.UserId)
+                .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
+                .Index(t => t.ApplicationUser_Id);
             
             CreateTable(
                 "dbo.StoreCandy",
@@ -217,8 +221,13 @@ namespace TreatTracker.Data.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.IdentityUserRole", "ApplicationUser_Id", "dbo.ApplicationUser");
+            DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
+            DropForeignKey("dbo.ApplicationUser", "FactoryId", "dbo.Factory");
+            DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.GoldenTicket", "CandyId", "dbo.Candy");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
+            DropForeignKey("dbo.Candy", "FactoryId", "dbo.Factory");
             DropForeignKey("dbo.StoreDrink", "Drink_DrinkId", "dbo.Drink");
             DropForeignKey("dbo.StoreDrink", "Store_StoreId", "dbo.Store");
             DropForeignKey("dbo.StoreCandy", "Candy_CandyId", "dbo.Candy");
@@ -227,38 +236,33 @@ namespace TreatTracker.Data.Migrations
             DropForeignKey("dbo.Character", "Factory_FactoryId", "dbo.Factory");
             DropForeignKey("dbo.Character", "RoomId", "dbo.Room");
             DropForeignKey("dbo.Room", "FactoryId", "dbo.Factory");
-            DropForeignKey("dbo.Candy", "FactoryId", "dbo.Factory");
-            DropForeignKey("dbo.IdentityUserRole", "ApplicationUser_Id", "dbo.ApplicationUser");
-            DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
-            DropForeignKey("dbo.ApplicationUser", "FactoryId", "dbo.Factory");
-            DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropIndex("dbo.StoreDrink", new[] { "Drink_DrinkId" });
             DropIndex("dbo.StoreDrink", new[] { "Store_StoreId" });
             DropIndex("dbo.StoreCandy", new[] { "Candy_CandyId" });
             DropIndex("dbo.StoreCandy", new[] { "Store_StoreId" });
+            DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
+            DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
+            DropIndex("dbo.ApplicationUser", new[] { "FactoryId" });
             DropIndex("dbo.GoldenTicket", new[] { "CandyId" });
+            DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
+            DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
             DropIndex("dbo.Drink", new[] { "FactoryId" });
             DropIndex("dbo.Room", new[] { "FactoryId" });
             DropIndex("dbo.Character", new[] { "Factory_FactoryId" });
             DropIndex("dbo.Character", new[] { "RoomId" });
-            DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
-            DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.ApplicationUser", new[] { "FactoryId" });
             DropIndex("dbo.Candy", new[] { "FactoryId" });
             DropTable("dbo.StoreDrink");
             DropTable("dbo.StoreCandy");
+            DropTable("dbo.IdentityUserLogin");
+            DropTable("dbo.IdentityUserClaim");
+            DropTable("dbo.ApplicationUser");
             DropTable("dbo.GoldenTicket");
+            DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
             DropTable("dbo.Store");
             DropTable("dbo.Drink");
             DropTable("dbo.Room");
             DropTable("dbo.Character");
-            DropTable("dbo.IdentityUserRole");
-            DropTable("dbo.IdentityUserLogin");
-            DropTable("dbo.IdentityUserClaim");
-            DropTable("dbo.ApplicationUser");
             DropTable("dbo.Factory");
             DropTable("dbo.Candy");
         }

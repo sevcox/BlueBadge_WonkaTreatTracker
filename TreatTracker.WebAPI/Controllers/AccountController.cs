@@ -329,7 +329,7 @@ namespace TreatTracker.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FactoryId = model.FactoryId };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -375,7 +375,7 @@ namespace TreatTracker.WebAPI.Controllers
         }
 
         protected override void Dispose(bool disposing)
-        {
+           {
             if (disposing && _userManager != null)
             {
                 _userManager.Dispose();

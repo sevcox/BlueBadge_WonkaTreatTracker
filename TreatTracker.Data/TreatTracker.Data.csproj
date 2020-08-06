@@ -93,25 +93,9 @@
     <Compile Include="IAutoDateTime.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="Migrations\202008051432372_InitialCreate.cs" />
-    <Compile Include="Migrations\202008051432372_InitialCreate.Designer.cs">
-      <DependentUpon>202008051432372_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008051502399_UpdateSeedMethod.cs" />
-    <Compile Include="Migrations\202008051502399_UpdateSeedMethod.Designer.cs">
-      <DependentUpon>202008051502399_UpdateSeedMethod.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008051825437_UpdateGoldenTicketClass.cs" />
-    <Compile Include="Migrations\202008051825437_UpdateGoldenTicketClass.Designer.cs">
-      <DependentUpon>202008051825437_UpdateGoldenTicketClass.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008051835579_updateticketset.cs" />
-    <Compile Include="Migrations\202008051835579_updateticketset.Designer.cs">
-      <DependentUpon>202008051835579_updateticketset.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008060304217_TestingIndex.cs" />
-    <Compile Include="Migrations\202008060304217_TestingIndex.Designer.cs">
-      <DependentUpon>202008060304217_TestingIndex.cs</DependentUpon>
+    <Compile Include="Migrations\202008061933473_Initial.cs" />
+    <Compile Include="Migrations\202008061933473_Initial.Designer.cs">
+      <DependentUpon>202008061933473_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,20 +108,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008051432372_InitialCreate.resx">
-      <DependentUpon>202008051432372_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008051502399_UpdateSeedMethod.resx">
-      <DependentUpon>202008051502399_UpdateSeedMethod.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008051825437_UpdateGoldenTicketClass.resx">
-      <DependentUpon>202008051825437_UpdateGoldenTicketClass.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008051835579_updateticketset.resx">
-      <DependentUpon>202008051835579_updateticketset.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008060304217_TestingIndex.resx">
-      <DependentUpon>202008060304217_TestingIndex.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008061933473_Initial.resx">
+      <DependentUpon>202008061933473_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

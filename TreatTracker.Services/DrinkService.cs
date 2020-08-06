@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TreatTracker.Data;
 using TreatTracker.Models;
 using TreatTracker.Models.DrinkModels;
+using TreatTracker.Models.StoreModels;
 
 namespace TreatTracker.Services
 {
@@ -39,7 +40,8 @@ namespace TreatTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool ConnectDrinkWithStore(int drinkId, int storeId)
+
+        public bool ConnectDrinkWithStore(int drinkId, OnlyStoreId model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -47,7 +49,7 @@ namespace TreatTracker.Services
                 ctx.Drinks.Add(drink);
                 ctx.Drinks.Attach(drink);
 
-                Store store = new Store { StoreId = storeId };
+                Store store = new Store { StoreId = model.StoreId };
                 ctx.Stores.Add(store);
                 ctx.Stores.Attach(store);
 

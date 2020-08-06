@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TreatTracker.Data;
 using TreatTracker.Models;
 using TreatTracker.Models.CandyModels;
+using TreatTracker.Models.StoreModels;
 
 namespace TreatTracker.Services
 {
@@ -40,7 +41,8 @@ namespace TreatTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool ConnectCandyWithStore(int candyId, int storeId)
+
+        public bool ConnectCandyWithStore(int candyId, OnlyStoreId model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -48,7 +50,7 @@ namespace TreatTracker.Services
                 ctx.Candies.Add(candy);
                 ctx.Candies.Attach(candy);
 
-                Store store = new Store { StoreId = storeId };
+                Store store = new Store { StoreId = model.StoreId };
                 ctx.Stores.Add(store);
                 ctx.Stores.Attach(store);
 

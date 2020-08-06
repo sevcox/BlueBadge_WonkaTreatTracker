@@ -22,6 +22,7 @@ namespace TreatTracker.Services
                 new GoldenTicket()
                 {
                   CandyId = model.CandyId,
+                  PrizeType = model.PrizeType,
                   CreatedUtc = DateTimeOffset.UtcNow,
                   UserCreated = _userId.ToString()
                 };
@@ -107,9 +108,9 @@ namespace TreatTracker.Services
             using(var ctx = new ApplicationDbContext())
             {
                 var entity =
-                                  ctx
-                                      .Tickets
-                                      .Single(e => e.CandyId == model.CandyId);
+                ctx
+               .Tickets
+               .Single(e => e.CandyId == model.CandyId);
                 entity.TicketId = model.TicketId;
                 entity.CandyId = model.CandyId;
                 entity.PrizeType = model.PrizeType;
@@ -120,14 +121,14 @@ namespace TreatTracker.Services
             }
         }
 
-        public bool DeleteGoldenTicket(int candyId)
+        public bool DeleteGoldenTicket(int goldenTicketId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Tickets
-                        .Single(e => e.CandyId == candyId);
+                        .Single(e => e.TicketId == goldenTicketId);
 
                 ctx.Tickets.Remove(entity);
 

@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using TreatTracker.Data;
 using TreatTracker.Models.CandyModels;
+using TreatTracker.Models.StoreModels;
 using TreatTracker.Services;
 
 namespace TreatTracker.WebAPI.Controllers
@@ -75,14 +76,14 @@ namespace TreatTracker.WebAPI.Controllers
             return Ok();
         }
         [HttpPut]
-        public IHttpActionResult PutACandyWithAStore(int candyId, int storeId)
+        public IHttpActionResult PutACandyWithAStore([FromUri] int candyId, [FromBody] OnlyStoreId store)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateCandyService();
 
-            if (!service.ConnectCandyWithStore(candyId,storeId))
+            if (!service.ConnectCandyWithStore(candyId, store))
                 return InternalServerError();
 
             return Ok();

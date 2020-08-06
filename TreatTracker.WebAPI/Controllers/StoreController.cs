@@ -38,19 +38,19 @@ namespace TreatTracker.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetStoreByCandyId(int id)
+        public IHttpActionResult GetStoreByCandyId(int candyId)
         {
             StoreService storeService = CreateStoreService();
-            var stores = storeService.GetStoresByCandyId(id);
+            var stores = storeService.GetStoresByCandyId(candyId);
             return Ok(stores);
 
         }
 
         [HttpGet]
-        public IHttpActionResult GetStoreByDrinkId(int id)
+        public IHttpActionResult GetStoreByDrinkId(int drinkId)
         {
             StoreService storeService = CreateStoreService();
-            var stores = storeService.GetStoresByDrinkId(id);
+            var stores = storeService.GetStoresByDrinkId(drinkId);
             return Ok(stores);
         }
     }
