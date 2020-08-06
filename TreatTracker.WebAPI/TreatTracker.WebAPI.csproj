@@ -213,7 +213,6 @@
     <Compile Include="Controllers\CharacterController.cs" />
     <Compile Include="Controllers\DrinkController.cs" />
     <Compile Include="Controllers\GoldenTicketController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\FactoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

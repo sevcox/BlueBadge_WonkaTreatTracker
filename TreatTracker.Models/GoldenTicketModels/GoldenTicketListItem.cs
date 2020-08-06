@@ -11,5 +11,6 @@ namespace TreatTracker.Models.GoldenTicketModels
     {
         public int TicketId { get; set; }
         public int CandyId { get; set; }
+        public string CandyName { get; set; }
     }
 }
