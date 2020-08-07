@@ -11,13 +11,12 @@ using TreatTracker.Services;
 
 namespace TreatTracker.WebAPI.Controllers
 {
+    /// <summary>
+    /// Oh I've got a golden ticket!!!! 
+    /// </summary>
     [Authorize]
     public class GoldenTicketController : ApiController
     {
-        /// <summary>
-        /// allows oompa loompa to create a candy
-        /// </summary>
-        /// <returns></returns>
         private GoldenTicketService CreateGoldenTicketService()
         {
             var userName = User.Identity.GetUserName();
@@ -27,8 +26,7 @@ namespace TreatTracker.WebAPI.Controllers
         /// <summary>
         /// creates a new golden ticket
         /// </summary>
-        /// <param name="ticket"></param>
-        /// <returns></returns>
+        /// <param name="ticket">Please enter in all required information</param>
         [HttpPost]
         public IHttpActionResult Post(GoldenTicketCreate ticket)
         {
@@ -42,7 +40,6 @@ namespace TreatTracker.WebAPI.Controllers
         /// <summary>
         /// returns all of the created golden tickets
         /// </summary>
-        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -53,8 +50,7 @@ namespace TreatTracker.WebAPI.Controllers
         /// <summary>
         /// returns Golden ticket by its Id number
         /// </summary>
-        /// <param name="TicketId"></param>
-        /// <returns></returns>
+        /// <param name="ticketId">Golden Ticket Id is required.</param>
         [HttpGet]
         public IHttpActionResult GetCandyByGoldenTicketId(int ticketId)
         {
@@ -65,8 +61,6 @@ namespace TreatTracker.WebAPI.Controllers
         /// <summary>
         /// allows us to edit a golden ticket
         /// </summary>
-        /// <param name="ticket"></param>
-        /// <returns></returns>
         [HttpPut]
         
         public IHttpActionResult Put(GoldenTicketEdit ticket)
@@ -85,8 +79,7 @@ namespace TreatTracker.WebAPI.Controllers
     /// <summary>
     /// able to delete a golden ticket.
     /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
+    /// <param name="id">Golden Ticket Id is required.</param>
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
