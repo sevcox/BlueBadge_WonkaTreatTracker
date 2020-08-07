@@ -93,9 +93,9 @@
     <Compile Include="IAutoDateTime.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="Migrations\202008061747526_Initial.cs" />
-    <Compile Include="Migrations\202008061747526_Initial.Designer.cs">
-      <DependentUpon>202008061747526_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202008062214118_Initial.cs" />
+    <Compile Include="Migrations\202008062214118_Initial.Designer.cs">
+      <DependentUpon>202008062214118_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,8 +108,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008061747526_Initial.resx">
-      <DependentUpon>202008061747526_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008062214118_Initial.resx">
+      <DependentUpon>202008062214118_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
