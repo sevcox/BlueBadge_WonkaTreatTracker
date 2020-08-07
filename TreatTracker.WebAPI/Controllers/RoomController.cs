@@ -16,7 +16,6 @@ namespace TreatTracker.WebAPI.Controllers
         /// able to create a new room inside of our factory
         /// </summary>
         /// <returns></returns>
-
         private RoomService CreateRoomService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
@@ -54,10 +53,10 @@ namespace TreatTracker.WebAPI.Controllers
         /// <param name="CharacterId"></param>
         /// <returns></returns>
         [HttpGet]
-        public IHttpActionResult GetByCharacterId(int CharacterId)
+        public IHttpActionResult GetByCharacterId(int characterId)
         {
             RoomService roomService = CreateRoomService();
-            var room = roomService.GetRoomsByCharacterId(CharacterId);
+            var room = roomService.GetRoomsByCharacterId(characterId);
             return Ok(room);
         }
     }

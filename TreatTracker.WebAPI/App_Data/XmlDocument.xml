@@ -481,6 +481,46 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:TreatTracker.WebAPI.Controllers.FactoryController">
+            <summary>
+            Factory Inventory Controllers
+            </summary>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.FactoryController.Get">
+            <summary>
+            Returns a list of all factories that are associated with Wonka Candy Enterprises
+            </summary>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.FactoryController.GetFactoryById(System.Int32)">
+            <summary>
+            Returns the details of a specific factory
+            </summary>
+            <param name="factoryId">FactoryId is needed</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.StoreController.Get">
+            <summary>
+            Returns a list of all stores selling our candy
+            </summary>
+            <param>Gets all Stores.</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.StoreController.GetStoreById(System.Int32)">
+            <summary>
+            Returns the details of a specified store
+            </summary>
+            <param name="id">The store Id is needed.</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.StoreController.GetStoresByCandyId(System.Int32)">
+            <summary>
+            Returns a list of stores that are selling one a specific Wonka Candy
+            </summary>
+            <param name="candyId">Candy Id is need.</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.StoreController.GetStoresByDrinkId(System.Int32)">
+            <summary>
+            Returns a list of stores that are selling one specific drink
+            </summary>
+            <param name="drinkId">Drink Id is needed.</param>
+        </member>
         <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.CreateCharacterService">
             <summary>
             creates a new character

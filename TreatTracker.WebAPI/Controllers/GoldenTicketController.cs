@@ -56,10 +56,10 @@ namespace TreatTracker.WebAPI.Controllers
         /// <param name="TicketId"></param>
         /// <returns></returns>
         [HttpGet]
-        public IHttpActionResult GetCandyByGoldenTicketId(int TicketId)
+        public IHttpActionResult GetCandyByGoldenTicketId(int ticketId)
         {
             GoldenTicketService goldenTicketService = CreateGoldenTicketService();
-            var ticket = goldenTicketService.GetCandyByGoldenTicketId(TicketId);
+            var ticket = goldenTicketService.GetCandyByGoldenTicketId(ticketId);
             return Ok(ticket);
         }
         /// <summary>

@@ -18,6 +18,11 @@ namespace TreatTracker.WebAPI.Controllers
             var storeService = new StoreService();
             return storeService;
         }
+        ///<summary>
+        ///Returns a list of all stores selling our candy
+        ///</summary>
+        ///<param>Gets all Stores.</param>
+        // GET api/values/5
 
         [HttpGet]
         public IHttpActionResult Get()
@@ -26,7 +31,11 @@ namespace TreatTracker.WebAPI.Controllers
             var stores = storeService.GetStores();
             return Ok(stores);
         }
-
+        ///<summary>
+        ///Returns the details of a specified store
+        ///</summary>
+        ///<param name="id">The store Id is needed.</param>
+        // GET api/values/5
         [HttpGet]
         public IHttpActionResult GetStoreById(int id)
         {
@@ -35,6 +44,11 @@ namespace TreatTracker.WebAPI.Controllers
             return Ok(store);
 
         }
+        ///<summary>
+        ///Returns a list of stores that are selling one a specific Wonka Candy
+        ///</summary>
+        ///<param name="candyId">Candy Id is need.</param>
+        // GET api/values/5
         [HttpGet]
         public IHttpActionResult GetStoresByCandyId(int candyId)
         {
@@ -43,6 +57,11 @@ namespace TreatTracker.WebAPI.Controllers
             return Ok(store);
 
         }
+        ///<summary>
+        ///Returns a list of stores that are selling one specific drink
+        ///</summary>
+        ///<param name="drinkId">Drink Id is needed.</param>
+        // GET api/values/5
         [HttpGet]
         public IHttpActionResult GetStoresByDrinkId(int drinkId)
         {

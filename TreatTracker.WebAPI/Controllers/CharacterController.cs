@@ -51,10 +51,10 @@ namespace TreatTracker.WebAPI.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet]
-        public IHttpActionResult GetCharacter (int Id)
+        public IHttpActionResult GetCharacter (int id)
         {
             CharacterService characterService = CreateCharacterService();
-            var character = characterService.GetCharacterById(Id);
+            var character = characterService.GetCharacterById(id);
             return Ok(character);
         }
         /// <summary>
