@@ -319,6 +319,11 @@ namespace TreatTracker.WebAPI.Controllers
             return logins;
         }
 
+        ///<summary>
+        ///So you got a job with Wonka Enterprise, huh? Finally out of the terrible jungles of Loompaland
+        ///</summary>
+        ///<param name="id">The GoldenTicket Id is needed</param>
+        // GET api/values/5
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]

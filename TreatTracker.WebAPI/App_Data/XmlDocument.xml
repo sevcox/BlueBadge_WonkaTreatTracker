@@ -481,6 +481,12 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.AccountController.Register(TreatTracker.WebAPI.Models.RegisterBindingModel)">
+            <summary>
+            So you got a job with Wonka Enterprise, huh? Finally out of the terrible jungles of Loompaland
+            </summary>
+            <param name="id">The GoldenTicket Id is needed</param>
+        </member>
         <member name="M:TreatTracker.WebAPI.Controllers.CandyController.Get">
             <summary>
             Returns a list of all candies manufactured by Wonka Candy Enterprises
