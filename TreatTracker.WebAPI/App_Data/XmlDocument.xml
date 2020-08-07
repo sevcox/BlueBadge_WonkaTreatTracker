@@ -481,45 +481,66 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
-        <member name="T:TreatTracker.WebAPI.Controllers.FactoryController">
+        <member name="M:TreatTracker.WebAPI.Controllers.AccountController.Register(TreatTracker.WebAPI.Models.RegisterBindingModel)">
             <summary>
-            Factory Inventory Controllers
+            So you got a job with Wonka Enterprise huh? Finally out of the terrible jungle of LoompaLand? Well here we go! Register here after orientation.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TreatTracker.WebAPI.Controllers.CandyController">
+            <summary>
+            All things Candy! Yummy!
             </summary>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.FactoryController.Get">
+        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.Get">
             <summary>
-            Returns a list of all factories that are associated with Wonka Candy Enterprises
+            View all Candies created in Wonka Candy Enterprise.
             </summary>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.FactoryController.GetFactoryById(System.Int32)">
+        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.PostANewCandy(TreatTracker.Models.CandyModels.CandyCreate)">
             <summary>
-            Returns the details of a specific factory
+            Create a new candy entry for your factory after inventory was counted.
             </summary>
-            <param name="factoryId">FactoryId is needed</param>
+            <param name="candy">Make sure to enter in all the required details when creating a candy entry. Your Factory Id, username, and today's date will be automatically added to the entry.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.StoreController.Get">
+        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.GetCandyById(System.Int32)">
             <summary>
-            Returns a list of all stores selling our candy
+            Find a specific Wonka candy entry.
             </summary>
-            <param>Gets all Stores.</param>
+            <param name="candyId">The Candy Id is required.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.StoreController.GetStoreById(System.Int32)">
+        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.GetCandiesByFactoryId(System.Int32)">
             <summary>
-            Returns the details of a specified store
+            Find a specific Wonka candy entry by factory location.
             </summary>
-            <param name="id">The store Id is needed.</param>
+            <param name="factoryId">The Factory Id is required.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.StoreController.GetStoresByCandyId(System.Int32)">
+        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.GetCandiesByStoreId(System.Int32)">
             <summary>
-            Returns a list of stores that are selling one a specific Wonka Candy
+            Find a specific Wonka candy entry by store location.
+            USE THIS WHEN: *RECALL* or *SECRET INGREDIENT BREACH*
             </summary>
-            <param name="candyId">Candy Id is need.</param>
+            <param name="storeId">The Store Id is required.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.StoreController.GetStoresByDrinkId(System.Int32)">
+        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.Put(TreatTracker.Models.CandyModels.CandyEdit)">
             <summary>
-            Returns a list of stores that are selling one specific drink
+            Made a mistake on a candy entry? No worries... Wonka has your back. Edit a candy here.
             </summary>
-            <param name="drinkId">Drink Id is needed.</param>
+            <param name="candy">Make sure to enter in all the required details when editing a candy entry. Your username and today's date will automatically be added to the modification.</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.PutACandyWithAStore(System.Int32,TreatTracker.Models.StoreModels.OnlyStoreId)">
+            <summary>
+            Selling candy to a store.
+            </summary>
+            <param name="candyId">This will direct you to the specific candy's selling page.</param>
+            <param name="store">Remember to enter in the Store that you are selling to.</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.DeleteACandy(System.Int32)">
+            <summary>
+            Sold out or discontinued a candy? This is the place for you! 
+            </summary>
+            <param name="candyId">The Candy Id is required.</param>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.CreateCharacterService">
             <summary>
@@ -560,6 +581,60 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="T:TreatTracker.WebAPI.Controllers.DrinkController">
+            <summary>
+            All things Drinks! Fizzy!
+            </summary>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.Get">
+            <summary>
+            View all Fizzy Lifting Drinks created in Wonka Candy Enterprise.
+            </summary>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.Post(TreatTracker.Models.DrinkModels.DrinkCreate)">
+            <summary>
+            Create a new drink entry for your factory after inventory was counted.
+            </summary>
+            <param name="drink">Make sure to enter in all the required details when creating a drink entry. Your Factory Id, username, and today's date will be automatically added to the entry.</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.Get(System.Int32)">
+            <summary>
+            Find a specific fizzing lifting drink entry.
+            </summary>
+            <param name="id">The Drink Id is required.</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.GetDrinksByFactoryId(System.Int32)">
+            <summary>
+            Find a specific fizzy lifting drink entry by factory location.
+            </summary>
+            <param name="factoryId">The Factory Id is required.</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.GetDrinksByStoreId(System.Int32)">
+            <summary>
+            Find a specific Fizzy Lifting Drink entry by store location.
+            USE THIS WHEN: *RECALL* or *SECRET INGREDIENT BREACH*
+            </summary>
+            <param name="storeId">The Store Id is required.</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.Put(TreatTracker.Models.DrinkModels.DrinkEdit)">
+            <summary>
+            Made a mistake on a drink entry? No worries... Wonka has your back. Edit a candy here.
+            </summary>
+            <param name="drink">Make sure to enter in all the required details when editing a drink entry. Your username and today's date will automatically be added to the modification.</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.PutADrinkWithAStore(System.Int32,TreatTracker.Models.StoreModels.OnlyStoreId)">
+            <summary>
+            Selling fizzy lifting drinks to a store.
+            </summary>
+            <param name="drinkId">This will direct you to the specific drink's selling page.</param>
+            <param name="model">Remember to enter in the Store that you are selling to.</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.Delete(System.Int32)">
+            <summary>
+            Sold out or discontinued a fizzy lifting drink? This is the place for you! 
+            </summary>
+            <param name="id">The Drink Id is required.</param>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.CreateGoldenTicketService">
             <summary>
@@ -627,120 +702,51 @@
             <param name="CharacterId"></param>
             <returns></returns>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.AccountController.Register(TreatTracker.WebAPI.Models.RegisterBindingModel)">
+        <member name="T:TreatTracker.WebAPI.Controllers.FactoryController">
             <summary>
-            So you got a job with Wonka Enterprise huh? Finally out of the terrible jungle of LoompaLand? Well here we go! Register here after orientation.
-            </summary>
-            <param name="model"></param>
-            <returns></returns>
-        </member>
-        <member name="T:TreatTracker.WebAPI.Controllers.CandyController">
-            <summary>
-            All things Candy! Yummy!
+            Factory Inventory Controllers
             </summary>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.Get">
+        <member name="M:TreatTracker.WebAPI.Controllers.FactoryController.Get">
             <summary>
-            View all Candies created in Wonka Candy Enterprise.
+            Returns a list of all factories that are associated with Wonka Candy Enterprises
             </summary>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.PostANewCandy(TreatTracker.Models.CandyModels.CandyCreate)">
+        <member name="M:TreatTracker.WebAPI.Controllers.FactoryController.GetFactoryById(System.Int32)">
             <summary>
-            Create a new candy entry for your factory after inventory was counted.
+            Returns the details of a specific factory
             </summary>
-            <param name="candy">Make sure to enter in all the required details when creating a candy entry. Your Factory Id, username, and today's date will be automatically added to the entry.</param>
+            <param name="factoryId">FactoryId is needed</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.GetCandyById(System.Int32)">
+        <member name="M:TreatTracker.WebAPI.Controllers.StoreController.Get">
             <summary>
-            Find a specific Wonka candy entry.
+            Returns a list of all stores selling our candy
             </summary>
-            <param name="candyId">The Candy Id is required.</param>
+            <param>Gets all Stores.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.GetCandiesByFactoryId(System.Int32)">
+        <member name="M:TreatTracker.WebAPI.Controllers.StoreController.GetStoreById(System.Int32)">
             <summary>
-            Find a specific Wonka candy entry by factory location.
+            Returns the details of a specified store
             </summary>
-            <param name="factoryId">The Factory Id is required.</param>
+            <param name="id">The store Id is needed.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.GetCandiesByStoreId(System.Int32)">
+        <member name="M:TreatTracker.WebAPI.Controllers.StoreController.GetStoresByCandyId(System.Int32)">
             <summary>
-            Find a specific Wonka candy entry by store location.
-            USE THIS WHEN: *RECALL* or *SECRET INGREDIENT BREACH*
+            Returns a list of stores that are selling one a specific Wonka Candy
             </summary>
-            <param name="storeId">The Store Id is required.</param>
+            <param name="candyId">Candy Id is need.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.Put(TreatTracker.Models.CandyModels.CandyEdit)">
+        <member name="M:TreatTracker.WebAPI.Controllers.StoreController.GetStoresByDrinkId(System.Int32)">
             <summary>
-            Made a mistake on a candy entry? No worries... Wonka has your back. Edit a candy here.
+            Returns a list of stores that are selling one specific drink
             </summary>
-            <param name="candy">Make sure to enter in all the required details when editing a candy entry. Your username and today's date will automatically be added to the modification.</param>
+            <param name="drinkId">Drink Id is needed.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.PutACandyWithAStore(System.Int32,TreatTracker.Models.StoreModels.OnlyStoreId)">
+        <member name="M:TreatTracker.WebAPI.Controllers.ValuesController.Get(System.Int32)">
             <summary>
-            Selling candy to a store.
+            Looks up some data by ID
             </summary>
-            <param name="candyId">This will direct you to the specific candy's selling page.</param>
-            <param name="store">Remember to enter in the Store that you are selling to.</param>
-        </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.DeleteACandy(System.Int32)">
-            <summary>
-            Sold out or discontinued a candy? This is the place for you! 
-            </summary>
-            <param name="candyId">The Candy Id is required.</param>
-        </member>
-        <member name="T:TreatTracker.WebAPI.Controllers.DrinkController">
-            <summary>
-            All things Drinks! Fizzy!
-            </summary>
-        </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.Get">
-            <summary>
-            View all Fizzy Lifting Drinks created in Wonka Candy Enterprise.
-            </summary>
-        </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.Post(TreatTracker.Models.DrinkModels.DrinkCreate)">
-            <summary>
-            Create a new drink entry for your factory after inventory was counted.
-            </summary>
-            <param name="drink">Make sure to enter in all the required details when creating a drink entry. Your Factory Id, username, and today's date will be automatically added to the entry.</param>
-        </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.Get(System.Int32)">
-            <summary>
-            Find a specific fizzing lifting drink entry.
-            </summary>
-            <param name="id">The Drink Id is required.</param>
-        </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.GetDrinksByFactoryId(System.Int32)">
-            <summary>
-            Find a specific fizzy lifting drink entry by factory location.
-            </summary>
-            <param name="factoryId">The Factory Id is required.</param>
-        </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.GetDrinksByStoreId(System.Int32)">
-            <summary>
-            Find a specific Fizzy Lifting Drink entry by store location.
-            USE THIS WHEN: *RECALL* or *SECRET INGREDIENT BREACH*
-            </summary>
-            <param name="storeId">The Store Id is required.</param>
-        </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.Put(TreatTracker.Models.DrinkModels.DrinkEdit)">
-            <summary>
-            Made a mistake on a drink entry? No worries... Wonka has your back. Edit a candy here.
-            </summary>
-            <param name="drink">Make sure to enter in all the required details when editing a drink entry. Your username and today's date will automatically be added to the modification.</param>
-        </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.PutADrinkWithAStore(System.Int32,TreatTracker.Models.StoreModels.OnlyStoreId)">
-            <summary>
-            Selling fizzy lifting drinks to a store.
-            </summary>
-            <param name="drinkId">This will direct you to the specific drink's selling page.</param>
-            <param name="model">Remember to enter in the Store that you are selling to.</param>
-        </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.Delete(System.Int32)">
-            <summary>
-            Sold out or discontinued a fizzy lifting drink? This is the place for you! 
-            </summary>
-            <param name="id">The Drink Id is required.</param>
+            <param name="id">The ID of the Wonka data.</param>
         </member>
     </members>
 </doc>

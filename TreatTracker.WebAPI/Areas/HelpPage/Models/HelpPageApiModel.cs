@@ -20,7 +20,8 @@ namespace TreatTracker.WebAPI.Areas.HelpPage.Models
             SampleRequests = new Dictionary<MediaTypeHeaderValue, object>();
             SampleResponses = new Dictionary<MediaTypeHeaderValue, object>();
             ErrorMessages = new Collection<string>();
-        }
+            
+    }
 
         /// <summary>
         /// Gets or sets the <see cref="ApiDescription"/> that describes the API.
@@ -104,5 +105,7 @@ namespace TreatTracker.WebAPI.Areas.HelpPage.Models
 
             return null;
         }
+
+
     }
 }
