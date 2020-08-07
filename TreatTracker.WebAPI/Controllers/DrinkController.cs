@@ -20,9 +20,6 @@ namespace TreatTracker.WebAPI.Controllers
             var drinkService = new DrinkService(userName);
             return drinkService;
         }
-        ///<summary>
-        ///Returns a list of all the beverages created in the wonka factories
-        ///</summary>
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -30,9 +27,6 @@ namespace TreatTracker.WebAPI.Controllers
             var drinks = drinkService.GetDrinks();
             return Ok(drinks);
         }
-        ///<summary>
-        ///Creates a new drink for mass consumption
-        ///</summary>
         [HttpPost]
         public IHttpActionResult Post(DrinkCreate drink)
         {
@@ -46,11 +40,6 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
-        ///<summary>
-        ///Returns the details of a specific drink
-        ///</summary>
-        ///<param name="id">The Drink Id is needed</param>
-        // GET api/values/5
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
@@ -58,11 +47,6 @@ namespace TreatTracker.WebAPI.Controllers
             var drink = drinkService.GetDrinkById(id);
             return Ok(drink);
         }
-        ///<summary>
-        ///Returns a list of all drinks created at a specific factory
-        ///</summary>
-        ///<param name="factoryId">The factory Id is needed</param>
-        // GET api/values/5
         [HttpGet]
         public IHttpActionResult GetDrinksByFactoryId(int factoryId)
         {
@@ -70,11 +54,6 @@ namespace TreatTracker.WebAPI.Controllers
             var drink = drinkService.GetDrinksByFactoryId(factoryId);
             return Ok(drink);
         }
-        ///<summary>
-        ///Returns a list of all the drinks sold at a specific store
-        ///</summary>
-        ///<param name="storeId">The Store Id is needed</param>
-        // GET api/values/5
         [HttpGet]
         public IHttpActionResult GetDrinksByStoreId(int storeId)
         {
@@ -82,10 +61,6 @@ namespace TreatTracker.WebAPI.Controllers
             var drink = drinkService.GetDrinksByStoreId(storeId);
             return Ok(drink);
         }
-        ///<summary>
-        ///Allows the user to update a specific drink
-        ///</summary>
-        // GET api/values/5
         [HttpPut]
         public IHttpActionResult Put(DrinkEdit drink)
         {
@@ -99,12 +74,6 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
-        ///<summary>
-        ///Places a cand with a specific store
-        ///</summary>
-        ///<param name="drinkId">The Drink Id is needed</param>
-        // GET api/values/5
-        [HttpPut]
         public IHttpActionResult PutADrinkWithAStore(int drinkId, [FromBody] OnlyStoreId model )
         {
             if (!ModelState.IsValid)
@@ -117,11 +86,6 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
-        ///<summary>
-        ///Removes a Drink from existence
-        ///</summary>
-        ///<param name="id">The Drink Id is needed</param>
-        // GET api/values/5
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
