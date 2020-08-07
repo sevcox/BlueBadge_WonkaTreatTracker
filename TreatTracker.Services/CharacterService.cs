@@ -10,10 +10,8 @@ namespace TreatTracker.Services
 {
    public  class CharacterService
     {
-        private readonly Guid _userId;
-        public CharacterService(Guid userId)
+        public CharacterService()
         {
-            _userId = userId;
         }
         public IEnumerable<CharacterListItem> GetCharacters()
         {

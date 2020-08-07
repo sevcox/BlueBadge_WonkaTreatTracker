@@ -13,7 +13,7 @@ using TreatTracker.Services;
 namespace TreatTracker.WebAPI.Controllers
 {
     /// <summary>
-    /// All things Candy! Yummy!
+    /// Candy invention, my dear friends, is 93% perspiration, 6% electricity, 4% evaporation, and 2% butter scotch ripple.
     /// </summary>
     [Authorize]
     public class CandyController : ApiController

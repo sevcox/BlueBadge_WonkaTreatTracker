@@ -12,7 +12,7 @@ using TreatTracker.Services;
 namespace TreatTracker.WebAPI.Controllers
 {
     /// <summary>
-    /// All things Drinks! Fizzy!
+    /// Candy is dandy but liquor is quicker!
     /// </summary>
     [Authorize]
     public class DrinkController : ApiController

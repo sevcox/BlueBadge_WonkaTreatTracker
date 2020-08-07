@@ -9,17 +9,16 @@ using TreatTracker.Services;
 
 namespace TreatTracker.WebAPI.Controllers
 {
+    /// <summary>
+    /// Everything in this room is edible. Even I’m edible. But, that would be called cannibalism. It is looked down upon in most societies.
+    /// The snozberries taste like snozberries.
+    /// </summary>
     [Authorize]
     public class RoomController : ApiController
     {
-        /// <summary>
-        /// able to create a new room inside of our factory
-        /// </summary>
-        /// <returns></returns>
         private RoomService CreateRoomService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var roomService = new RoomService(userId);
+            var roomService = new RoomService();
             return roomService;
         }
         /// <summary>

@@ -10,6 +10,9 @@ using TreatTracker.Services;
 
 namespace TreatTracker.WebAPI.Controllers
 {
+    /// <summary>
+    /// We sell all over the world! Walmart included!
+    /// </summary>
     public class StoreController : ApiController
     {
         [Authorize]
@@ -22,7 +25,6 @@ namespace TreatTracker.WebAPI.Controllers
         ///Returns a list of all stores selling our candy
         ///</summary>
         ///<param>Gets all Stores.</param>
-        // GET api/values/5
 
         [HttpGet]
         public IHttpActionResult Get()
@@ -35,7 +37,6 @@ namespace TreatTracker.WebAPI.Controllers
         ///Returns the details of a specified store
         ///</summary>
         ///<param name="id">The store Id is needed.</param>
-        // GET api/values/5
         [HttpGet]
         public IHttpActionResult GetStoreById(int id)
         {
@@ -48,7 +49,6 @@ namespace TreatTracker.WebAPI.Controllers
         ///Returns a list of stores that are selling one a specific Wonka Candy
         ///</summary>
         ///<param name="candyId">Candy Id is need.</param>
-        // GET api/values/5
         [HttpGet]
         public IHttpActionResult GetStoresByCandyId(int candyId)
         {
@@ -61,7 +61,6 @@ namespace TreatTracker.WebAPI.Controllers
         ///Returns a list of stores that are selling one specific drink
         ///</summary>
         ///<param name="drinkId">Drink Id is needed.</param>
-        // GET api/values/5
         [HttpGet]
         public IHttpActionResult GetStoresByDrinkId(int drinkId)
         {

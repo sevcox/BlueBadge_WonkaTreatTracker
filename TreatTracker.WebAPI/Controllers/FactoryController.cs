@@ -9,9 +9,8 @@ using TreatTracker.Services;
 
 namespace TreatTracker.WebAPI.Controllers
 {     ///<summary>
-      ///Factory Inventory Controllers
+      ///Welcome my friends, welcome to my chocolate factory.
       ///</summary>
-    // GET api/values/5
     public class FactoryController : ApiController
     {
         [Authorize]
@@ -24,7 +23,6 @@ namespace TreatTracker.WebAPI.Controllers
         ///<summary>
         ///Returns a list of all factories that are associated with Wonka Candy Enterprises
         ///</summary>
-        // GET api/values/5
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -36,7 +34,6 @@ namespace TreatTracker.WebAPI.Controllers
         ///Returns the details of a specific factory
         ///</summary>
         ///<param name="factoryId">FactoryId is needed</param>
-        // GET api/values/5
         [HttpGet]
         public IHttpActionResult GetFactoryById(int factoryId)
         {
