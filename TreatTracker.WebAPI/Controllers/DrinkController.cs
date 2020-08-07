@@ -11,6 +11,9 @@ using TreatTracker.Services;
 
 namespace TreatTracker.WebAPI.Controllers
 {
+    /// <summary>
+    /// All things Drinks! Fizzy!
+    /// </summary>
     [Authorize]
     public class DrinkController : ApiController
     {
@@ -20,6 +23,9 @@ namespace TreatTracker.WebAPI.Controllers
             var drinkService = new DrinkService(userName);
             return drinkService;
         }
+        /// <summary>
+        /// View all Fizzy Lifting Drinks created in Wonka Candy Enterprise.
+        /// </summary>
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -27,6 +33,10 @@ namespace TreatTracker.WebAPI.Controllers
             var drinks = drinkService.GetDrinks();
             return Ok(drinks);
         }
+        /// <summary>
+        /// Create a new drink entry for your factory after inventory was counted.
+        /// </summary>
+        /// <param name="drink">Make sure to enter in all the required details when creating a drink entry. Your Factory Id, username, and today's date will be automatically added to the entry.</param>
         [HttpPost]
         public IHttpActionResult Post(DrinkCreate drink)
         {
@@ -40,6 +50,10 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Find a specific fizzing lifting drink entry.
+        /// </summary>
+        /// <param name="id">The Drink Id is required.</param>
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
@@ -47,6 +61,10 @@ namespace TreatTracker.WebAPI.Controllers
             var drink = drinkService.GetDrinkById(id);
             return Ok(drink);
         }
+        /// <summary>
+        /// Find a specific fizzy lifting drink entry by factory location.
+        /// </summary>
+        /// <param name="factoryId">The Factory Id is required.</param>
         [HttpGet]
         public IHttpActionResult GetDrinksByFactoryId(int factoryId)
         {
@@ -54,6 +72,11 @@ namespace TreatTracker.WebAPI.Controllers
             var drink = drinkService.GetDrinksByFactoryId(factoryId);
             return Ok(drink);
         }
+        /// <summary>
+        /// Find a specific Fizzy Lifting Drink entry by store location.
+        /// USE THIS WHEN: *RECALL* or *SECRET INGREDIENT BREACH*
+        /// </summary>
+        /// <param name="storeId">The Store Id is required.</param>
         [HttpGet]
         public IHttpActionResult GetDrinksByStoreId(int storeId)
         {
@@ -61,6 +84,10 @@ namespace TreatTracker.WebAPI.Controllers
             var drink = drinkService.GetDrinksByStoreId(storeId);
             return Ok(drink);
         }
+        /// <summary>
+        /// Made a mistake on a drink entry? No worries... Wonka has your back. Edit a candy here.
+        /// </summary>
+        /// <param name="drink">Make sure to enter in all the required details when editing a drink entry. Your username and today's date will automatically be added to the modification.</param>
         [HttpPut]
         public IHttpActionResult Put(DrinkEdit drink)
         {
@@ -74,6 +101,11 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Selling fizzy lifting drinks to a store.
+        /// </summary>
+        /// <param name="drinkId">This will direct you to the specific drink's selling page.</param>
+        /// <param name="model">Remember to enter in the Store that you are selling to.</param>
         [HttpPut]
         public IHttpActionResult PutADrinkWithAStore(int drinkId, [FromBody] OnlyStoreId model )
         {
@@ -87,6 +119,10 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Sold out or discontinued a fizzy lifting drink? This is the place for you! 
+        /// </summary>
+        /// <param name="id">The Drink Id is required.</param>
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
