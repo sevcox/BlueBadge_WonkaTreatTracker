@@ -51,7 +51,7 @@ namespace TreatTracker.WebAPI.Models
 
         [Required]
         [Range(1,50, ErrorMessage="Must choose a factory number between 1 and 50.")]
-        public int FactoryId { get; set; }
+        public int FactoryId { get; set; }// added to require factoryid to register
     }
 
     public class RegisterExternalBindingModel

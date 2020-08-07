@@ -30,7 +30,7 @@ namespace TreatTracker.Services
                 SecretIngredient = model.SecretIngredient,
                 Quantity = model.Quantity,
                 Price = model.Price,
-                FactoryId = model.FactoryId,
+                FactoryId = GetFactoryId(),
                 CreatedUtc = DateTimeOffset.Now,
                 UserCreated = _userName
             };
@@ -185,6 +185,19 @@ namespace TreatTracker.Services
                         }
                     );
                 return allCandies.ToArray();
+            }
+        }
+
+        public int GetFactoryId()
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var user =
+                    ctx
+                    .Users
+                    .Single(e => e.UserName == _userName);
+
+                return user.FactoryId;
             }
         }
     }
