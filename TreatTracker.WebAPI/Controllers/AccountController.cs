@@ -20,6 +20,9 @@ using TreatTracker.WebAPI.Results;
 
 namespace TreatTracker.WebAPI.Controllers
 {
+    /// <summary>
+    /// Oompa Loompa Employee Portal
+    /// </summary>
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController

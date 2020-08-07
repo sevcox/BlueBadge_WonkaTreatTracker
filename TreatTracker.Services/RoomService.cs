@@ -11,10 +11,8 @@ namespace TreatTracker.Services
 {
     public class RoomService
     {
-        private readonly Guid _userId;
-        public RoomService(Guid userId)
+        public RoomService()
         {
-            _userId = userId;
         }
         public IEnumerable<RoomListItem> GetRooms()
         {

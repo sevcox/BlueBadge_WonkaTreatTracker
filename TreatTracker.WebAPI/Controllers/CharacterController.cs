@@ -9,23 +9,20 @@ using TreatTracker.Services;
 
 namespace TreatTracker.WebAPI.Controllers
 {
+    /// <summary>
+    /// Violet! You're turning violet! 
+    /// </summary>
     [Authorize]
     public class CharacterController : ApiController
     {
-        /// <summary>
-        /// creates a new character
-        /// </summary>
-        /// <returns></returns>
         private CharacterService CreateCharacterService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var characterService = new CharacterService(userId);
+            var characterService = new CharacterService();
             return characterService;
         }
        /// <summary>
-       ///returns all charcters created
+       ///Returns all indentured servants employed
        /// </summary>
-       /// <returns></returns>
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -34,10 +31,9 @@ namespace TreatTracker.WebAPI.Controllers
             return Ok(characters);
         }
         /// <summary>
-        /// looks up all characters by there room id
+        /// Find all characters by there room id
         /// </summary>
-        /// <param name="roomId"></param>
-        /// <returns></returns>
+        /// <param name="roomId">Room Id is required.</param>
         [HttpGet]
         public IHttpActionResult Get(int roomId)
         {
@@ -46,10 +42,9 @@ namespace TreatTracker.WebAPI.Controllers
             return Ok(character);
         }
         /// <summary>
-        /// looks up characters by there id number
+        /// Find characters by there id number
         /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
+        /// <param name="id">Character id is required.</param>
         [HttpGet]
         public IHttpActionResult GetCharacter (int id)
         {
@@ -60,8 +55,7 @@ namespace TreatTracker.WebAPI.Controllers
         /// <summary>
         /// looks up character by there name
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="name">Character name is required</param>
         [HttpGet]
         public IHttpActionResult Get(string name)
         {
@@ -70,10 +64,9 @@ namespace TreatTracker.WebAPI.Controllers
             return Ok(charactera);
         }
         /// <summary>
-        /// deletes a charcter by there id
+        /// Indentured servant acting up? Fire them!!!!
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Character Id is required.</param>
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
