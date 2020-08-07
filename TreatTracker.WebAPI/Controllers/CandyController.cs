@@ -12,6 +12,9 @@ using TreatTracker.Services;
 
 namespace TreatTracker.WebAPI.Controllers
 {
+    /// <summary>
+    /// All things Candy! Yummy!
+    /// </summary>
     [Authorize]
     public class CandyController : ApiController
     {
@@ -21,6 +24,9 @@ namespace TreatTracker.WebAPI.Controllers
             var candyService = new CandyService(userName);
             return candyService;
         }
+        /// <summary>
+        /// View all Candies created in Wonka Candy Enterprise.
+        /// </summary>
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -28,6 +34,10 @@ namespace TreatTracker.WebAPI.Controllers
             var candies = candyService.GetCandies();
             return Ok(candies);
         }
+        /// <summary>
+        /// Create a new candy entry for your factory after inventory was counted.
+        /// </summary>
+        /// <param name="candy">Make sure to enter in all the required details when creating a candy entry. Your Factory Id, username, and today's date will be automatically added to the entry.</param>
         [HttpPost]
         public IHttpActionResult PostANewCandy(CandyCreate candy)
         {
@@ -41,6 +51,10 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Find a specific Wonka candy entry.
+        /// </summary>
+        /// <param name="candyId">The Candy Id is required.</param>
         [HttpGet]
         public IHttpActionResult GetCandyById(int candyId)
         {
@@ -48,6 +62,10 @@ namespace TreatTracker.WebAPI.Controllers
             var candy = candyService.GetCandyById(candyId);
             return Ok(candy);
         }
+        /// <summary>
+        /// Find a specific Wonka candy entry by factory location.
+        /// </summary>
+        /// <param name="factoryId">The Factory Id is required.</param>
         [HttpGet]
         public IHttpActionResult GetCandiesByFactoryId(int factoryId)
         {
@@ -55,6 +73,11 @@ namespace TreatTracker.WebAPI.Controllers
             var candy = candyService.GetCandiesByFactoryId(factoryId);
             return Ok(candy);
         }
+        /// <summary>
+        /// Find a specific Wonka candy entry by store location.
+        /// USE THIS WHEN: *RECALL* or *SECRET INGREDIENT BREACH*
+        /// </summary>
+        /// <param name="storeId">The Store Id is required.</param>
         [HttpGet]
         public IHttpActionResult GetCandiesByStoreId(int storeId)
         {
@@ -62,6 +85,10 @@ namespace TreatTracker.WebAPI.Controllers
             var candy = candyService.GetCandiesByStoreId(storeId);
             return Ok(candy);
         }
+        /// <summary>
+        /// Made a mistake on a candy entry? No worries... Wonka has your back. Edit a candy here.
+        /// </summary>
+        /// <param name="candy">Make sure to enter in all the required details when editing a candy entry. Your username and today's date will automatically be added to the modification.</param>
         [HttpPut]
         public IHttpActionResult Put(CandyEdit candy)
         {
@@ -75,6 +102,11 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Selling candy to a store.
+        /// </summary>
+        /// <param name="candyId">This will direct you to the specific candy's selling page.</param>
+        /// <param name="store">Remember to enter in the Store that you are selling to.</param>
         [HttpPut]
         public IHttpActionResult PutACandyWithAStore([FromUri] int candyId, [FromBody] OnlyStoreId store)
         {
@@ -88,6 +120,10 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
+        /// <summary>
+        /// Sold out or discontinued a candy? This is the place for you! 
+        /// </summary>
+        /// <param name="candyId">The Candy Id is required.</param>
         [HttpDelete]
         public IHttpActionResult DeleteACandy(int candyId)
         {
