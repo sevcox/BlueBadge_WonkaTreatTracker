@@ -190,14 +190,14 @@ namespace TreatTracker.Services
 
         public int GetFactoryId()
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var user =
                     ctx
                     .Users
                     .Single(e => e.UserName == _userName);
 
-                return user.FactoryId;
+                    return user.FactoryId;
             }
         }
     }

@@ -325,6 +325,11 @@ namespace TreatTracker.WebAPI.Controllers
         ///<param name="id">The GoldenTicket Id is needed</param>
         // GET api/values/5
         // POST api/Account/Register
+        /// <summary>
+        /// So you got a job with Wonka Enterprise huh? Finally out of the terrible jungle of LoompaLand? Well here we go! Register here after orientation.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)

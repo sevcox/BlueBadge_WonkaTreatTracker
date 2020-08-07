@@ -12,12 +12,20 @@ namespace TreatTracker.WebAPI.Controllers
     [Authorize]
     public class CharacterController : ApiController
     {
+        /// <summary>
+        /// creates a new character
+        /// </summary>
+        /// <returns></returns>
         private CharacterService CreateCharacterService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var characterService = new CharacterService(userId);
             return characterService;
         }
+       /// <summary>
+       ///returns all charcters created
+       /// </summary>
+       /// <returns></returns>
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -25,6 +33,11 @@ namespace TreatTracker.WebAPI.Controllers
             var characters = characterService.GetCharacters();
             return Ok(characters);
         }
+        /// <summary>
+        /// looks up all characters by there room id
+        /// </summary>
+        /// <param name="roomId"></param>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult Get(int roomId)
         {
@@ -32,6 +45,11 @@ namespace TreatTracker.WebAPI.Controllers
             var character = characterService.GetCharacterByRoomId(roomId);
             return Ok(character);
         }
+        /// <summary>
+        /// looks up characters by there id number
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult GetCharacter (int id)
         {
@@ -39,6 +57,11 @@ namespace TreatTracker.WebAPI.Controllers
             var character = characterService.GetCharacterById(id);
             return Ok(character);
         }
+        /// <summary>
+        /// looks up character by there name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult Get(string name)
         {
@@ -46,6 +69,11 @@ namespace TreatTracker.WebAPI.Controllers
             var charactera = characterService.GetCharacterByName(name);
             return Ok(charactera);
         }
+        /// <summary>
+        /// deletes a charcter by there id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {

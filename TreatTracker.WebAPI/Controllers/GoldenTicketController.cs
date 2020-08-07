@@ -14,12 +14,21 @@ namespace TreatTracker.WebAPI.Controllers
     [Authorize]
     public class GoldenTicketController : ApiController
     {
+        /// <summary>
+        /// allows oompa loompa to create a candy
+        /// </summary>
+        /// <returns></returns>
         private GoldenTicketService CreateGoldenTicketService()
         {
             var userName = User.Identity.GetUserName();
             var goldenTicketService = new GoldenTicketService(userName);
             return goldenTicketService;
         }
+        /// <summary>
+        /// creates a new golden ticket
+        /// </summary>
+        /// <param name="ticket"></param>
+        /// <returns></returns>
         [HttpPost]
         public IHttpActionResult Post(GoldenTicketCreate ticket)
         {
@@ -30,6 +39,10 @@ namespace TreatTracker.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
+        /// <summary>
+        /// returns all of the created golden tickets
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -37,6 +50,11 @@ namespace TreatTracker.WebAPI.Controllers
             var ticket = goldenTicketService.GetGoldenTickets();
             return Ok(ticket);
         }
+        /// <summary>
+        /// returns Golden ticket by its Id number
+        /// </summary>
+        /// <param name="TicketId"></param>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult GetCandyByGoldenTicketId(int ticketId)
         {
@@ -44,7 +62,13 @@ namespace TreatTracker.WebAPI.Controllers
             var ticket = goldenTicketService.GetCandyByGoldenTicketId(ticketId);
             return Ok(ticket);
         }
+        /// <summary>
+        /// allows us to edit a golden ticket
+        /// </summary>
+        /// <param name="ticket"></param>
+        /// <returns></returns>
         [HttpPut]
+        
         public IHttpActionResult Put(GoldenTicketEdit ticket)
         {
             if (!ModelState.IsValid)
@@ -57,6 +81,12 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
+
+    /// <summary>
+    /// able to delete a golden ticket.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {

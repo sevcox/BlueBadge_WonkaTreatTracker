@@ -29,6 +29,10 @@ namespace TreatTracker.Data
             // Add custom user claims here
             return userIdentity;
         }
+        public int GetFactoryId()
+        {
+            return FactoryId;
+        }
     }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
