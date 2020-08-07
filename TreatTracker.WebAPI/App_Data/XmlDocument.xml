@@ -481,6 +481,13 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.AccountController.Register(TreatTracker.WebAPI.Models.RegisterBindingModel)">
+            <summary>
+            So you got a job with Wonka Enterprise huh? Finally out of the terrible jungle of LoompaLand? Well here we go! Register here after orientation.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="T:TreatTracker.WebAPI.Controllers.CandyController">
             <summary>
             All things Candy! Yummy!
