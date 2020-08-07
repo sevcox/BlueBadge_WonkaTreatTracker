@@ -481,6 +481,112 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.CreateCharacterService">
+            <summary>
+            creates a new character
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.Get">
+             <summary>
+            returns all charcters created
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.Get(System.Int32)">
+            <summary>
+            looks up all characters by there room id
+            </summary>
+            <param name="roomId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.GetCharacter(System.Int32)">
+            <summary>
+            looks up characters by there id number
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.Get(System.String)">
+            <summary>
+            looks up character by there name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.Delete(System.Int32)">
+            <summary>
+            deletes a charcter by there id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.CreateGoldenTicketService">
+            <summary>
+            allows oompa loompa to create a candy
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.Post(TreatTracker.Models.GoldenTicketModels.GoldenTicketCreate)">
+            <summary>
+            creates a new golden ticket
+            </summary>
+            <param name="ticket"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.Get">
+            <summary>
+            returns all of the created golden tickets
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.GetCandyByGoldenTicketId(System.Int32)">
+            <summary>
+            returns Golden ticket by its Id number
+            </summary>
+            <param name="TicketId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.Put(TreatTracker.Models.GoldenTicketModels.GoldenTicketEdit)">
+            <summary>
+            allows us to edit a golden ticket
+            </summary>
+            <param name="ticket"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.Delete(System.Int32)">
+            <summary>
+            able to delete a golden ticket.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.RoomController.CreateRoomService">
+            <summary>
+            able to create a new room inside of our factory
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.RoomController.Get">
+            <summary>
+            returns all rooms inside of our factory
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.RoomController.Get(System.Int32)">
+            <summary>
+            returns the list of a room by its id number
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.RoomController.GetByCharacterId(System.Int32)">
+            <summary>
+            returns list of characters in each room.
+            </summary>
+            <param name="CharacterId"></param>
+            <returns></returns>
+        </member>
         <member name="M:TreatTracker.WebAPI.Controllers.AccountController.Register(TreatTracker.WebAPI.Models.RegisterBindingModel)">
             <summary>
             So you got a job with Wonka Enterprise huh? Finally out of the terrible jungle of LoompaLand? Well here we go! Register here after orientation.
