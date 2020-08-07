@@ -12,6 +12,10 @@ namespace TreatTracker.WebAPI.Controllers
     [Authorize]
     public class RoomController : ApiController
     {
+        /// <summary>
+        /// able to create a new room inside of our factory
+        /// </summary>
+        /// <returns></returns>
 
         private RoomService CreateRoomService()
         {
@@ -19,6 +23,10 @@ namespace TreatTracker.WebAPI.Controllers
             var roomService = new RoomService(userId);
             return roomService;
         }
+        /// <summary>
+        /// returns all rooms inside of our factory
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -26,6 +34,11 @@ namespace TreatTracker.WebAPI.Controllers
             var room = roomService.GetRooms();
             return Ok(room);
         }
+        /// <summary>
+        /// returns the list of a room by its id number
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
@@ -35,6 +48,11 @@ namespace TreatTracker.WebAPI.Controllers
                 return Ok(rooms);
             }
         }
+        /// <summary>
+        /// returns list of characters in each room.
+        /// </summary>
+        /// <param name="CharacterId"></param>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult GetByCharacterId(int CharacterId)
         {
