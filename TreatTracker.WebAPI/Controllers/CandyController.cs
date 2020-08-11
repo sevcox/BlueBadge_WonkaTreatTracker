@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Antlr.Runtime.Tree;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -105,17 +106,17 @@ namespace TreatTracker.WebAPI.Controllers
         /// <summary>
         /// Selling candy to a store.
         /// </summary>
-        /// <param name="candyId">This will direct you to the specific candy's selling page.</param>
-        /// <param name="store">Remember to enter in the Store that you are selling to.</param>
-        [HttpPut]
-        public IHttpActionResult PutACandyWithAStore([FromUri] int candyId, [FromBody] OnlyStoreId store)
+        /// <param name="candyId">Remember to enter in the candy id that you are selling.</param>
+        /// <param name="storeId">Enter in the store that you are selling to.</param>
+        [HttpPut, Route("api/Candy/SellingCandy")]
+        public IHttpActionResult PutACandyWithAStore([FromUri]int candyId, [FromBody]OnlyStoreId storeId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateCandyService();
 
-            if (!service.ConnectCandyWithStore(candyId,store))
+            if (!service.ConnectCandyWithStore(candyId, storeId))
                 return InternalServerError();
 
             return Ok();
