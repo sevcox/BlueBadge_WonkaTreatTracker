@@ -186,6 +186,7 @@
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
     <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
     <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\IResponseDocumentationProvider.cs" />
     <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
     <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
     <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\VideoSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CandyController.cs" />
@@ -259,6 +261,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\VideoSample.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -1,0 +1,14 @@
+﻿@using TreatTracker.WebAPI.Areas.HelpPage
+@{
+    ViewBag.Title = "VideoSample";
+}
+
+<h2>VideoSample</h2>
+@model VideoSample
+
+<video width="320" height="240" controls="controls">
+    <source src="@Model.Src" type="video/mp4">
+    <object data="@Model.Src" width="320" height="240">
+    </object>
+</video>
+

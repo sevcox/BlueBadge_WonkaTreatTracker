@@ -40,22 +40,24 @@ namespace TreatTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool ConnectDrinkWithStore(int drinkId, OnlyStoreId model)
+        public bool ConnectDrinkWithStore(DrinkQuantityEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                Drink drink = new Drink { DrinkId = drinkId };
-                ctx.Drinks.Add(drink);
-                ctx.Drinks.Attach(drink);
+                var drink =
+                    ctx
+                    .Drinks
+                    .Single(e => e.DrinkId == model.DrinkId);
 
-                Store store = new Store { StoreId = model.StoreId };
-                ctx.Stores.Add(store);
-                ctx.Stores.Attach(store);
+                var store =
+                    ctx
+                    .Stores
+                    .Single(e => e.StoreId == model.StoreId);
 
                 drink.Stores.Add(store);
+                drink.Quantity -= model.Quantity;
 
                 return ctx.SaveChanges() == 1;
-
             }
         }
         public IEnumerable<DrinkListItem> GetDrinks()

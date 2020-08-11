@@ -36,10 +36,14 @@
     @if (Model.SampleRequests.Count > 0)
     {
         <h3>Request Formats</h3>
-        @Html.DisplayFor(m => m.SampleRequests, "Samples")
+        @Html.DisplayFor(apiModel => apiModel.SampleResponses, "Samples", new { sampleClass = "response" })
     }
 
     <h2>Response Information</h2>
+    if (!String.IsNullOrEmpty(Model.ResponseDocumentation))
+    {
+    <p>@Model.ResponseDocumentation</p>
+    }
 
     <h3>Resource Description</h3>
 
@@ -61,7 +65,7 @@
     @if (Model.SampleResponses.Count > 0)
     {
         <h3>Response Formats</h3>
-        @Html.DisplayFor(m => m.SampleResponses, "Samples")
+        @Html.DisplayFor(apiModel => apiModel.SampleResponses, "Samples", new { sampleClass = "response" })
     }
 
 </div>

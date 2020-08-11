@@ -12,7 +12,7 @@ namespace TreatTracker.WebAPI.Areas.HelpPage
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
     /// </summary>
-    public class XmlDocumentationProvider : IDocumentationProvider, IModelDocumentationProvider
+    public class XmlDocumentationProvider : IDocumentationProvider, IModelDocumentationProvider, IResponseDocumentationProvider
     {
         private XPathNavigator _documentNavigator;
         private const string TypeExpression = "/doc/members/member[@name='T:{0}']";
@@ -70,7 +70,17 @@ namespace TreatTracker.WebAPI.Areas.HelpPage
         public string GetResponseDocumentation(HttpActionDescriptor actionDescriptor)
         {
             XPathNavigator methodNode = GetMethodNode(actionDescriptor);
-            return GetTagValue(methodNode, "returns");
+            if (methodNode != null)
+            {
+                XPathNavigator returnsNode = methodNode.SelectSingleNode("returns");
+                if (returnsNode != null)
+                {
+                    return returnsNode.Value.Trim();
+                }
+            }
+
+            return null;
+
         }
 
         public string GetDocumentation(MemberInfo member)

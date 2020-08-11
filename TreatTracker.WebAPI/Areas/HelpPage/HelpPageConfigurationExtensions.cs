@@ -236,10 +236,14 @@ namespace TreatTracker.WebAPI.Areas.HelpPage
 
         private static HelpPageApiModel GenerateApiModel(ApiDescription apiDescription, HttpConfiguration config)
         {
-            HelpPageApiModel apiModel = new HelpPageApiModel()
+            HelpPageApiModel apiModel = new HelpPageApiModel();
+            apiModel.ApiDescription = apiDescription;
+
+            IResponseDocumentationProvider responseDocProvider = config.Services.GetDocumentationProvider() as IResponseDocumentationProvider;
+            if (responseDocProvider != null)
             {
-                ApiDescription = apiDescription,
-            };
+                apiModel.ResponseDocumentation = responseDocProvider.GetResponseDocumentation(apiDescription.ActionDescriptor);
+            }
 
             ModelDescriptionGenerator modelGenerator = config.GetModelDescriptionGenerator();
             HelpPageSampleGenerator sampleGenerator = config.GetHelpPageSampleGenerator();

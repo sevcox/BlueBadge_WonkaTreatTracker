@@ -11,6 +11,9 @@ namespace TreatTracker.WebAPI.Areas.HelpPage.Models
     /// </summary>
     public class HelpPageApiModel
     {
+
+        public string ResponseDocumentation { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="HelpPageApiModel"/> class.
         /// </summary>

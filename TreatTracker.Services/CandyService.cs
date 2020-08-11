@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,24 +43,28 @@ namespace TreatTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool ConnectCandyWithStore(int candyId, OnlyStoreId model)
+
+        public bool ConnectCandyWithStore(CandyQuantityEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                Candy candy = new Candy { CandyId = candyId };
-                ctx.Candies.Add(candy);
-                ctx.Candies.Attach(candy);
+                var candy =
+                    ctx
+                    .Candies
+                    .Single(e => e.CandyId == model.CandyId);
 
-                Store store = new Store { StoreId = model.StoreId};
-                ctx.Stores.Add(store);
-                ctx.Stores.Attach(store);
+                var store =
+                    ctx
+                    .Stores
+                    .Single(e => e.StoreId == model.StoreId);
 
                 candy.Stores.Add(store);
+                candy.Quantity -= model.Quantity;
 
                 return ctx.SaveChanges() == 1;
-
             }
         }
+
         public IEnumerable<CandyListItem> GetCandies()
         {
             using (var ctx = new ApplicationDbContext())

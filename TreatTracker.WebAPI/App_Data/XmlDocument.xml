@@ -481,6 +481,11 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:TreatTracker.WebAPI.Controllers.AccountController">
+            <summary>
+            Oompa Loompa Employee Portal
+            </summary>
+        </member>
         <member name="M:TreatTracker.WebAPI.Controllers.AccountController.Register(TreatTracker.WebAPI.Models.RegisterBindingModel)">
             <summary>
             So you got a job with Wonka Enterprise huh? Finally out of the terrible jungle of LoompaLand? Well here we go! Register here after orientation.
@@ -490,7 +495,7 @@
         </member>
         <member name="T:TreatTracker.WebAPI.Controllers.CandyController">
             <summary>
-            All things Candy! Yummy!
+            Candy invention, my dear friends, is 93% perspiration, 6% electricity, 4% evaporation, and 2% butter scotch ripple.
             </summary>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.CandyController.Get">
@@ -523,18 +528,18 @@
             </summary>
             <param name="storeId">The Store Id is required.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.Put(TreatTracker.Models.CandyModels.CandyEdit)">
+        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.PutCandy(TreatTracker.Models.CandyModels.CandyEdit)">
             <summary>
             Made a mistake on a candy entry? No worries... Wonka has your back. Edit a candy here.
             </summary>
             <param name="candy">Make sure to enter in all the required details when editing a candy entry. Your username and today's date will automatically be added to the modification.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.PutACandyWithAStore(System.Int32,TreatTracker.Models.StoreModels.OnlyStoreId)">
+        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.PutACandyWithAStore(TreatTracker.Models.CandyModels.CandyQuantityEdit)">
             <summary>
             Selling candy to a store.
             </summary>
             <param name="candyId">This will direct you to the specific candy's selling page.</param>
-            <param name="store">Remember to enter in the Store that you are selling to.</param>
+            <param name="storeId">Remember to enter in the Store that you are selling to.</param>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.CandyController.DeleteACandy(System.Int32)">
             <summary>
@@ -542,49 +547,43 @@
             </summary>
             <param name="candyId">The Candy Id is required.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.CreateCharacterService">
+        <member name="T:TreatTracker.WebAPI.Controllers.CharacterController">
             <summary>
-            creates a new character
+            Violet! You're turning violet! 
             </summary>
-            <returns></returns>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.Get">
              <summary>
-            returns all charcters created
+            Returns all indentured servants employed
              </summary>
-             <returns></returns>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.Get(System.Int32)">
             <summary>
-            looks up all characters by there room id
+            Find all characters by there room id
             </summary>
-            <param name="roomId"></param>
-            <returns></returns>
+            <param name="roomId">Room Id is required.</param>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.GetCharacter(System.Int32)">
             <summary>
-            looks up characters by there id number
+            Find characters by there id number
             </summary>
-            <param name="Id"></param>
-            <returns></returns>
+            <param name="id">Character id is required.</param>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.Get(System.String)">
             <summary>
             looks up character by there name
             </summary>
-            <param name="name"></param>
-            <returns></returns>
+            <param name="name">Character name is required</param>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.CharacterController.Delete(System.Int32)">
             <summary>
-            deletes a charcter by there id
+            Indentured servant acting up? Fire them!!!!
             </summary>
-            <param name="id"></param>
-            <returns></returns>
+            <param name="id">Character Id is required.</param>
         </member>
         <member name="T:TreatTracker.WebAPI.Controllers.DrinkController">
             <summary>
-            All things Drinks! Fizzy!
+            Candy is dandy but liquor is quicker!
             </summary>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.Get">
@@ -623,7 +622,7 @@
             </summary>
             <param name="drink">Make sure to enter in all the required details when editing a drink entry. Your username and today's date will automatically be added to the modification.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.PutADrinkWithAStore(System.Int32,TreatTracker.Models.StoreModels.OnlyStoreId)">
+        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.PutQuantity(TreatTracker.Models.DrinkModels.DrinkQuantityEdit)">
             <summary>
             Selling fizzy lifting drinks to a store.
             </summary>
@@ -636,51 +635,44 @@
             </summary>
             <param name="id">The Drink Id is required.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.CreateGoldenTicketService">
+        <member name="T:TreatTracker.WebAPI.Controllers.GoldenTicketController">
             <summary>
-            allows oompa loompa to create a candy
+            Oh I've got a golden ticket!!!! 
             </summary>
-            <returns></returns>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.Post(TreatTracker.Models.GoldenTicketModels.GoldenTicketCreate)">
             <summary>
             creates a new golden ticket
             </summary>
-            <param name="ticket"></param>
-            <returns></returns>
+            <param name="ticket">Please enter in all required information</param>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.Get">
             <summary>
             returns all of the created golden tickets
             </summary>
-            <returns></returns>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.GetCandyByGoldenTicketId(System.Int32)">
             <summary>
             returns Golden ticket by its Id number
             </summary>
-            <param name="TicketId"></param>
-            <returns></returns>
+            <param name="ticketId">Golden Ticket Id is required.</param>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.Put(TreatTracker.Models.GoldenTicketModels.GoldenTicketEdit)">
             <summary>
             allows us to edit a golden ticket
             </summary>
-            <param name="ticket"></param>
-            <returns></returns>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.GoldenTicketController.Delete(System.Int32)">
             <summary>
             able to delete a golden ticket.
             </summary>
-            <param name="id"></param>
-            <returns></returns>
+            <param name="id">Golden Ticket Id is required.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.RoomController.CreateRoomService">
+        <member name="T:TreatTracker.WebAPI.Controllers.RoomController">
             <summary>
-            able to create a new room inside of our factory
+            Everything in this room is edible. Even I’m edible. But, that would be called cannibalism. It is looked down upon in most societies.
+            The snozberries taste like snozberries.
             </summary>
-            <returns></returns>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.RoomController.Get">
             <summary>
@@ -704,7 +696,7 @@
         </member>
         <member name="T:TreatTracker.WebAPI.Controllers.FactoryController">
             <summary>
-            Factory Inventory Controllers
+            Welcome my friends, welcome to my chocolate factory.
             </summary>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.FactoryController.Get">
@@ -717,6 +709,11 @@
             Returns the details of a specific factory
             </summary>
             <param name="factoryId">FactoryId is needed</param>
+        </member>
+        <member name="T:TreatTracker.WebAPI.Controllers.StoreController">
+            <summary>
+            We sell all over the world! Walmart included!
+            </summary>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.StoreController.Get">
             <summary>

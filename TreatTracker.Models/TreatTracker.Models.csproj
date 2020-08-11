@@ -66,8 +66,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CandyModels\CandyQuantityEdit.cs" />
     <Compile Include="CharacterModels\CharacterDetail.cs" />
     <Compile Include="CharacterModels\CharacterListItem.cs" />
+    <Compile Include="DrinkModels\DrinkQuantityEdit.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketCreate.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketDetail.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketEdit.cs" />
@@ -88,9 +90,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomModels\RoomDetails.cs" />
     <Compile Include="RoomModels\RoomListItem.cs" />
+    <Compile Include="StoreModels\StoreShipping.cs" />
     <Compile Include="StoreModels\StoreDetail.cs" />
+    <Compile Include="StoreModels\StoreInvoice.cs" />
     <Compile Include="StoreModels\StoreListItem.cs" />
-    <Compile Include="StoreModels\OnlyStoreId.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

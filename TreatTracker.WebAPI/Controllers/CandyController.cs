@@ -90,7 +90,7 @@ namespace TreatTracker.WebAPI.Controllers
         /// </summary>
         /// <param name="candy">Make sure to enter in all the required details when editing a candy entry. Your username and today's date will automatically be added to the modification.</param>
         [HttpPut]
-        public IHttpActionResult Put(CandyEdit candy)
+        public IHttpActionResult PutCandy(CandyEdit candy)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -102,28 +102,32 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
+
         /// <summary>
         /// Selling candy to a store.
         /// </summary>
         /// <param name="candyId">This will direct you to the specific candy's selling page.</param>
-        /// <param name="store">Remember to enter in the Store that you are selling to.</param>
-        [HttpPut]
-        public IHttpActionResult PutACandyWithAStore([FromUri] int candyId, [FromBody] OnlyStoreId store)
+        /// <param name="storeId">Remember to enter in the Store that you are selling to.</param>
+
+        [HttpPut,Route("api/Candy/ConnectCandyToStore")]
+        public IHttpActionResult PutACandyWithAStore(CandyQuantityEdit number)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateCandyService();
 
-            if (!service.ConnectCandyWithStore(candyId,store))
+            if (!service.ConnectCandyWithStore(number))
                 return InternalServerError();
 
             return Ok();
         }
+
         /// <summary>
         /// Sold out or discontinued a candy? This is the place for you! 
         /// </summary>
         /// <param name="candyId">The Candy Id is required.</param>
+
         [HttpDelete]
         public IHttpActionResult DeleteACandy(int candyId)
         {

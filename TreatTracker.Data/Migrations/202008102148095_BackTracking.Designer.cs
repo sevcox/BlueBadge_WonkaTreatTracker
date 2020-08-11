@@ -7,13 +7,13 @@ namespace TreatTracker.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class UpdateToCandyProp : IMigrationMetadata
+    public sealed partial class BackTracking : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateToCandyProp));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(BackTracking));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008071443070_UpdateToCandyProp"; }
+            get { return "202008102148095_BackTracking"; }
         }
         
         string IMigrationMetadata.Source
