@@ -44,13 +44,15 @@ namespace TreatTracker.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                Drink drink = new Drink { DrinkId = drinkId };
-                ctx.Drinks.Add(drink);
-                ctx.Drinks.Attach(drink);
+                var drink =
+                ctx
+                .Drinks
+                .Single(d => d.DrinkId == drinkId);
 
-                Store store = new Store { StoreId = model.StoreId };
-                ctx.Stores.Add(store);
-                ctx.Stores.Attach(store);
+                var store =
+                    ctx
+                    .Stores
+                    .Single(s => s.StoreId == model.StoreId);
 
                 drink.Stores.Add(store);
 
