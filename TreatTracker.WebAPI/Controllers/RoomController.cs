@@ -24,7 +24,6 @@ namespace TreatTracker.WebAPI.Controllers
         /// <summary>
         /// returns all rooms inside of our factory
         /// </summary>
-        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -35,8 +34,7 @@ namespace TreatTracker.WebAPI.Controllers
         /// <summary>
         /// returns the list of a room by its id number
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Room Id is required.</param>
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
@@ -49,8 +47,7 @@ namespace TreatTracker.WebAPI.Controllers
         /// <summary>
         /// returns list of characters in each room.
         /// </summary>
-        /// <param name="CharacterId"></param>
-        /// <returns></returns>
+        /// <param name="characterId"> Character Id is required.</param>
         [HttpGet]
         public IHttpActionResult GetByCharacterId(int characterId)
         {
