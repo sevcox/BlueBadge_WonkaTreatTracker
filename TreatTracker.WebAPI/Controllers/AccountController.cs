@@ -339,7 +339,7 @@ namespace TreatTracker.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FactoryId = model.FactoryId };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FactoryId= model.FactoryId};
             //had to input factoryId into the  in new ApplicationUser()
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
