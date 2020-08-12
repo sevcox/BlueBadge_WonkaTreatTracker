@@ -505,7 +505,7 @@
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.CandyController.PostANewCandy(TreatTracker.Models.CandyModels.CandyCreate)">
             <summary>
-            Create a new candy entry for your factory after inventory was counted.
+            Create a new candy entry for your factory after inventory was counted. Remember to enter in golden ticket entries seperately.
             </summary>
             <param name="candy">Make sure to enter in all the required details when creating a candy entry. Your Factory Id, username, and today's date will be automatically added to the entry.</param>
         </member>
@@ -534,11 +534,12 @@
             </summary>
             <param name="candy">Make sure to enter in all the required details when editing a candy entry. Your username and today's date will automatically be added to the modification.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.PutACandyWithAStore(TreatTracker.Models.CandyModels.CandyQuantityEdit)">
+        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.PutACandyWithAStore(System.Int32,TreatTracker.Models.StoreModels.OnlyStoreId)">
             <summary>
             Selling candy to a store.
             </summary>
-            <param name="model">When selling candies to a store you must enter in the candy and the amount you are selling, along with the store you are selling to.</param>
+            <param name="candyId">Remember to enter in the candy id that you are selling.</param>
+            <param name="storeId">Enter in the store that you are selling to.</param>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.CandyController.DeleteACandy(System.Int32)">
             <summary>
@@ -621,11 +622,12 @@
             </summary>
             <param name="drink">Make sure to enter in all the required details when editing a drink entry. Your username and today's date will automatically be added to the modification.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.PutADrinkWithAStore(TreatTracker.Models.DrinkModels.DrinkQuantityEdit)">
+        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.PutACandyWithAStore(System.Int32,TreatTracker.Models.StoreModels.OnlyStoreId)">
             <summary>
-            Selling fizzy lifting drinks to a store.
+            Selling drinks to a store.
             </summary>
-            <param name="model">When selling drinks to a store you must enter in the drink and the amount you are selling, along with the store you are selling to.</param>
+            <param name="drinkId">Remember to enter in the drink id that you are selling.</param>
+            <param name="storeId">Enter in the store that you are selling to.</param>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.Delete(System.Int32)">
             <summary>
@@ -676,21 +678,18 @@
             <summary>
             returns all rooms inside of our factory
             </summary>
-            <returns></returns>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.RoomController.Get(System.Int32)">
             <summary>
             returns the list of a room by its id number
             </summary>
-            <param name="id"></param>
-            <returns></returns>
+            <param name="id">Room Id is required.</param>
         </member>
         <member name="M:TreatTracker.WebAPI.Controllers.RoomController.GetByCharacterId(System.Int32)">
             <summary>
             returns list of characters in each room.
             </summary>
-            <param name="CharacterId"></param>
-            <returns></returns>
+            <param name="characterId"> Character Id is required.</param>
         </member>
         <member name="T:TreatTracker.WebAPI.Controllers.FactoryController">
             <summary>

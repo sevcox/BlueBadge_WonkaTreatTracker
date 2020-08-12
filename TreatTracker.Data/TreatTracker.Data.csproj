@@ -93,17 +93,13 @@
     <Compile Include="IAutoDateTime.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="Migrations\202008062214118_Initial.cs" />
-    <Compile Include="Migrations\202008062214118_Initial.Designer.cs">
-      <DependentUpon>202008062214118_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202008121320010_InitialMigration.cs" />
+    <Compile Include="Migrations\202008121320010_InitialMigration.Designer.cs">
+      <DependentUpon>202008121320010_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008071503598_UpdateToCandy.cs" />
-    <Compile Include="Migrations\202008071503598_UpdateToCandy.Designer.cs">
-      <DependentUpon>202008071503598_UpdateToCandy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008071443070_UpdateToCandyProp.cs" />
-    <Compile Include="Migrations\202008071443070_UpdateToCandyProp.Designer.cs">
-      <DependentUpon>202008071443070_UpdateToCandyProp.cs</DependentUpon>
+    <Compile Include="Migrations\202008121326334_UpdateToSeedMethod.cs" />
+    <Compile Include="Migrations\202008121326334_UpdateToSeedMethod.Designer.cs">
+      <DependentUpon>202008121326334_UpdateToSeedMethod.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,14 +112,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008062214118_Initial.resx">
-      <DependentUpon>202008062214118_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008121320010_InitialMigration.resx">
+      <DependentUpon>202008121320010_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008071503598_UpdateToCandy.resx">
-      <DependentUpon>202008071503598_UpdateToCandy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008071443070_UpdateToCandyProp.resx">
-      <DependentUpon>202008071443070_UpdateToCandyProp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008121326334_UpdateToSeedMethod.resx">
+      <DependentUpon>202008121326334_UpdateToSeedMethod.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
