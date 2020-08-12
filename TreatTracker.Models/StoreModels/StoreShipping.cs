@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace TreatTracker.Models.StoreModels
 {
-    class StoreShipping
+   public class StoreShipping
     {
+        public bool IsShipping { get; set; }
+        
+       
     }
 }

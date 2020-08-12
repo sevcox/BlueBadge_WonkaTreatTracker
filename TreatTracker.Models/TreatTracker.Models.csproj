@@ -89,8 +89,10 @@
     <Compile Include="RoomModels\RoomDetails.cs" />
     <Compile Include="RoomModels\RoomListItem.cs" />
     <Compile Include="StoreModels\StoreDetail.cs" />
+    <Compile Include="StoreModels\StoreInvoice.cs" />
     <Compile Include="StoreModels\StoreListItem.cs" />
     <Compile Include="StoreModels\OnlyStoreId.cs" />
+    <Compile Include="StoreModels\StoreShipping.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

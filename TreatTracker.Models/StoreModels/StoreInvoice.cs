@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace TreatTracker.Models.StoreModels
 {
-    class StoreInvoice
+   public class StoreInvoice
     {
+        public int StoreId { get; set; }
+        public int AmountOfTreats { get; set; }
+        
+        //with shipping and tax
+        public decimal?TotalCost { get; set; }
     }
 }
