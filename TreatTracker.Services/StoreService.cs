@@ -77,7 +77,6 @@ namespace TreatTracker.Services
                 return allStores.ToArray();
             }
         }
-
         public IEnumerable<StoreListItem> GetStoresByDrinkId(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -109,18 +108,17 @@ namespace TreatTracker.Services
                     .Single(s => s.StoreId == id);
                 var isShipping = model.IsShipping;
                 return
-                 new StoreInvoice
-                 {
-                     StoreId = id,
-                     AmountOfTreats = GetCandyQuantity(id) + GetDrinkQuantity(id),
-                     TotalCost = (decimal)Math.Floor((double) (GetCandyCost(id, isShipping) + GetDrinkCost(id, isShipping)))
-                 };
+                    new StoreInvoice
+                    {
+                        StoreId = id,
+                        AmountofTreats = GetCandyQuantity(id) + GetDrinkQuantity(id),
+                        TotalCost = GetCandyCost(id, isShipping) + GetDrinkCost(id, isShipping)
+                    };
             }
         }
 
         public decimal? GetCandyCost(int id, bool isShipping)
         {
-            
             using (var ctx = new ApplicationDbContext())
             {
                 var candies =
@@ -135,31 +133,31 @@ namespace TreatTracker.Services
                     int quantity = candy.Quantity;
                     var candyCost = cost * quantity;
                     treatCost += candyCost;
+
                 }
                 var totalCost = treatCost + GetShippingCost(isShipping, treatCost);
                 return totalCost;
-
             }
         }
         public int GetCandyQuantity(int id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var candies =
                     ctx
                     .Stores
                     .Single(s => s.StoreId == id)
                     .Candies;
-                int totalquantity = 0;
-                foreach(var candy in candies)
+                int totalQuantity = 0;
+                foreach (var candy in candies)
                 {
                     int quantity = candy.Quantity;
-                    totalquantity = quantity++;
+                    totalQuantity += quantity;
                 }
-                return totalquantity;
+
+                return totalQuantity;
             }
         }
-
         public decimal? GetDrinkCost(int id, bool isShipping)
         {
             using (var ctx = new ApplicationDbContext())
@@ -167,53 +165,51 @@ namespace TreatTracker.Services
                 var drinks =
                     ctx
                     .Stores
-                    .Single(e => e.StoreId == id)
-                    .Candies;
-                decimal? totalCost = 0;
-                foreach(var drink in drinks)
+                    .Single(s => s.StoreId == id)
+                    .Drinks;
+                decimal? treatCost = 0;
+                foreach (var drink in drinks)
                 {
                     decimal? cost = drink.Price;
-                    totalCost = cost++;
+                    int quantity = drink.Quantity;
+                    var drinkCost = cost * quantity;
+                    treatCost += cost;
                 }
+
+                var totalCost = treatCost + GetShippingCost(isShipping, treatCost);
                 return totalCost;
             }
         }
-
         public int GetDrinkQuantity(int id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var drinks =
                     ctx
                     .Stores
-                    .Single(e => e.StoreId == id)
+                    .Single(s => s.StoreId == id)
                     .Drinks;
-
-                var totalquantity = 0;
-                foreach(var drink in drinks)
+                int totalQuantity = 0;
+                foreach (var drink in drinks)
                 {
                     int quantity = drink.Quantity;
-                    totalquantity = quantity++;
+                    totalQuantity += quantity;
                 }
 
-                return totalquantity = 0;
+                return totalQuantity;
             }
         }
         public decimal? GetShippingCost(bool isShipping, decimal? totalCost)
         {
-            if(isShipping == true)
+            if (isShipping == true)
             {
                 var tax = totalCost * 0.08m;
-                var shippingRate = totalCost * 1.05m;
+                var shippingRate = totalCost * 0.05m;
                 var totalShipping = tax + shippingRate;
                 return totalShipping;
             }
-           
-           var Treattax = totalCost * 1.08m;
-            return Treattax;
+            var treatTax = totalCost * 1.08m;
+            return treatTax;
         }
     }
 }
-
-
-    

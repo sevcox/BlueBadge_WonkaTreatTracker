@@ -13,7 +13,7 @@ namespace TreatTracker.Data
         [DisplayFormat(DataFormatString = "{0:d}")]
         DateTimeOffset? CreatedUtc { get; set; }
         [Required]
-        [Display(Name = "Creator")]
+        [Display(Name ="UserCreated")]
         string UserCreated { get; set; }
         [DisplayFormat(DataFormatString = "{0:d}")]
         DateTimeOffset? ModifiedUtc { get; set; }

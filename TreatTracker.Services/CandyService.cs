@@ -43,25 +43,24 @@ namespace TreatTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
-        public bool ConnectCandyWithStore(CandyQuantityEdit model)
+        public bool ConnectCandyWithStore(int candyId, OnlyStoreId model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var candy =
-                    ctx
-                    .Candies
-                    .Single(e => e.CandyId == model.CandyId);
+                ctx
+                .Candies
+                .Single(c => c.CandyId == candyId);
 
                 var store =
                     ctx
                     .Stores
-                    .Single(e => e.StoreId == model.StoreId);
+                    .Single(s => s.StoreId == model.StoreId);
 
                 candy.Stores.Add(store);
-                candy.Quantity -= model.Quantity;
 
                 return ctx.SaveChanges() == 1;
+
             }
         }
 

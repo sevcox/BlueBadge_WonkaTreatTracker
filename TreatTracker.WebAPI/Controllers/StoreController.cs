@@ -6,7 +6,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TreatTracker.Data;
-using TreatTracker.Models.CandyModels;
 using TreatTracker.Models.StoreModels;
 using TreatTracker.Services;
 
@@ -59,7 +58,6 @@ namespace TreatTracker.WebAPI.Controllers
             return Ok(store);
 
         }
-
         ///<summary>
         ///Returns a list of stores that are selling one specific drink
         ///</summary>
@@ -72,13 +70,20 @@ namespace TreatTracker.WebAPI.Controllers
             return Ok(store);
 
         }
-        [HttpGet, Route("api/Store/GetStoreInvoice")]
-        public IHttpActionResult GetStoreInvoice([FromUri] int storeId, [FromBody]StoreShipping isShipping)
+
+        /// <summary>
+        /// Shows you the invoice of the store's purchase of treats.
+        /// </summary>
+        /// <param name="storeId">Store Id is needed to check a certain store's invoice.</param>
+        /// <param name="isShipping">Enter in true if the store is in need of shipping the treats. Enter in false if the store plans to pick up the treats. </param>
+        /// <returns></returns>
+
+        [HttpGet]
+        public IHttpActionResult GetStoreInvoice([FromUri] int storeId, [FromBody] StoreShipping isShipping)
         {
             StoreService storeService = CreateStoreService();
-           var invoice = storeService.GetStoreInvoice(storeId, isShipping);
+            var invoice = storeService.GetStoreInvoice(storeId, isShipping);
             return Ok(invoice);
         }
-
     }
 }

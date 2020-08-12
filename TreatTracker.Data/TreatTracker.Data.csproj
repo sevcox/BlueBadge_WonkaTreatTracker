@@ -93,25 +93,9 @@
     <Compile Include="IAutoDateTime.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="Migrations\202008062214118_Initial.cs" />
-    <Compile Include="Migrations\202008062214118_Initial.Designer.cs">
-      <DependentUpon>202008062214118_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008071503598_UpdateToCandy.cs" />
-    <Compile Include="Migrations\202008071503598_UpdateToCandy.Designer.cs">
-      <DependentUpon>202008071503598_UpdateToCandy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008101913003_QuantityMigration.cs" />
-    <Compile Include="Migrations\202008101913003_QuantityMigration.Designer.cs">
-      <DependentUpon>202008101913003_QuantityMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008102101473_NewMigration.cs" />
-    <Compile Include="Migrations\202008102101473_NewMigration.Designer.cs">
-      <DependentUpon>202008102101473_NewMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008102148095_BackTracking.cs" />
-    <Compile Include="Migrations\202008102148095_BackTracking.Designer.cs">
-      <DependentUpon>202008102148095_BackTracking.cs</DependentUpon>
+    <Compile Include="Migrations\202008121341484_InitialMigration.cs" />
+    <Compile Include="Migrations\202008121341484_InitialMigration.Designer.cs">
+      <DependentUpon>202008121341484_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,20 +108,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008062214118_Initial.resx">
-      <DependentUpon>202008062214118_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008071503598_UpdateToCandy.resx">
-      <DependentUpon>202008071503598_UpdateToCandy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008101913003_QuantityMigration.resx">
-      <DependentUpon>202008101913003_QuantityMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008102101473_NewMigration.resx">
-      <DependentUpon>202008102101473_NewMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008102148095_BackTracking.resx">
-      <DependentUpon>202008102148095_BackTracking.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008121341484_InitialMigration.resx">
+      <DependentUpon>202008121341484_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

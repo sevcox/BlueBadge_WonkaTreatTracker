@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Antlr.Runtime.Tree;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,7 +91,7 @@ namespace TreatTracker.WebAPI.Controllers
         /// </summary>
         /// <param name="candy">Make sure to enter in all the required details when editing a candy entry. Your username and today's date will automatically be added to the modification.</param>
         [HttpPut]
-        public IHttpActionResult PutCandy(CandyEdit candy)
+        public IHttpActionResult Put(CandyEdit candy)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -102,32 +103,28 @@ namespace TreatTracker.WebAPI.Controllers
 
             return Ok();
         }
-
         /// <summary>
         /// Selling candy to a store.
         /// </summary>
-        /// <param name="candyId">This will direct you to the specific candy's selling page.</param>
-        /// <param name="storeId">Remember to enter in the Store that you are selling to.</param>
-
-        [HttpPut,Route("api/Candy/ConnectCandyToStore")]
-        public IHttpActionResult PutACandyWithAStore(CandyQuantityEdit number)
+        /// <param name="candyId">Remember to enter in the candy id that you are selling.</param>
+        /// <param name="storeId">Enter in the store that you are selling to.</param>
+        [HttpPut, Route("api/Candy/SellingCandy")]
+        public IHttpActionResult PutACandyWithAStore([FromUri] int candyId, [FromBody] OnlyStoreId storeId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateCandyService();
 
-            if (!service.ConnectCandyWithStore(number))
+            if (!service.ConnectCandyWithStore(candyId, storeId))
                 return InternalServerError();
 
             return Ok();
         }
-
         /// <summary>
         /// Sold out or discontinued a candy? This is the place for you! 
         /// </summary>
         /// <param name="candyId">The Candy Id is required.</param>
-
         [HttpDelete]
         public IHttpActionResult DeleteACandy(int candyId)
         {
