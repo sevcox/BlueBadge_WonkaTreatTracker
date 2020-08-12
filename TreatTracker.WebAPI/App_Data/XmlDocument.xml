@@ -707,6 +707,20 @@
             </summary>
             <param name="factoryId">FactoryId is needed</param>
         </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.FactoryController.GetFactoryByCandyId(System.Int32)">
+            <summary>
+            Returns the details of a specific factory based upon it's candy Id.
+            </summary>
+            <param name="candyId">The Candy Id is required.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.FactoryController.GetFactoryByDrinkId(System.Int32)">
+            <summary>
+            Returns the details of a specific factory based upon it's drink Id.
+            </summary>
+            <param name="drinkId">The Drink Id is required.</param>
+            <returns></returns>
+        </member>
         <member name="T:TreatTracker.WebAPI.Controllers.StoreController">
             <summary>
             We sell all over the world! Walmart included!
