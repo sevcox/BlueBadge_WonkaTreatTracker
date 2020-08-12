@@ -208,7 +208,7 @@ namespace TreatTracker.Services
                 var totalShipping = tax + shippingRate;
                 return totalShipping;
             }
-            var treatTax = totalCost * 1.08m;
+            var treatTax = totalCost * 0.08m;
             return treatTax;
         }
     }
