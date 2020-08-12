@@ -20,6 +20,9 @@ using TreatTracker.WebAPI.Results;
 
 namespace TreatTracker.WebAPI.Controllers
 {
+    /// <summary>
+    /// Oompa Loompa Employee Portal
+    /// </summary>
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
@@ -319,7 +322,17 @@ namespace TreatTracker.WebAPI.Controllers
             return logins;
         }
 
+        ///<summary>
+        ///So you got a job with Wonka Enterprise, huh? Finally out of the terrible jungles of Loompaland
+        ///</summary>
+        ///<param name="id">The GoldenTicket Id is needed</param>
+        // GET api/values/5
         // POST api/Account/Register
+        /// <summary>
+        /// So you got a job with Wonka Enterprise huh? Finally out of the terrible jungle of LoompaLand? Well here we go! Register here after orientation.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -329,8 +342,8 @@ namespace TreatTracker.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FactoryId = model.FactoryId };
+            //had to input factoryId into the  in new ApplicationUser()
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded)

@@ -15,13 +15,15 @@ namespace TreatTracker.WebAPI.Controllers
         {
             return new string[] { "value1", "value2" };
         }
-
+        ///<summary>
+        ///Looks up some data by ID
+        ///</summary>
+        ///<param name="id">The ID of the Wonka data.</param>
         // GET api/values/5
         public string Get(int id)
         {
             return "value";
         }
-
         // POST api/values
         public void Post([FromBody]string value)
         {

@@ -125,10 +125,11 @@
 #body.help-page {
     font-size: 14px;
     line-height: 143%;
-    color: #333;
+    color: #8440b8;
+    background-color: white;
 }
 
 .help-page a {
-    color: #0000EE;
+    color: black;
     text-decoration: none;
 }
