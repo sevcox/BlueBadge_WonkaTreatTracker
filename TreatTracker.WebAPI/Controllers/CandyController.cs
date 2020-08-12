@@ -36,7 +36,7 @@ namespace TreatTracker.WebAPI.Controllers
             return Ok(candies);
         }
         /// <summary>
-        /// Create a new candy entry for your factory after inventory was counted.
+        /// Create a new candy entry for your factory after inventory was counted. Remember to enter in golden ticket entries seperately.
         /// </summary>
         /// <param name="candy">Make sure to enter in all the required details when creating a candy entry. Your Factory Id, username, and today's date will be automatically added to the entry.</param>
         [HttpPost]

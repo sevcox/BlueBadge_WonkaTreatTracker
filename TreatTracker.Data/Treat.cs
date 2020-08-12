@@ -21,11 +21,11 @@ namespace TreatTracker.Data
         public decimal? Price { get; set; }
         [Required]
         public int Quantity { get; set; }
-        [Required]
         [DisplayFormat(DataFormatString = "{0:d}")]
-        public DateTimeOffset? CreatedUtc { get; set; }
         [Required]
+        public DateTimeOffset? CreatedUtc { get; set; }
         [Display(Name = "Creator")]
+        [Required]
         public string UserCreated { get; set; }
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTimeOffset? ModifiedUtc { get; set; }
