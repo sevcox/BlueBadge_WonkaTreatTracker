@@ -29,7 +29,7 @@ Open the file you want to save the project in, and open up the command line in t
 
 Before opening the program go to the program file **BlueBadge_WonkaTreatTracker** and delete the bin and obj files from the *TreatTracker.Data*, *TreatTracker.Model*, *TreatTracker.Service*, and *TreatTracker.WebAPI*.</br>
 
-Next open up the project by clicking on the sln document within the **BlueBadge_WonkaTreatTracker** file folder. When the project opens you should be able to run the program immediately by clicking on the green arrows at the top of the page.</br>
+Next open up the project by clicking on the sln document within the **BlueBadge_WonkaTreatTracker** file folder. When the project opens you should head to the **Package Manager Console** and type *update-database* in order to seed your tables with test data. After that you should be able to run the program by clicking on the green arrows at the top of the page.</br>
 
 The first thing you will need to do is register a new user. Open up Postman and input *https://localhost:44310/api/Account/Register* into the browser bar, set the dropdown right next to the browser bar to *POST*. Within the body create parameters factoryId and enter in a number between 1 and 3, next input a body parameter of email and input any made up email address you would like(ideally wonka related). Next input two body parameters, one password and the other confirm password. Then input a password that is at least 7 characters long into both of those parameters ensuring that they are exact matches, you should receive a 200 OK notice in green below the parameters.</br>
 
