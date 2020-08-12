@@ -26,7 +26,6 @@ namespace TreatTracker.Models.CandyModels
         public string SecretIngredient { get; set; }
         [Required]
         public int Quantity { get; set; }
-        public int FactoryId { get; set; }
         [Range(1, 100, ErrorMessage = "Price must be between $1 and $100.")]
         [DataType(DataType.Currency)]// specifies the datatype with the webapi helppage
         public decimal? Price { get; set; }

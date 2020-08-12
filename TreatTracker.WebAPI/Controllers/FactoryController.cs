@@ -42,5 +42,29 @@ namespace TreatTracker.WebAPI.Controllers
             return Ok(factory);
 
         }
+        /// <summary>
+        /// Returns the details of a specific factory based upon it's candy Id.
+        /// </summary>
+        /// <param name="candyId">The Candy Id is required.</param>
+        /// <returns></returns>
+        [HttpGet]
+        public IHttpActionResult GetFactoryByCandyId(int candyId)
+        {
+            FactoryService factoryService = CreateFactoryService();
+            var factory = factoryService.GetFactoryByCandyId(candyId);
+            return Ok(factory);
+        }
+        /// <summary>
+        /// Returns the details of a specific factory based upon it's drink Id.
+        /// </summary>
+        /// <param name="drinkId">The Drink Id is required.</param>
+        /// <returns></returns>
+        [HttpGet]
+        public IHttpActionResult GetFactoryByDrinkId(int drinkId)
+        {
+            FactoryService factoryService = CreateFactoryService();
+            var factory = factoryService.GetFactoryByDrinkId(drinkId);
+            return Ok(factory);
+        }
     }
 }
