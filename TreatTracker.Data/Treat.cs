@@ -26,6 +26,7 @@ namespace TreatTracker.Data
         public DateTimeOffset? CreatedUtc { get; set; }
         [Required]
         [Display(Name = "Creator")]
+        
         public string UserCreated { get; set; }
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTimeOffset? ModifiedUtc { get; set; }
