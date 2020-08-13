@@ -117,7 +117,7 @@ namespace TreatTracker.Services
             }
         }
 
-        public decimal? GetCandyCost(int id, bool isShipping)
+        public decimal? GetCandyCost(int id, bool isShipping) //helper method
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -139,7 +139,7 @@ namespace TreatTracker.Services
                 return totalCost;
             }
         }
-        public int GetCandyQuantity(int id)
+        public int GetCandyQuantity(int id) // helper method
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -158,7 +158,7 @@ namespace TreatTracker.Services
                 return totalQuantity;
             }
         }
-        public decimal? GetDrinkCost(int id, bool isShipping)
+        public decimal? GetDrinkCost(int id, bool isShipping) // helper method
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -180,7 +180,7 @@ namespace TreatTracker.Services
                 return totalCost;
             }
         }
-        public int GetDrinkQuantity(int id)
+        public int GetDrinkQuantity(int id) //helper method
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -189,7 +189,7 @@ namespace TreatTracker.Services
                     .Stores
                     .Single(s => s.StoreId == id)
                     .Drinks;
-                int totalQuantity = 0;
+                int totalQuantity = 0; // variable needs to be declared outside of foreach statement because of scope.
                 foreach (var drink in drinks)
                 {
                     int quantity = drink.Quantity;
@@ -199,7 +199,7 @@ namespace TreatTracker.Services
                 return totalQuantity;
             }
         }
-        public decimal? GetShippingCost (bool isShipping, decimal? totalCost)
+        public decimal? GetShippingCost (bool isShipping, decimal? totalCost) //takes int the bool isShipping and the totalcost of the drinks and candies within a store. 
         {
             if(isShipping == true)
             {
@@ -208,7 +208,7 @@ namespace TreatTracker.Services
                 var totalShipping = tax + shippingRate;
                 return totalShipping;
             }
-            var treatTax = totalCost * 1.08m;
+            var treatTax = totalCost * 0.08m;
             return treatTax;
         }
     }

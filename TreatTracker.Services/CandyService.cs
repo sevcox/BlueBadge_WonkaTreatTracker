@@ -32,7 +32,7 @@ namespace TreatTracker.Services
                 Price = model.Price,
                 FactoryId = GetFactoryId(),
                 CreatedUtc = DateTimeOffset.Now,
-                UserCreated = _userName
+                //UserCreated = _userName
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -103,7 +103,7 @@ namespace TreatTracker.Services
                         Quantity = entity.Quantity,
                         FactoryId = entity.FactoryId,
                         CreatedUtc = entity.CreatedUtc,
-                        UserCreated = entity.UserCreated,
+                        //UserCreated = entity.UserCreated,
                         ModifiedUtc = entity.ModifiedUtc,
                         UserModified = entity.UserModified
                     };

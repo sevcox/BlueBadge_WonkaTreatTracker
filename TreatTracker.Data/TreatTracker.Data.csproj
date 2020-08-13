@@ -93,13 +93,9 @@
     <Compile Include="IAutoDateTime.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="Migrations\202008121320010_InitialMigration.cs" />
-    <Compile Include="Migrations\202008121320010_InitialMigration.Designer.cs">
-      <DependentUpon>202008121320010_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008121326334_UpdateToSeedMethod.cs" />
-    <Compile Include="Migrations\202008121326334_UpdateToSeedMethod.Designer.cs">
-      <DependentUpon>202008121326334_UpdateToSeedMethod.cs</DependentUpon>
+    <Compile Include="Migrations\202008121843570_InitialMigration.cs" />
+    <Compile Include="Migrations\202008121843570_InitialMigration.Designer.cs">
+      <DependentUpon>202008121843570_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,11 +108,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008121320010_InitialMigration.resx">
-      <DependentUpon>202008121320010_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008121326334_UpdateToSeedMethod.resx">
-      <DependentUpon>202008121326334_UpdateToSeedMethod.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008121843570_InitialMigration.resx">
+      <DependentUpon>202008121843570_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
