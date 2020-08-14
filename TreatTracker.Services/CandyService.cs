@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using TreatTracker.Data;
@@ -32,7 +33,7 @@ namespace TreatTracker.Services
                 Price = model.Price,
                 FactoryId = GetFactoryId(),
                 CreatedUtc = DateTimeOffset.Now,
-                //UserCreated = _userName
+                UserCreated = _userName
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -41,26 +42,44 @@ namespace TreatTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool ConnectCandyWithStore(int candyId, OnlyStoreId model)
+        public bool ConnectCandyWithStore(CandyQuantityEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var candy =
-                ctx
-                .Candies
-                .Single(c => c.CandyId == candyId);
+                  ctx
+                  .Candies
+                  .Single(c => c.CandyId == model.CandyId);
 
                 var store =
                     ctx
                     .Stores
                     .Single(s => s.StoreId == model.StoreId);
 
-                candy.Stores.Add(store);
+                candy.Quantity -= model.Quantity;
 
+                var storeCandies =
+                   new StoreCandy()
+                   {
+                       CandyId = candy.CandyId,
+                       StoreId = store.StoreId,
+                       Quantity = model.Quantity
+                   };
+
+                store.StoreCandy.Add(storeCandies);
+                ctx.StoreCandies.Add(storeCandies);
                 return ctx.SaveChanges() == 1;
 
-            }
+            };
+           
         }
+            
+
+
+
+            
+
+
         public IEnumerable<CandyListItem> GetCandies()
         {
             using (var ctx = new ApplicationDbContext())
@@ -103,7 +122,7 @@ namespace TreatTracker.Services
                         Quantity = entity.Quantity,
                         FactoryId = entity.FactoryId,
                         CreatedUtc = entity.CreatedUtc,
-                        //UserCreated = entity.UserCreated,
+                        UserCreated = entity.UserCreated,
                         ModifiedUtc = entity.ModifiedUtc,
                         UserModified = entity.UserModified
                     };
@@ -199,8 +218,10 @@ namespace TreatTracker.Services
                     .Users
                     .Single(e => e.UserName == _userName);
 
-                    return user.FactoryId;
+                return user.FactoryId;
             }
         }
     }
 }
+  
+

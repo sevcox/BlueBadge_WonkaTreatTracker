@@ -23,10 +23,13 @@ namespace TreatTracker.Data.Migrations
                         UserCreated = c.String(nullable: false),
                         ModifiedUtc = c.DateTimeOffset(precision: 7),
                         UserModified = c.String(),
+                        Store_StoreId = c.Int(),
                     })
                 .PrimaryKey(t => t.CandyId)
                 .ForeignKey("dbo.Factory", t => t.FactoryId, cascadeDelete: true)
-                .Index(t => t.FactoryId);
+                .ForeignKey("dbo.Store", t => t.Store_StoreId)
+                .Index(t => t.FactoryId)
+                .Index(t => t.Store_StoreId);
             
             CreateTable(
                 "dbo.Factory",
@@ -150,10 +153,28 @@ namespace TreatTracker.Data.Migrations
                         UserCreated = c.String(nullable: false),
                         ModifiedUtc = c.DateTimeOffset(precision: 7),
                         UserModified = c.String(),
+                        Store_StoreId = c.Int(),
                     })
                 .PrimaryKey(t => t.DrinkId)
                 .ForeignKey("dbo.Factory", t => t.FactoryId, cascadeDelete: true)
-                .Index(t => t.FactoryId);
+                .ForeignKey("dbo.Store", t => t.Store_StoreId)
+                .Index(t => t.FactoryId)
+                .Index(t => t.Store_StoreId);
+            
+            CreateTable(
+                "dbo.StoreDink",
+                c => new
+                    {
+                        StoreDrink = c.Int(nullable: false, identity: true),
+                        StoreId = c.Int(nullable: false),
+                        DrinkId = c.Int(nullable: false),
+                        Quantity = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.StoreDrink)
+                .ForeignKey("dbo.Drink", t => t.DrinkId, cascadeDelete: true)
+                .ForeignKey("dbo.Store", t => t.StoreId, cascadeDelete: true)
+                .Index(t => t.StoreId)
+                .Index(t => t.DrinkId);
             
             CreateTable(
                 "dbo.Store",
@@ -165,6 +186,21 @@ namespace TreatTracker.Data.Migrations
                         PhoneNumber = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.StoreId);
+            
+            CreateTable(
+                "dbo.StoreCandy",
+                c => new
+                    {
+                        StoreCandyId = c.Int(nullable: false, identity: true),
+                        StoreId = c.Int(nullable: false),
+                        CandyId = c.Int(nullable: false),
+                        Quantity = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.StoreCandyId)
+                .ForeignKey("dbo.Candy", t => t.CandyId, cascadeDelete: true)
+                .ForeignKey("dbo.Store", t => t.StoreId, cascadeDelete: true)
+                .Index(t => t.StoreId)
+                .Index(t => t.CandyId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -191,42 +227,18 @@ namespace TreatTracker.Data.Migrations
                 .ForeignKey("dbo.Candy", t => t.CandyId, cascadeDelete: true)
                 .Index(t => t.CandyId, unique: true);
             
-            CreateTable(
-                "dbo.StoreCandy",
-                c => new
-                    {
-                        Store_StoreId = c.Int(nullable: false),
-                        Candy_CandyId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Store_StoreId, t.Candy_CandyId })
-                .ForeignKey("dbo.Store", t => t.Store_StoreId, cascadeDelete: true)
-                .ForeignKey("dbo.Candy", t => t.Candy_CandyId, cascadeDelete: true)
-                .Index(t => t.Store_StoreId)
-                .Index(t => t.Candy_CandyId);
-            
-            CreateTable(
-                "dbo.StoreDrink",
-                c => new
-                    {
-                        Store_StoreId = c.Int(nullable: false),
-                        Drink_DrinkId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Store_StoreId, t.Drink_DrinkId })
-                .ForeignKey("dbo.Store", t => t.Store_StoreId, cascadeDelete: true)
-                .ForeignKey("dbo.Drink", t => t.Drink_DrinkId, cascadeDelete: true)
-                .Index(t => t.Store_StoreId)
-                .Index(t => t.Drink_DrinkId);
-            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.GoldenTicket", "CandyId", "dbo.Candy");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
-            DropForeignKey("dbo.StoreDrink", "Drink_DrinkId", "dbo.Drink");
-            DropForeignKey("dbo.StoreDrink", "Store_StoreId", "dbo.Store");
-            DropForeignKey("dbo.StoreCandy", "Candy_CandyId", "dbo.Candy");
-            DropForeignKey("dbo.StoreCandy", "Store_StoreId", "dbo.Store");
+            DropForeignKey("dbo.StoreDink", "StoreId", "dbo.Store");
+            DropForeignKey("dbo.StoreCandy", "StoreId", "dbo.Store");
+            DropForeignKey("dbo.StoreCandy", "CandyId", "dbo.Candy");
+            DropForeignKey("dbo.Drink", "Store_StoreId", "dbo.Store");
+            DropForeignKey("dbo.Candy", "Store_StoreId", "dbo.Store");
+            DropForeignKey("dbo.StoreDink", "DrinkId", "dbo.Drink");
             DropForeignKey("dbo.Drink", "FactoryId", "dbo.Factory");
             DropForeignKey("dbo.Character", "Factory_FactoryId", "dbo.Factory");
             DropForeignKey("dbo.Character", "RoomId", "dbo.Room");
@@ -236,11 +248,12 @@ namespace TreatTracker.Data.Migrations
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.ApplicationUser", "FactoryId", "dbo.Factory");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
-            DropIndex("dbo.StoreDrink", new[] { "Drink_DrinkId" });
-            DropIndex("dbo.StoreDrink", new[] { "Store_StoreId" });
-            DropIndex("dbo.StoreCandy", new[] { "Candy_CandyId" });
-            DropIndex("dbo.StoreCandy", new[] { "Store_StoreId" });
             DropIndex("dbo.GoldenTicket", new[] { "CandyId" });
+            DropIndex("dbo.StoreCandy", new[] { "CandyId" });
+            DropIndex("dbo.StoreCandy", new[] { "StoreId" });
+            DropIndex("dbo.StoreDink", new[] { "DrinkId" });
+            DropIndex("dbo.StoreDink", new[] { "StoreId" });
+            DropIndex("dbo.Drink", new[] { "Store_StoreId" });
             DropIndex("dbo.Drink", new[] { "FactoryId" });
             DropIndex("dbo.Room", new[] { "FactoryId" });
             DropIndex("dbo.Character", new[] { "Factory_FactoryId" });
@@ -250,12 +263,13 @@ namespace TreatTracker.Data.Migrations
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.ApplicationUser", new[] { "FactoryId" });
+            DropIndex("dbo.Candy", new[] { "Store_StoreId" });
             DropIndex("dbo.Candy", new[] { "FactoryId" });
-            DropTable("dbo.StoreDrink");
-            DropTable("dbo.StoreCandy");
             DropTable("dbo.GoldenTicket");
             DropTable("dbo.IdentityRole");
+            DropTable("dbo.StoreCandy");
             DropTable("dbo.Store");
+            DropTable("dbo.StoreDink");
             DropTable("dbo.Drink");
             DropTable("dbo.Room");
             DropTable("dbo.Character");

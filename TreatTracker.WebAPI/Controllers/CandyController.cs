@@ -109,14 +109,14 @@ namespace TreatTracker.WebAPI.Controllers
         /// <param name="candyId">Remember to enter in the candy id that you are selling.</param>
         /// <param name="storeId">Enter in the store that you are selling to.</param>
         [HttpPut, Route("api/Candy/SellingCandy")]
-        public IHttpActionResult PutACandyWithAStore([FromUri]int candyId, [FromBody]OnlyStoreId storeId)
+        public IHttpActionResult PutACandyWithAStore(CandyQuantityEdit model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateCandyService();
 
-            if (!service.ConnectCandyWithStore(candyId, storeId))
+            if (!service.ConnectCandyWithStore(model))
                 return InternalServerError();
 
             return Ok();

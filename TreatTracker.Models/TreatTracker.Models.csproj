@@ -66,8 +66,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CandyModels\CandyQuantityEdit.cs" />
     <Compile Include="CharacterModels\CharacterDetail.cs" />
     <Compile Include="CharacterModels\CharacterListItem.cs" />
+    <Compile Include="DrinkModels\DrinkQuantityEdit.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketCreate.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketDetail.cs" />
     <Compile Include="GoldenTicketModels\GoldenTicketEdit.cs" />

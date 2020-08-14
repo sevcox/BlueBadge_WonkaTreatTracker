@@ -51,6 +51,8 @@ namespace TreatTracker.Data
         public DbSet<Factory> Factories { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Character> Characters { get; set; }
+        public DbSet<StoreCandy> StoreCandies { get; set; }
+        public DbSet<StoreDink> StoreDrinks { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

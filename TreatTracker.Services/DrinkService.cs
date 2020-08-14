@@ -40,26 +40,61 @@ namespace TreatTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool ConnectDrinkWithStore(int drinkId, OnlyStoreId model)
+        //public bool ConnectDrinkWithStore(DrinkQuantityEdit model)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var drink =
+        //        ctx
+        //        .Drinks
+        //        .Single(d => d.DrinkId == model.DrinkId);
+
+        //        var store =
+        //            ctx
+        //            .StoreDrinks
+        //            .Single(s => s.StoreId == model.StoreId);
+
+        //        drink.StoreDrink.Add(store);
+        //        drink.Quantity -= model.Quantity;
+        //        store.Quantity += model.Quantity;
+
+        //        return ctx.SaveChanges() == 1;
+
+        //    }
+        //}
+
+        public bool ConnectDrinkWithStore(DrinkQuantityEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var drink =
-                ctx
-                .Drinks
-                .Single(d => d.DrinkId == drinkId);
+                  ctx
+                  .Drinks
+                  .Single(c => c.DrinkId == model.DrinkId);
 
                 var store =
                     ctx
                     .Stores
                     .Single(s => s.StoreId == model.StoreId);
 
-                drink.Stores.Add(store);
+                drink.Quantity -= model.Quantity;
 
+                var storeDrinks =
+                    new StoreDink() 
+                    { 
+                        DrinkId = drink.DrinkId,
+                        StoreId = store.StoreId,
+                        Quantity= model.Quantity,
+                    };
+
+
+                ctx.StoreDrinks.Add(storeDrinks);
                 return ctx.SaveChanges() == 1;
 
-            }
+            };
+
         }
+
         public IEnumerable<DrinkListItem> GetDrinks()
         {
             using (var ctx = new ApplicationDbContext())

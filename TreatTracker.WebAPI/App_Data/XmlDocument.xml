@@ -534,7 +534,7 @@
             </summary>
             <param name="candy">Make sure to enter in all the required details when editing a candy entry. Your username and today's date will automatically be added to the modification.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.PutACandyWithAStore(System.Int32,TreatTracker.Models.StoreModels.OnlyStoreId)">
+        <member name="M:TreatTracker.WebAPI.Controllers.CandyController.PutACandyWithAStore(TreatTracker.Models.CandyModels.CandyQuantityEdit)">
             <summary>
             Selling candy to a store.
             </summary>
@@ -622,7 +622,7 @@
             </summary>
             <param name="drink">Make sure to enter in all the required details when editing a drink entry. Your username and today's date will automatically be added to the modification.</param>
         </member>
-        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.PutACandyWithAStore(System.Int32,TreatTracker.Models.StoreModels.OnlyStoreId)">
+        <member name="M:TreatTracker.WebAPI.Controllers.DrinkController.PutACandyWithAStore(TreatTracker.Models.DrinkModels.DrinkQuantityEdit)">
             <summary>
             Selling drinks to a store.
             </summary>
@@ -706,6 +706,18 @@
             Returns the details of a specific factory
             </summary>
             <param name="factoryId">FactoryId is needed</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.FactoryController.GetFactorybyCandyId(System.Int32)">
+            <summary>
+            Returns the details of a specific factory by CandyId
+            </summary>
+            <param name="candyId">FactoryId is needed</param>
+        </member>
+        <member name="M:TreatTracker.WebAPI.Controllers.FactoryController.GetFactorybyDrinkId(System.Int32)">
+            <summary>
+            Returns the details of a specific factory by DrinkId
+            </summary>
+            <param name="drinkId">FactoryId is needed</param>
         </member>
         <member name="T:TreatTracker.WebAPI.Controllers.StoreController">
             <summary>

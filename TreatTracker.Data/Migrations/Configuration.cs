@@ -78,6 +78,7 @@ namespace TreatTracker.Data.Migrations
                 new Drink() { Flavor = "Ginger", FactoryId = 1, TreatName = "Fizzy Ginger Beer", Description = "Spicy ginger ale that clears your sinuses", SecretIngredient = "Real ginger", Price = 2.25m, Quantity = 135, CreatedUtc = DateTimeOffset.Now, UserCreated = "wonkaIsTheMan@wonka.com" }
             );
             context.SaveChanges();
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -93,4 +94,3 @@ namespace TreatTracker.Data.Migrations
         }
     }
 }
-

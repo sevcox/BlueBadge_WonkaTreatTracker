@@ -93,14 +93,16 @@
     <Compile Include="IAutoDateTime.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="Migrations\202008121843570_InitialMigration.cs" />
-    <Compile Include="Migrations\202008121843570_InitialMigration.Designer.cs">
-      <DependentUpon>202008121843570_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202008132159208_InitialMigration.cs" />
+    <Compile Include="Migrations\202008132159208_InitialMigration.Designer.cs">
+      <DependentUpon>202008132159208_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="Store.cs" />
+    <Compile Include="StoreCandy.cs" />
+    <Compile Include="StoreDink.cs" />
     <Compile Include="Treat.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -108,8 +110,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008121843570_InitialMigration.resx">
-      <DependentUpon>202008121843570_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008132159208_InitialMigration.resx">
+      <DependentUpon>202008132159208_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

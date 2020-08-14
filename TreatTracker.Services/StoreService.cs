@@ -65,13 +65,13 @@ namespace TreatTracker.Services
                     ctx
                     .Candies
                     .Single(e => e.CandyId == id)
-                    .Stores
+                    .StoreCandy
                     .Select
                     (e =>
                     new StoreListItem
                     {
                         StoreId = e.StoreId,
-                        LocationName = e.LocationName
+                        LocationName = e.Store.LocationName
                     }
                         );
                 return allStores.ToArray();
@@ -85,13 +85,13 @@ namespace TreatTracker.Services
                     ctx
                     .Drinks
                     .Single(e => e.DrinkId == id)
-                    .Stores
+                    .StoreDrink
                     .Select
                     (e =>
                     new StoreListItem
                     {
                         StoreId = e.StoreId,
-                        LocationName = e.LocationName
+                        LocationName = e.Store.LocationName
                     }
                         );
                 return allStores.ToArray();

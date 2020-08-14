@@ -107,14 +107,14 @@ namespace TreatTracker.WebAPI.Controllers
         /// <param name="drinkId">Remember to enter in the drink id that you are selling.</param>
         /// <param name="storeId">Enter in the store that you are selling to.</param>
         [HttpPut, Route("api/Drink/SellingDrinks")]
-        public IHttpActionResult PutACandyWithAStore([FromUri]int drinkId, [FromBody]OnlyStoreId storeId)
+        public IHttpActionResult PutACandyWithAStore(DrinkQuantityEdit model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateDrinkService();
 
-            if (!service.ConnectDrinkWithStore(drinkId, storeId))
+            if (!service.ConnectDrinkWithStore(model))
                 return InternalServerError();
 
             return Ok();

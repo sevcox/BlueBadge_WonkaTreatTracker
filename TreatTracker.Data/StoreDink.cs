@@ -8,16 +8,18 @@ using System.Threading.Tasks;
 
 namespace TreatTracker.Data
 {
-    public class Drink : Treat
+    public class StoreDink
     {
         [Key]
+        public int StoreDrink { get; set; }
+        public int StoreId { get; set; }
+
         public int DrinkId { get; set; }
+
+        public virtual Drink Drink { get; set; }
+
+        public virtual Store Store { get; set; }
         [Required]
-        public string Flavor { get; set; }
-        public virtual ICollection<StoreDink> StoreDrink { get; set; }
-        [Required]
-        public int FactoryId { get; set; }
-        [ForeignKey(nameof(FactoryId))]
-        public virtual Factory Factory { get; set; }
+        public int Quantity { get; set; }
     }
 }
